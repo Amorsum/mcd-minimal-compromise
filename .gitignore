@@ -1,0 +1,9 @@
+# WorkBuddy 工作区数据（记忆/任务/本地状态，非交付物）
+.workbuddy/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+
+# 说明：mcd-minimal-compromise/ 子目录内有更完整的 .gitignore
+# （Python 缓存、虚拟环境、本地配置与真实接口样本）

@@ -1,0 +1,110 @@
+# 输出契约（output-contract）
+
+`scripts/plan.py` 的输入输出结构。所有金额单位为整数「分」；条件评价三态：`satisfied` / `violated` / `unknown`。
+
+## 1. 输入
+
+```json
+{
+  "storeId": "1950640",
+  "fetchedAt": "2026-10-12 16:00:00",
+  "mcp": {
+    "menu": { "..." : "query-meals 原始返回" },
+    "comboDetails": [ { "..." : "query-meal-detail 原始返回" } ],
+    "coupons": { "..." : "query-store-coupons 原始返回" },
+    "nutrition": { "..." : "list-nutrition-foods 原始返回（可选）" }
+  },
+  "request": {
+    "requestVersion": 1,
+    "context": { "storeId": "1950640", "diningMode": "pickup", "people": 1 },
+    "constraints": [
+      { "id": "budget", "kind": "total_price_max", "value": 2500, "unit": "fen",
+        "strength": "hard", "negotiability": "ask", "priority": 50, "sourceText": "预算25元" },
+      { "id": "no_fries", "kind": "exclude_category", "value": "fries",
+        "strength": "hard", "negotiability": "locked", "priority": 10, "sourceText": "不要薯条" }
+    ]
+  },
+  "quotes": { "budget": { "firstBatch": 8, "roundBudget": 24, "used": 0 }, "quotes": { "<candidateKey>": { "..." : "Quote" } } },
+  "budget": { "firstBatch": 8, "roundBudget": 24 },
+  "maxPlans": 3
+}
+```
+
+### 约束类型（kind）
+
+| kind | value 含义 | 说明 |
+|---|---|---|
+| `total_price_max` | 预算上限（分） | 依赖报价；无有效报价时记 unknown |
+| `include_staple` | 餐品编码或 `staple_beef/chicken/fish/other` | 指定主食 |
+| `exclude_category` | 品类标签 | 如 `fries`；近似品类记 unknown |
+| `exclude_item` | 餐品编码或特制编码 | 特制编码仅在已展开详情时可判定 |
+| `require_category` | 品类标签 | 如 `drink` |
+| `max_items` | 整数 | 总件数上限 |
+| `prefer_coupon` | 任意 | 软偏好，不影响可行性 |
+| `energy_max` / `protein_min` | kcal / g | 第二阶段；营养缺失记 unknown |
+
+### 三个独立维度
+
+- `strength`：`hard`（当前必须满足）/ `soft`（仅排序偏好）；
+- `negotiability`：`locked`（不可讨论）/ `ask`（可建议但不经接受不生效）/ `open`；
+- `priority`：数值小者先讨论。
+
+## 2. 输出
+
+```json
+{
+  "requestVersion": 1,
+  "context": { "..." : "同上" },
+  "searchScope": { "store": "single", "diningMode": "pickup", "maxStaples": 1, "..." : "边界声明" },
+  "status": "feasible | compromise_proposed | not_found | data_incomplete | quotes_pending",
+  "coverage": { "generatedCount": 62, "quotedCount": 24, "failedCount": 0, "truncated": true },
+  "plans": [ {
+      "planId": "P1",
+      "items": [ { "productCode": "9900005466", "quantity": 1, "roundList": [ { "round": "2", "comboItemList": [ { "code": "4437", "quantity": 1 } ] } ] } ],
+      "expanded": [ { "code": "1100", "name": "巨无霸", "category": "staple_beef", "quantity": 1, "confidence": "high", "basis": "名称含牛肉堡关键词：命中「牛堡」", "source": "combo:9900005466:1" } ],
+      "officialQuote": { "candidateKey": "...", "status": "ok", "priceFen": 3600, "quotedAt": "...", "productNames": ["巨无霸三件套"] },
+      "satisfiedConstraints": [ { "constraintId": "budget", "state": "satisfied", "target": 2500, "actual": 3600, "evidence": "..." } ],
+      "proposedChanges": [ { "constraintId": "budget", "description": "预算从 25.00 元提高到 36.00 元（按试算价）", "magnitude": 1100 } ],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1950640",
+      "quotedAt": "..."
+  } ],
+  "pendingQuotes": [ { "key": "...", "items": [ "..." ], "note": "默认搭配" } ],
+  "nextActions": [ { "candidateKey": "...", "note": "...", "mcpCall": { "tool": "calculate-price", "params": { "storeCode": "1950640", "orderType": 1, "beType": 1, "items": [ "..." ] } } } ],
+  "notes": [ "搜索范围不完整（受试算预算限制），以下为已核验候选中的推荐" ]
+}
+```
+
+## 3. 状态机
+
+```
+quotes_pending ──(宿主补报价后再次运行)──▶ 重新进入 plan_next
+     │
+     ├─▶ feasible            存在满足全部硬条件且无未知的已核验方案
+     ├─▶ compromise_proposed 无已核验方案，但存在「只改变一个可讨论条件」的待接受方案
+     ├─▶ not_found           已核验候选中无可行方案且无可接受调整（附覆盖度说明）
+     └─▶ data_incomplete     门店数据为空 / 报价全部失败或无效 / 条件因数据缺失无法判定
+```
+
+`not_found` 不等于已证明不存在；证明范围通过 `coverage` 与 `searchScope` 单独表达。
+
+## 4. 展示映射（宿主对话层）
+
+| 输出字段 | 对话展示 |
+|---|---|
+| `expanded` | 餐品与规格（套餐展开为具体组成） |
+| `officialQuote.priceFen` | 试算总价（分 ÷ 100 = 元） |
+| `satisfiedConstraints` | 保留条件 |
+| `proposedChanges[].description` | 待接受改变 |
+| `quotedAt` / `storeId` | 查询时间与门店 |
+| `candidateKey` / `evidence` | 可展开的「依据」 |
+| `coverage.truncated` | 为 true 时必须提示「已核验候选中推荐」 |
+
+## 5. 不变量（测试保障）
+
+- 金额只来自 `officialQuote`；报价失败/无效的候选不出现在 `plans`；
+- `verified=true` 的方案满足全部硬条件且无未知硬条件；
+- `compromise_proposed` 的方案不违反锁定条件，且除 `proposedChanges` 外满足其余原条件；
+- 同一输入重复运行，方案顺序一致（确定性）；
+- 同一候选在本轮只报价一次（`candidateKey` 去重）。

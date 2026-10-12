@@ -1,0 +1,64 @@
+{
+  "note": "麦当劳 MCP calculate-price 真实返回样本与受控验证记录（门店 1950640，orderType=1, beType=1）。采集时间 2026-10-12。金额单位均为「分」。",
+  "samples": [
+    {
+      "id": "single-big-mac",
+      "request": {"items": [{"productCode": "1100", "quantity": 1}]},
+      "response": {"success": true, "code": 200, "data": {"productOriginalPrice": 2550, "productPrice": 2550, "originalPrice": 2550, "discount": 0, "price": 2550, "productList": [{"productCode": "1100", "productName": "巨无霸", "quantity": 1, "originalSubtotal": 2550, "subtotal": 2550}], "takeWayList": [{"code": "eat-in", "title": "堂食"}, {"code": "take-in-store", "title": "外带"}]}}
+    },
+    {
+      "id": "combo-default",
+      "request": {"items": [{"productCode": "9900005466", "quantity": 1}]},
+      "response": {"success": true, "code": 200, "data": {"price": 3650, "originalPrice": 3650, "discount": 0, "productList": [{"productCode": "9900005466", "productName": "巨无霸三件套", "quantity": 1, "originalSubtotal": 3650, "subtotal": 3650}]}},
+      "note": "不传 roundList 时按默认选项（中薯条+可乐中杯）计价，与菜单标价一致。"
+    },
+    {
+      "id": "combo-no-fries",
+      "request": {"items": [{"productCode": "9900005466", "quantity": 1, "roundList": [{"round": "2", "comboItemList": [{"code": "4437", "quantity": 1}]}, {"round": "3", "comboItemList": [{"code": "3060", "quantity": 1}]}]}]},
+      "response": {"success": true, "code": 200, "data": {"price": 3600, "originalPrice": 3600, "discount": 0, "productList": [{"productCode": "9900005466", "productName": "巨无霸三件套", "quantity": 1, "originalSubtotal": 3600, "subtotal": 3600}]}},
+      "note": "小食换小杯玉米杯（diffPrice -¥0.5）后总价 3650→3600，证明 roundList 自定义选项参与计价，『三件套不要薯条』可行。"
+    },
+    {
+      "id": "combo-with-modification",
+      "request": {"items": [{"productCode": "9900005466", "quantity": 1, "roundList": [{"round": "1", "comboItemList": [{"code": "1100", "quantity": 1, "modification": {"values": [{"code": "100116", "key": "0-1", "quantity": 1}, {"code": "100141", "key": "0-1", "quantity": 1}, {"code": "100168", "key": "0-1", "quantity": 1}, {"code": "100202", "key": "0-0", "quantity": 0}, {"code": "100212", "key": "0-1", "quantity": 1}]}}]}]}]},
+      "response": {"success": true, "code": 200, "data": {"price": 3650, "originalPrice": 3650, "discount": 0}},
+      "note": "去掉酸黄瓜（unselectedKey 0-0）被接受，价格不变（该特制免费）。modification 传参格式验证通过。"
+    },
+    {
+      "id": "two-singles",
+      "request": {"items": [{"productCode": "1100", "quantity": 1}, {"productCode": "9900008751", "quantity": 1}]},
+      "response": {"success": true, "code": 200, "data": {"price": 3500, "originalPrice": 3500, "discount": 0, "productList": [{"productCode": "1100", "productName": "巨无霸", "quantity": 1, "subtotal": 2550}, {"productCode": "9900008751", "productName": "可乐", "quantity": 1, "subtotal": 950}]}},
+      "note": "单点组合 2550+950=3500。"
+    },
+    {
+      "id": "coupon-fries-bogo",
+      "request": {"items": [{"productCode": "9900012387", "quantity": 1, "couponId": "REDACTED-COUPON-ID-2", "couponCode": "REDACTED-COUPON-CODE-2"}]},
+      "response": {"success": true, "code": 200, "data": {"productOriginalPrice": 2700, "productPrice": 1350, "originalPrice": 2700, "discount": 1350, "price": 1350, "productList": [{"productCode": "9900012387", "productName": "中薯条买一送一", "quantity": 1, "originalSubtotal": 2700, "subtotal": 1350}]}},
+      "note": "券用在其指定商品上：2700→1350（买一送一）。"
+    },
+    {
+      "id": "coupon-snack-platter",
+      "request": {"items": [{"productCode": "9900016371", "quantity": 1, "couponId": "REDACTED-COUPON-ID-1", "couponCode": "REDACTED-COUPON-CODE-1"}]},
+      "response": {"success": true, "code": 200, "data": {"productOriginalPrice": 2200, "productPrice": 1590, "originalPrice": 2200, "discount": 610, "price": 1590, "productList": [{"productCode": "9900016371", "productName": "王牌小食拼", "quantity": 1, "originalSubtotal": 2200, "subtotal": 1590}]}},
+      "note": "券商品不在常规菜单中，必须携带 couponId+couponCode 才能点。"
+    },
+    {
+      "id": "coupon-product-without-coupon",
+      "request": {"items": [{"productCode": "9900012387", "quantity": 1}]},
+      "response": {"success": true, "code": 200, "data": {"productOriginalPrice": 0, "productPrice": 0, "originalPrice": 0, "discount": 0, "price": 0, "productList": []}},
+      "note": "⚠️ 陷阱：券商品不带券试算返回 success=true 但 price=0、productList 为空。必须识别为无效报价（unknown），绝不能当成 0 元。"
+    },
+    {
+      "id": "coupon-on-unsupported-product",
+      "request": {"items": [{"productCode": "9900005466", "quantity": 1, "couponId": "REDACTED-COUPON-ID-2", "couponCode": "REDACTED-COUPON-CODE-2"}]},
+      "response": {"success": false, "code": 600012, "message": "促销规则不支持该商品"},
+      "note": "券用在不支持的商品上返回 success=false, code=600012，错误信息明确，可按错误码分类处理。"
+    },
+    {
+      "id": "repeat-same-quote",
+      "request": {"items": [{"productCode": "1100", "quantity": 1}]},
+      "response": {"success": true, "code": 200, "data": {"price": 2550}},
+      "note": "同一请求重复试算结果一致，未观察到试算带来的状态变化（幂等）。"
+    }
+  ]
+}

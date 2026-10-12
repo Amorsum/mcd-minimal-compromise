@@ -1,0 +1,1085 @@
+{
+  "storeId": "1950640",
+  "fetchedAt": "2026-10-12 16:00:00",
+  "mcp": {
+    "menu": {
+      "success": true,
+      "code": 200,
+      "data": {
+        "categories": [
+          {
+            "name": "人气热卖",
+            "meals": [
+              {
+                "code": "9900016076",
+                "tags": [
+                  "心形薯饼同款比心"
+                ]
+              },
+              {
+                "code": "9900016075",
+                "tags": [
+                  "浓郁奶香拉丝芝士"
+                ]
+              },
+              {
+                "code": "9900016073",
+                "tags": [
+                  "韩式辣椒黄油风味"
+                ]
+              },
+              {
+                "code": "9900016077",
+                "tags": [
+                  "韩式芝士风味酱上新"
+                ]
+              },
+              {
+                "code": "521954"
+              },
+              {
+                "code": "9900016311"
+              },
+              {
+                "code": "9900004064",
+                "tags": [
+                  "爆款"
+                ]
+              },
+              {
+                "code": "521950",
+                "tags": [
+                  "蓝莓"
+                ]
+              },
+              {
+                "code": "515946"
+              }
+            ]
+          },
+          {
+            "name": "精选单人餐",
+            "meals": [
+              {
+                "code": "9900004064",
+                "tags": [
+                  "经典精选",
+                  "爆款"
+                ]
+              },
+              {
+                "code": "9900004236",
+                "tags": [
+                  "麦金卡"
+                ]
+              },
+              {
+                "code": "9900010110",
+                "tags": [
+                  "麦金卡"
+                ]
+              },
+              {
+                "code": "9900006957",
+                "tags": [
+                  "麦金卡"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "巨无霸\n牛鱼肉堡",
+            "meals": [
+              {
+                "code": "9900000888",
+                "tags": [
+                  "麦金卡"
+                ]
+              },
+              {
+                "code": "9900000886",
+                "tags": [
+                  "麦金卡"
+                ]
+              },
+              {
+                "code": "9900000885",
+                "tags": [
+                  "麦金卡"
+                ]
+              },
+              {
+                "code": "9900000893",
+                "tags": [
+                  "麦金卡"
+                ]
+              },
+              {
+                "code": "9900005411",
+                "tags": [
+                  "套餐",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "9900005466",
+                "tags": [
+                  "套餐",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "9900005468",
+                "tags": [
+                  "套餐",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "9900005413",
+                "tags": [
+                  "套餐",
+                  "麦香鱼系列"
+                ]
+              },
+              {
+                "code": "9900005460",
+                "tags": [
+                  "套餐",
+                  "麦香鱼系列"
+                ]
+              },
+              {
+                "code": "9900005464",
+                "tags": [
+                  "套餐",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "9900005449",
+                "tags": [
+                  "套餐",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "1100",
+                "tags": [
+                  "单品",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "9900003586",
+                "tags": [
+                  "单品",
+                  "麦香鱼系列"
+                ]
+              },
+              {
+                "code": "1600",
+                "tags": [
+                  "单品",
+                  "麦香鱼系列"
+                ]
+              },
+              {
+                "code": "4648",
+                "tags": [
+                  "单品",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "1106",
+                "tags": [
+                  "单品",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "1120",
+                "tags": [
+                  "单品",
+                  "100%纯牛肉"
+                ]
+              },
+              {
+                "code": "521316",
+                "tags": [
+                  "单品",
+                  "100%纯牛肉",
+                  "人气"
+                ]
+              },
+              {
+                "code": "9900008747",
+                "tags": [
+                  "单品",
+                  "100%纯牛肉"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "炸鸡",
+            "meals": [
+              {
+                "code": "521966",
+                "tags": [
+                  "蘸酱",
+                  "韩式风味",
+                  "浓郁芝香"
+                ]
+              },
+              {
+                "code": "9900005451",
+                "tags": [
+                  "套餐",
+                  "立省10.5元起"
+                ]
+              },
+              {
+                "code": "9900004835",
+                "tags": [
+                  "套餐",
+                  "立省10.5元起"
+                ]
+              },
+              {
+                "code": "1700",
+                "tags": [
+                  "单品",
+                  "黄金酥脆",
+                  "鲜嫩多汁"
+                ]
+              },
+              {
+                "code": "520445",
+                "tags": [
+                  "单品",
+                  "人气"
+                ]
+              },
+              {
+                "code": "1401",
+                "tags": [
+                  "单品",
+                  "人气"
+                ]
+              },
+              {
+                "code": "521156",
+                "tags": [
+                  "单品"
+                ]
+              },
+              {
+                "code": "9900005432",
+                "tags": [
+                  "单品"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "饮品",
+            "meals": [
+              {
+                "code": "521817",
+                "tags": [
+                  "上新",
+                  "清爽上新"
+                ]
+              },
+              {
+                "code": "9900008751",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "3010",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "515520",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "2430",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "515280",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "6352",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "3755",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "6362",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "3757",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "9900003538",
+                "tags": [
+                  "冷饮"
+                ]
+              },
+              {
+                "code": "520689",
+                "tags": [
+                  "热饮",
+                  "鲜萃咖啡"
+                ]
+              },
+              {
+                "code": "3505",
+                "tags": [
+                  "热饮"
+                ]
+              }
+            ]
+          }
+        ],
+        "meals": {
+          "9900005466": {
+            "name": "巨无霸三件套",
+            "currentPrice": "36.5",
+            "originalPrice": "49",
+            "canWithOrder": false
+          },
+          "9900005456": {
+            "name": "麦辣鸡腿汉堡三件套",
+            "currentPrice": "33.5",
+            "originalPrice": "46",
+            "canWithOrder": false
+          },
+          "9900005462": {
+            "name": "板烧鸡腿堡三件套",
+            "currentPrice": "34.5",
+            "originalPrice": "47",
+            "canWithOrder": false
+          },
+          "9900005453": {
+            "name": "麦香鸡套餐",
+            "currentPrice": "28",
+            "originalPrice": "40.5",
+            "canWithOrder": false
+          },
+          "9900005449": {
+            "name": "吉士汉堡包套餐",
+            "currentPrice": "26",
+            "originalPrice": "38.5",
+            "canWithOrder": false
+          },
+          "1100": {
+            "name": "巨无霸",
+            "currentPrice": "25.5",
+            "originalPrice": "25.5",
+            "canWithOrder": false
+          },
+          "1440": {
+            "name": "麦辣鸡腿汉堡",
+            "currentPrice": "22.5",
+            "originalPrice": "22.5",
+            "canWithOrder": false
+          },
+          "1406": {
+            "name": "板烧鸡腿堡",
+            "currentPrice": "23.5",
+            "originalPrice": "23.5",
+            "canWithOrder": false
+          },
+          "4810": {
+            "name": "薯条",
+            "currentPrice": "13.5",
+            "originalPrice": "13.5",
+            "canWithOrder": false
+          },
+          "9900008751": {
+            "name": "可乐",
+            "currentPrice": "9.5",
+            "originalPrice": "9.5",
+            "canWithOrder": false
+          },
+          "3010": {
+            "name": "雪碧",
+            "currentPrice": "9.5",
+            "originalPrice": "9.5",
+            "canWithOrder": false
+          },
+          "9900004064": {
+            "name": "精选单人餐三件套",
+            "currentPrice": "34.5",
+            "originalPrice": "46",
+            "canWithOrder": false
+          },
+          "9900004835": {
+            "name": "麦乐鸡套餐",
+            "currentPrice": "25",
+            "originalPrice": "37.5",
+            "canWithOrder": false
+          },
+          "9900015602": {
+            "name": "大堡口福三件套",
+            "currentPrice": "22.9",
+            "originalPrice": "47",
+            "canWithOrder": false
+          }
+        },
+        "frequent": {
+          "code": "9900015568",
+          "tags": [
+            "我的常点"
+          ]
+        }
+      }
+    },
+    "comboDetails": [
+      {
+        "success": true,
+        "code": 200,
+        "data": {
+          "code": "9900005466",
+          "name": "巨无霸三件套",
+          "rounds": [
+            {
+              "id": 1,
+              "name": "新升级巨无霸",
+              "quantity": 1,
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "choices": [
+                {
+                  "code": "1100",
+                  "name": "巨无霸",
+                  "quantity": 1,
+                  "maxQuantity": -1,
+                  "isDefault": 1,
+                  "diffPrice": "+ ¥0",
+                  "supportModify": true,
+                  "modification": {
+                    "items": [
+                      {
+                        "maxValues": 5,
+                        "minValues": 0,
+                        "values": [
+                          {
+                            "code": "100116",
+                            "price": 0,
+                            "name": "巨无霸酱",
+                            "maxQuantity": 1,
+                            "minQuantity": 0,
+                            "selectedQuantity": 1,
+                            "selectedKey": "0-1",
+                            "unselectedKey": "0-0"
+                          },
+                          {
+                            "code": "100141",
+                            "price": 0,
+                            "name": "吉士",
+                            "maxQuantity": 1,
+                            "minQuantity": 0,
+                            "selectedQuantity": 1,
+                            "selectedKey": "0-1",
+                            "unselectedKey": "0-0"
+                          },
+                          {
+                            "code": "100168",
+                            "price": 0,
+                            "name": "生菜",
+                            "maxQuantity": 1,
+                            "minQuantity": 0,
+                            "selectedQuantity": 1,
+                            "selectedKey": "0-1",
+                            "unselectedKey": "0-0"
+                          },
+                          {
+                            "code": "100202",
+                            "price": 0,
+                            "name": "酸黄瓜",
+                            "maxQuantity": 1,
+                            "minQuantity": 0,
+                            "selectedQuantity": 1,
+                            "selectedKey": "0-1",
+                            "unselectedKey": "0-0"
+                          },
+                          {
+                            "code": "100212",
+                            "price": 0,
+                            "name": "洋葱粒",
+                            "maxQuantity": 1,
+                            "minQuantity": 0,
+                            "selectedQuantity": 1,
+                            "selectedKey": "0-1",
+                            "unselectedKey": "0-0"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "name": "选择套餐内小食",
+              "quantity": 1,
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "choices": [
+                {
+                  "code": "4810",
+                  "name": "中薯条",
+                  "quantity": 1,
+                  "maxQuantity": -1,
+                  "isDefault": 1,
+                  "diffPrice": "+ ¥0",
+                  "supportModify": false
+                },
+                {
+                  "code": "521983",
+                  "name": "5块心形薯饼+韩式辣椒黄油风味酱",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥1",
+                  "supportModify": false
+                },
+                {
+                  "code": "521901",
+                  "name": "月下相思扭扭薯",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥1.5",
+                  "supportModify": false
+                },
+                {
+                  "code": "4820",
+                  "name": "大薯条",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥2.5",
+                  "supportModify": false
+                },
+                {
+                  "code": "4437",
+                  "name": "小杯玉米杯",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "- ¥0.5",
+                  "supportModify": false
+                },
+                {
+                  "code": "4438",
+                  "name": "大杯玉米杯",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥2.5",
+                  "supportModify": false
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "name": "选择套餐内饮料",
+              "quantity": 1,
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "choices": [
+                {
+                  "code": "3050",
+                  "name": "可乐中杯",
+                  "quantity": 1,
+                  "maxQuantity": -1,
+                  "isDefault": 1,
+                  "diffPrice": "+ ¥0",
+                  "supportModify": true
+                },
+                {
+                  "code": "3071",
+                  "name": "无糖可口可乐中杯",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥0",
+                  "supportModify": true
+                },
+                {
+                  "code": "3060",
+                  "name": "雪碧中杯",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥0",
+                  "supportModify": true
+                },
+                {
+                  "code": "3100",
+                  "name": "可乐大杯",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥2",
+                  "supportModify": true
+                },
+                {
+                  "code": "3755",
+                  "name": "纯牛奶",
+                  "quantity": 0,
+                  "maxQuantity": -1,
+                  "isDefault": 0,
+                  "diffPrice": "+ ¥0.5",
+                  "supportModify": false
+                }
+              ],
+              "_omitted": "完整返回共 36 个饮料选项（含麦咖啡、雪冰、燕麦奶系列），结构与上述一致。"
+            }
+          ],
+          "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260824/product/MS_9900005466_600.png",
+          "supportModify": false
+        }
+      }
+    ],
+    "coupons": {
+      "success": true,
+      "code": 200,
+      "data": [
+        {
+          "title": "王牌小食拼",
+          "couponId": "REDACTED-COUPON-ID-1",
+          "couponCode": "REDACTED-COUPON-CODE-1",
+          "tradeDateTime": "2026-10-12 10:30:00-2026-10-16 23:59:59",
+          "products": [
+            {
+              "productCode": "9900016371",
+              "productName": "王牌小食拼"
+            }
+          ],
+          "promotionId": "112458029"
+        },
+        {
+          "title": "中薯条买一送一",
+          "couponId": "REDACTED-COUPON-ID-2",
+          "couponCode": "REDACTED-COUPON-CODE-2",
+          "tradeDateTime": "2026-10-12 10:30:00-2026-10-16 23:59:59",
+          "products": [
+            {
+              "productCode": "9900012387",
+              "productName": "中薯条买一送一"
+            }
+          ],
+          "promotionId": "112458028"
+        }
+      ]
+    }
+  },
+  "request": {
+    "requestVersion": 1,
+    "context": {
+      "storeId": "1950640",
+      "diningMode": "pickup",
+      "people": 1
+    },
+    "constraints": [
+      {
+        "id": "budget",
+        "kind": "total_price_max",
+        "value": 2500,
+        "unit": "fen",
+        "strength": "hard",
+        "negotiability": "ask",
+        "priority": 50,
+        "sourceText": "预算25元"
+      },
+      {
+        "id": "staple",
+        "kind": "include_staple",
+        "value": "staple_beef",
+        "strength": "hard",
+        "negotiability": "ask",
+        "priority": 80,
+        "sourceText": "要一个牛肉汉堡"
+      },
+      {
+        "id": "need_drink",
+        "kind": "require_category",
+        "value": "drink",
+        "strength": "hard",
+        "negotiability": "ask",
+        "priority": 30,
+        "sourceText": "要一杯饮料"
+      },
+      {
+        "id": "no_fries",
+        "kind": "exclude_category",
+        "value": "fries",
+        "strength": "hard",
+        "negotiability": "locked",
+        "priority": 10,
+        "sourceText": "不要薯条"
+      }
+    ]
+  },
+  "budget": {
+    "firstBatch": 8,
+    "roundBudget": 24,
+    "used": 24
+  },
+  "maxPlans": 3,
+  "quotes": {
+    "budget": {
+      "firstBatch": 8,
+      "roundBudget": 24,
+      "used": 24
+    },
+    "quotes": {
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3600,
+        "originalPriceFen": 3600,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3750,
+        "originalPriceFen": 3750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3800,
+        "originalPriceFen": 3800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3500,
+        "originalPriceFen": 3500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "雪碧小杯"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3500,
+        "originalPriceFen": 3500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "可乐"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3200,
+        "originalPriceFen": 3200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡腿汉堡",
+          "雪碧小杯"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3200,
+        "originalPriceFen": 3200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡腿汉堡",
+          "可乐"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3300,
+        "originalPriceFen": 3300,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:43:54",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "板烧鸡腿堡",
+          "雪碧小杯"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3300,
+        "originalPriceFen": 3300,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "板烧鸡腿堡",
+          "可乐"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3750,
+        "originalPriceFen": 3750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦香鸡中套餐",
+          "雪碧小杯"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3750,
+        "originalPriceFen": 3750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦香鸡中套餐",
+          "可乐"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005456\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005456\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4300,
+        "originalPriceFen": 4300,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡腿汉堡三件套",
+          "雪碧小杯"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005456\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005456\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4300,
+        "originalPriceFen": 4300,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡腿汉堡三件套",
+          "可乐"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005462\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005462\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4400,
+        "originalPriceFen": 4400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "板烧鸡腿堡三件套",
+          "雪碧小杯"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005462\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005462\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4400,
+        "originalPriceFen": 4400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "板烧鸡腿堡三件套",
+          "可乐"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "failed",
+        "priceFen": null,
+        "originalPriceFen": null,
+        "discountFen": null,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "600012",
+        "errorMessage": "未找到优惠券或已赠送给好友",
+        "productNames": []
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2550,
+        "originalPriceFen": 2550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸"
+        ]
+      },
+      "[{\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "failed",
+        "priceFen": null,
+        "originalPriceFen": null,
+        "discountFen": null,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "600012",
+        "errorMessage": "未找到优惠券或已赠送给好友",
+        "productNames": []
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "failed",
+        "priceFen": null,
+        "originalPriceFen": null,
+        "discountFen": null,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "600012",
+        "errorMessage": "未找到优惠券或已赠送给好友",
+        "productNames": []
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "failed",
+        "priceFen": null,
+        "originalPriceFen": null,
+        "discountFen": null,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "600012",
+        "errorMessage": "未找到优惠券或已赠送给好友",
+        "productNames": []
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"REDACTED-COUPON-CODE-1\", \"couponId\": \"REDACTED-COUPON-ID-1\", \"productCode\": \"9900016371\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "failed",
+        "priceFen": null,
+        "originalPriceFen": null,
+        "discountFen": null,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "600012",
+        "errorMessage": "未找到优惠券或已赠送给好友",
+        "productNames": []
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1440\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2250,
+        "originalPriceFen": 2250,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡腿汉堡"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1406\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "板烧鸡腿堡"
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005453\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2800,
+        "originalPriceFen": 2800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-12 16:49:14",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦香鸡中套餐"
+        ]
+      }
+    }
+  }
+}

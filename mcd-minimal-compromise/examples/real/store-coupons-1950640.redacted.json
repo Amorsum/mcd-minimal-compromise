@@ -1,0 +1,32 @@
+{
+  "note": "麦当劳 MCP query-store-coupons 真实返回样本（门店 1950640）。采集时间 2026-10-12。⚠️ couponId / couponCode 与个人账号绑定，属于账户凭证，已脱敏为占位符；真实值不得进入公开仓库。",
+  "tool": "query-store-coupons",
+  "request": {"storeCode": "1950640", "orderType": 1, "beType": 1},
+  "response": {
+    "success": true,
+    "code": 200,
+    "data": [
+      {
+        "title": "王牌小食拼",
+        "couponId": "REDACTED-COUPON-ID-1",
+        "couponCode": "REDACTED-COUPON-CODE-1",
+        "tradeDateTime": "2026-10-12 10:30:00-2026-10-16 23:59:59",
+        "products": [{"productCode": "9900016371", "productName": "王牌小食拼"}],
+        "promotionId": "112458029"
+      },
+      {
+        "title": "中薯条买一送一",
+        "couponId": "REDACTED-COUPON-ID-2",
+        "couponCode": "REDACTED-COUPON-CODE-2",
+        "tradeDateTime": "2026-10-12 10:30:00-2026-10-16 23:59:59",
+        "products": [{"productCode": "9900012387", "productName": "中薯条买一送一"}],
+        "promotionId": "112458028"
+      }
+    ]
+  },
+  "observations": [
+    "同一券 ID 可对应多个券码，展示时按券 ID 分组。",
+    "券适用商品是独立商品编码（如 9900012387），与常规菜单编码（如 4810 中薯条）不同；券商品不在 query-meals 菜单中。",
+    "两门店（1950640 / 1951000）返回的券一致，但券与账号绑定，换账号结果会不同。"
+  ]
+}

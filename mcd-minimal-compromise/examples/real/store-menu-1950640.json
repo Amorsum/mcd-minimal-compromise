@@ -1,0 +1,35 @@
+{
+  "note": "麦当劳 MCP query-meals 真实返回样本（门店 1950640，到店自取 orderType=1）。采集时间 2026-10-12。餐品编码、名称、价格为公开菜单数据，可原样保留。",
+  "tool": "query-meals",
+  "request": {"storeCode": "1950640", "orderType": 1, "beType": 1},
+  "response": {
+    "success": true,
+    "code": 200,
+    "data": {
+      "categories": [
+        {"name": "人气热卖", "meals": [{"code": "9900016076", "tags": ["心形薯饼同款比心"]}, {"code": "9900016075", "tags": ["浓郁奶香拉丝芝士"]}, {"code": "9900016073", "tags": ["韩式辣椒黄油风味"]}, {"code": "9900016077", "tags": ["韩式芝士风味酱上新"]}, {"code": "521954"}, {"code": "9900016311"}, {"code": "9900004064", "tags": ["爆款"]}, {"code": "521950", "tags": ["蓝莓"]}, {"code": "515946"}]},
+        {"name": "精选单人餐", "meals": [{"code": "9900004064", "tags": ["经典精选", "爆款"]}, {"code": "9900004236", "tags": ["麦金卡"]}, {"code": "9900010110", "tags": ["麦金卡"]}, {"code": "9900006957", "tags": ["麦金卡"]}]},
+        {"name": "巨无霸\n牛鱼肉堡", "meals": [{"code": "9900000888", "tags": ["麦金卡"]}, {"code": "9900000886", "tags": ["麦金卡"]}, {"code": "9900000885", "tags": ["麦金卡"]}, {"code": "9900000893", "tags": ["麦金卡"]}, {"code": "9900005411", "tags": ["套餐", "100%纯牛肉"]}, {"code": "9900005466", "tags": ["套餐", "100%纯牛肉"]}, {"code": "9900005468", "tags": ["套餐", "100%纯牛肉"]}, {"code": "9900005413", "tags": ["套餐", "麦香鱼系列"]}, {"code": "9900005460", "tags": ["套餐", "麦香鱼系列"]}, {"code": "9900005464", "tags": ["套餐", "100%纯牛肉"]}, {"code": "9900005449", "tags": ["套餐", "100%纯牛肉"]}, {"code": "1100", "tags": ["单品", "100%纯牛肉"]}, {"code": "9900003586", "tags": ["单品", "麦香鱼系列"]}, {"code": "1600", "tags": ["单品", "麦香鱼系列"]}, {"code": "4648", "tags": ["单品", "100%纯牛肉"]}, {"code": "1106", "tags": ["单品", "100%纯牛肉"]}, {"code": "1120", "tags": ["单品", "100%纯牛肉"]}, {"code": "521316", "tags": ["单品", "100%纯牛肉", "人气"]}, {"code": "9900008747", "tags": ["单品", "100%纯牛肉"]}]},
+        {"name": "炸鸡", "meals": [{"code": "521966", "tags": ["蘸酱", "韩式风味", "浓郁芝香"]}, {"code": "9900005451", "tags": ["套餐", "立省10.5元起"]}, {"code": "9900004835", "tags": ["套餐", "立省10.5元起"]}, {"code": "1700", "tags": ["单品", "黄金酥脆", "鲜嫩多汁"]}, {"code": "520445", "tags": ["单品", "人气"]}, {"code": "1401", "tags": ["单品", "人气"]}, {"code": "521156", "tags": ["单品"]}, {"code": "9900005432", "tags": ["单品"]}]},
+        {"name": "饮品", "meals": [{"code": "521817", "tags": ["上新", "清爽上新"]}, {"code": "9900008751", "tags": ["冷饮"]}, {"code": "3010", "tags": ["冷饮"]}, {"code": "515520", "tags": ["冷饮"]}, {"code": "2430", "tags": ["冷饮"]}, {"code": "515280", "tags": ["冷饮"]}, {"code": "6352", "tags": ["冷饮"]}, {"code": "3755", "tags": ["冷饮"]}, {"code": "6362", "tags": ["冷饮"]}, {"code": "3757", "tags": ["冷饮"]}, {"code": "9900003538", "tags": ["冷饮"]}, {"code": "520689", "tags": ["热饮", "鲜萃咖啡"]}, {"code": "3505", "tags": ["热饮"]}]}
+      ],
+      "meals": {
+        "9900005466": {"name": "巨无霸三件套", "currentPrice": "36.5", "originalPrice": "49", "canWithOrder": false},
+        "9900005456": {"name": "麦辣鸡腿汉堡三件套", "currentPrice": "33.5", "originalPrice": "46", "canWithOrder": false},
+        "9900005462": {"name": "板烧鸡腿堡三件套", "currentPrice": "34.5", "originalPrice": "47", "canWithOrder": false},
+        "9900005453": {"name": "麦香鸡套餐", "currentPrice": "28", "originalPrice": "40.5", "canWithOrder": false},
+        "9900005449": {"name": "吉士汉堡包套餐", "currentPrice": "26", "originalPrice": "38.5", "canWithOrder": false},
+        "1100": {"name": "巨无霸", "currentPrice": "25.5", "originalPrice": "25.5", "canWithOrder": false},
+        "1440": {"name": "麦辣鸡腿汉堡", "currentPrice": "22.5", "originalPrice": "22.5", "canWithOrder": false},
+        "1406": {"name": "板烧鸡腿堡", "currentPrice": "23.5", "originalPrice": "23.5", "canWithOrder": false},
+        "4810": {"name": "薯条", "currentPrice": "13.5", "originalPrice": "13.5", "canWithOrder": false},
+        "9900008751": {"name": "可乐", "currentPrice": "9.5", "originalPrice": "9.5", "canWithOrder": false},
+        "3010": {"name": "雪碧", "currentPrice": "9.5", "originalPrice": "9.5", "canWithOrder": false},
+        "9900004064": {"name": "精选单人餐三件套", "currentPrice": "34.5", "originalPrice": "46", "canWithOrder": false},
+        "9900004835": {"name": "麦乐鸡套餐", "currentPrice": "25", "originalPrice": "37.5", "canWithOrder": false},
+        "9900015602": {"name": "大堡口福三件套", "currentPrice": "22.9", "originalPrice": "47", "canWithOrder": false}
+      },
+      "frequent": {"code": "9900015568", "tags": ["我的常点"]}
+    }
+  }
+}

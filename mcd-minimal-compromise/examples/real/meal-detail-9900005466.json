@@ -1,0 +1,86 @@
+{
+  "note": "麦当劳 MCP query-meal-detail 真实返回样本（巨无霸三件套 9900005466，门店 1950640）。采集时间 2026-10-12。为控制仓库体积，第 3 轮（饮料）仅保留代表性选项并标注省略；第 1、2 轮完整保留。字段结构以真实返回为准。",
+  "tool": "query-meal-detail",
+  "request": {"storeCode": "1950640", "orderType": 1, "beType": 1, "code": "9900005466"},
+  "response": {
+    "success": true,
+    "code": 200,
+    "data": {
+      "code": "9900005466",
+      "name": "巨无霸三件套",
+      "rounds": [
+        {
+          "id": 1,
+          "name": "新升级巨无霸",
+          "quantity": 1,
+          "maxQuantity": 1,
+          "minQuantity": 1,
+          "choices": [
+            {
+              "code": "1100",
+              "name": "巨无霸",
+              "quantity": 1,
+              "maxQuantity": -1,
+              "isDefault": 1,
+              "diffPrice": "+ ¥0",
+              "supportModify": true,
+              "modification": {
+                "items": [
+                  {
+                    "maxValues": 5,
+                    "minValues": 0,
+                    "values": [
+                      {"code": "100116", "price": 0, "name": "巨无霸酱", "maxQuantity": 1, "minQuantity": 0, "selectedQuantity": 1, "selectedKey": "0-1", "unselectedKey": "0-0"},
+                      {"code": "100141", "price": 0, "name": "吉士", "maxQuantity": 1, "minQuantity": 0, "selectedQuantity": 1, "selectedKey": "0-1", "unselectedKey": "0-0"},
+                      {"code": "100168", "price": 0, "name": "生菜", "maxQuantity": 1, "minQuantity": 0, "selectedQuantity": 1, "selectedKey": "0-1", "unselectedKey": "0-0"},
+                      {"code": "100202", "price": 0, "name": "酸黄瓜", "maxQuantity": 1, "minQuantity": 0, "selectedQuantity": 1, "selectedKey": "0-1", "unselectedKey": "0-0"},
+                      {"code": "100212", "price": 0, "name": "洋葱粒", "maxQuantity": 1, "minQuantity": 0, "selectedQuantity": 1, "selectedKey": "0-1", "unselectedKey": "0-0"}
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "选择套餐内小食",
+          "quantity": 1,
+          "maxQuantity": 1,
+          "minQuantity": 1,
+          "choices": [
+            {"code": "4810", "name": "中薯条", "quantity": 1, "maxQuantity": -1, "isDefault": 1, "diffPrice": "+ ¥0", "supportModify": false},
+            {"code": "521983", "name": "5块心形薯饼+韩式辣椒黄油风味酱", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥1", "supportModify": false},
+            {"code": "521901", "name": "月下相思扭扭薯", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥1.5", "supportModify": false},
+            {"code": "4820", "name": "大薯条", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥2.5", "supportModify": false},
+            {"code": "4437", "name": "小杯玉米杯", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "- ¥0.5", "supportModify": false},
+            {"code": "4438", "name": "大杯玉米杯", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥2.5", "supportModify": false}
+          ]
+        },
+        {
+          "id": 3,
+          "name": "选择套餐内饮料",
+          "quantity": 1,
+          "maxQuantity": 1,
+          "minQuantity": 1,
+          "choices": [
+            {"code": "3050", "name": "可乐中杯", "quantity": 1, "maxQuantity": -1, "isDefault": 1, "diffPrice": "+ ¥0", "supportModify": true},
+            {"code": "3071", "name": "无糖可口可乐中杯", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥0", "supportModify": true},
+            {"code": "3060", "name": "雪碧中杯", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥0", "supportModify": true},
+            {"code": "3100", "name": "可乐大杯", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥2", "supportModify": true},
+            {"code": "3755", "name": "纯牛奶", "quantity": 0, "maxQuantity": -1, "isDefault": 0, "diffPrice": "+ ¥0.5", "supportModify": false}
+          ],
+          "_omitted": "完整返回共 36 个饮料选项（含麦咖啡、雪冰、燕麦奶系列），结构与上述一致。"
+        }
+      ],
+      "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260824/product/MS_9900005466_600.png",
+      "supportModify": false
+    }
+  },
+  "observations": [
+    "套餐默认小食为「中薯条」：『不要薯条』必须展开 rounds 才能识别，名称里看不到。",
+    "roundList 中 round 字段传 rounds[].id 的字符串形式；comboItemList[].code 为该轮选项编码。",
+    "diffPrice 为相对默认选项的差价，字符串带符号；negative 差价真实存在（小杯玉米杯 -¥0.5）。",
+    "特制 modification.values 含 selectedKey / unselectedKey；含 unselectedKey 的组在算价时该组所有项都必须传（选中传 selectedKey，未选中传 unselectedKey）。"
+  ]
+}
