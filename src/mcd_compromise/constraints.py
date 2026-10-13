@@ -248,6 +248,16 @@ def _eval_prefer_coupon(c: Constraint, ev: CandidateEvaluation) -> ConditionOutc
     return ConditionOutcome(c.id, EvalState.VIOLATED, target="use_coupon", actual="not_used", evidence="候选未使用优惠（偏好项，不影响可行性）")
 
 
+# 营养类约束分派表：kind →（totals 键、中文标签、单位、是否下限）。
+# 新增营养维度只加这一行；_eval_nutrition 按表分派，不再用「else 按蛋白质」的
+# 隐式分支（早期写法：任何未匹配 kind 都会被误按蛋白质求值）。
+_NUTRITION_SPECS: dict[ConstraintKind, dict] = {
+    ConstraintKind.ENERGY_MAX: {"key": "energy_kcal", "label": "热量", "unit": "kcal", "min": False},
+    ConstraintKind.PROTEIN_MIN: {"key": "protein", "label": "蛋白质", "unit": "g", "min": True},
+    ConstraintKind.FAT_MAX: {"key": "fat", "label": "脂肪", "unit": "g", "min": False},
+}
+
+
 def _eval_nutrition(c: Constraint, ev: CandidateEvaluation, nutrition) -> ConditionOutcome:
     if nutrition is None:
         return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="未提供营养数据，无法判定")
@@ -259,19 +269,20 @@ def _eval_nutrition(c: Constraint, ev: CandidateEvaluation, nutrition) -> Condit
     totals = nutrition.totals_for(ev.expanded, overrides)
     if totals is None:
         return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="营养数据不完整，缺失项不当零")
-    if c.kind == ConstraintKind.ENERGY_MAX:
-        kcal = totals.get("energy_kcal")
-        if kcal is None:
-            return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="热量数据缺失")
-        if kcal <= int(c.value):
-            return ConditionOutcome(c.id, EvalState.SATISFIED, target=c.value, actual=kcal, evidence=f"组合热量 {kcal:g} kcal 不超过上限 {c.value} kcal")
-        return ConditionOutcome(c.id, EvalState.VIOLATED, target=c.value, actual=kcal, evidence=f"组合热量 {kcal:g} kcal 超过上限 {c.value} kcal")
-    protein = totals.get("protein")
-    if protein is None:
-        return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="蛋白质数据缺失")
-    if protein >= int(c.value):
-        return ConditionOutcome(c.id, EvalState.SATISFIED, target=c.value, actual=protein, evidence=f"组合蛋白质 {protein:g} g 不低于下限 {c.value} g")
-    return ConditionOutcome(c.id, EvalState.VIOLATED, target=c.value, actual=protein, evidence=f"组合蛋白质 {protein:g} g 低于下限 {c.value} g")
+    spec = _NUTRITION_SPECS.get(c.kind)
+    if spec is None:
+        return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence=f"未支持的营养约束类型 {c.kind.value}")
+    actual = totals.get(spec["key"])
+    if actual is None:
+        return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence=f"{spec['label']}数据缺失")
+    limit = int(c.value)
+    if spec["min"]:
+        if actual >= limit:
+            return ConditionOutcome(c.id, EvalState.SATISFIED, target=limit, actual=actual, evidence=f"组合{spec['label']} {actual:g} {spec['unit']} 不低于下限 {limit} {spec['unit']}")
+        return ConditionOutcome(c.id, EvalState.VIOLATED, target=limit, actual=actual, evidence=f"组合{spec['label']} {actual:g} {spec['unit']} 低于下限 {limit} {spec['unit']}")
+    if actual <= limit:
+        return ConditionOutcome(c.id, EvalState.SATISFIED, target=limit, actual=actual, evidence=f"组合{spec['label']} {actual:g} {spec['unit']} 不超过上限 {limit} {spec['unit']}")
+    return ConditionOutcome(c.id, EvalState.VIOLATED, target=limit, actual=actual, evidence=f"组合{spec['label']} {actual:g} {spec['unit']} 超过上限 {limit} {spec['unit']}")
 
 
 _EVALUATORS = {
@@ -284,6 +295,7 @@ _EVALUATORS = {
     ConstraintKind.PREFER_COUPON: _eval_prefer_coupon,
     ConstraintKind.ENERGY_MAX: _eval_nutrition,
     ConstraintKind.PROTEIN_MIN: _eval_nutrition,
+    ConstraintKind.FAT_MAX: _eval_nutrition,
 }
 
 
@@ -291,7 +303,7 @@ def evaluate_constraint(c: Constraint, ev: CandidateEvaluation, nutrition=None, 
     fn = _EVALUATORS.get(c.kind)
     if fn is None:
         return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence=f"未支持的约束类型 {c.kind.value}")
-    if c.kind in (ConstraintKind.ENERGY_MAX, ConstraintKind.PROTEIN_MIN):
+    if c.kind in _NUTRITION_SPECS:
         return fn(c, ev, nutrition)
     if c.kind == ConstraintKind.EXCLUDE_ITEM:
         return fn(c, ev, known_codes)
@@ -374,7 +386,7 @@ def precheck_candidate(
             continue
         if c.kind == ConstraintKind.TOTAL_PRICE_MAX:
             continue  # 依赖报价
-        if c.kind in (ConstraintKind.ENERGY_MAX, ConstraintKind.PROTEIN_MIN):
+        if c.kind in _NUTRITION_SPECS:
             continue  # 依赖营养数据与展开，此处保守保留
         outcome = evaluate_constraint(c, ev, None, known_codes)
         if outcome.state == EvalState.VIOLATED:

@@ -218,6 +218,10 @@ def _describe_change(
         if actual_value is not None:
             return (f"热量上限从 {c.value} kcal 提高到 {actual_value:g} kcal（按该方案实测）", int(actual_value) - int(c.value))
         return (f"取消「热量不超过 {c.value} kcal」的要求", None)
+    if c.kind == ConstraintKind.FAT_MAX:
+        if actual_value is not None:
+            return (f"脂肪上限从 {c.value} g 提高到 {actual_value:g} g（按该方案实测）", int(actual_value) - int(c.value))
+        return (f"取消「脂肪不超过 {c.value} g」的要求", None)
     return (f"调整条件 {c.id}", None)
 
 
@@ -518,6 +522,8 @@ def _build_proposals(
                     actual = nutrition_actual.get("protein")
                 elif c.kind == ConstraintKind.ENERGY_MAX:
                     actual = nutrition_actual.get("energy_kcal")
+                elif c.kind == ConstraintKind.FAT_MAX:
+                    actual = nutrition_actual.get("fat")
                 desc, magnitude = _describe_change(
                     c,
                     candidate_price=best.quote.price_fen if best.quote else None,

@@ -689,3 +689,130 @@ class TestNutrition:
         assert budget_changes, "应给出预算方向的修改建议"
         assert "33.00" in budget_changes[0].description and "36.50" in budget_changes[0].description
         assert budget_changes[0].magnitude == 350
+
+    def test_fat_max_eval(self):
+        """脂肪上限评价：实测汇总判定（含单位），缺失记 unknown 不当零。"""
+        from mcd_compromise.constraints import evaluate_candidate, expand_candidate
+        from mcd_compromise.models import (
+            Candidate,
+            Constraint,
+            ConstraintKind,
+            MealRequest,
+            OrderItem,
+            Quote,
+            QuoteStatus,
+            RequestContext,
+        )
+        from mcd_compromise.normalize import build_normalized_menu
+        from mcd_compromise.nutrition import NutritionMap
+
+        # 本地构造迷你菜单：复刻真实联调观察——菜单单品名「雪碧」无规格
+        menu = build_normalized_menu(
+            store_id="T",
+            menu_response={
+                "data": {
+                    "categories": [],
+                    "meals": {
+                        "B1": {"name": "巨无霸", "currentPrice": "25.5"},
+                        "D1": {"name": "雪碧", "currentPrice": "9.5"},
+                    },
+                }
+            },
+            detail_responses=[],
+        )
+        nm = NutritionMap.from_mcp_response(
+            {
+                "data": (
+                    "[2]{productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium}:\n"
+                    "  巨无霸,null,2146,513,27,26,42,961,171\n"
+                    "  雪碧小杯,null,319,76,0,0,19,21,0\n"
+                )
+            }
+        )
+        cand = Candidate(
+            key="k1",
+            items=(OrderItem(product_code="B1", quantity=1), OrderItem(product_code="D1", quantity=1)),
+        )
+        expanded = expand_candidate(cand, menu)
+        quote = Quote(
+            candidate_key="k1",
+            status=QuoteStatus.OK,
+            price_fen=3500,
+            product_code_names=(("B1", "巨无霸"), ("D1", "雪碧小杯")),
+        )
+        # 26+0=26 g：上限 30 满足（证据带实测值与 g 单位）
+        req_ok = MealRequest(
+            request_version=1,
+            context=RequestContext(store_id="T"),
+            constraints=[Constraint(id="fat", kind=ConstraintKind.FAT_MAX, value=30, source_text="脂肪不超过30克")],
+        )
+        ev = evaluate_candidate(cand, expanded, quote, req_ok, nm)
+        assert ev.hard_pass and not ev.unknowns
+        assert ev.satisfied[0].actual == 26
+        assert "26" in ev.satisfied[0].evidence and "g" in ev.satisfied[0].evidence
+        # 上限 20 → 违反，evidence 带实测值
+        req_bad = MealRequest(
+            request_version=1,
+            context=RequestContext(store_id="T"),
+            constraints=[Constraint(id="fat", kind=ConstraintKind.FAT_MAX, value=20, source_text="脂肪不超过20克")],
+        )
+        ev2 = evaluate_candidate(cand, expanded, quote, req_bad, nm)
+        assert [v.constraint_id for v in ev2.violations] == ["fat"]
+        assert ev2.violations[0].actual == 26
+        assert "26" in ev2.violations[0].evidence
+        # 无报价官方名（雪碧失配）→ unknown：不当作满足也不当作违反
+        ev3 = evaluate_candidate(cand, expanded, None, req_ok, nm)
+        assert [u.constraint_id for u in ev3.unknowns] == ["fat"]
+        assert not ev3.violations
+
+    def test_fat_max_proposal_describes_actual_value(self, menu):
+        """脂肪上限冲突时，修改建议按该方案实测值写最小改动（与蛋白质方向同一模式）。"""
+        from mcd_compromise.compromise import plan_next
+        from mcd_compromise.models import Constraint, ConstraintKind, Negotiability, PlanStatus
+        from mcd_compromise.nutrition import NutritionMap
+        from mcd_compromise.quote_state import QuoteManager
+
+        nm = NutritionMap.from_mcp_response(
+            {
+                "data": (
+                    "[4]{productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium}:\n"
+                    "  巨无霸,null,2146,513,27,26,42,961,171\n"
+                    "  中薯条,null,1210,289,4,12,38,165,18\n"
+                    "  可乐中杯,null,616,147,0,0,36,0,10\n"
+                    "  小杯玉米杯,null,223,53,2,1,7,1,6\n"
+                )
+            }
+        )
+        # 巨无霸单品脂肪 26g 超过上限 20g；所有候选都含巨无霸 → 全部违反脂肪条件
+        req = make_request(
+            constraints=[
+                _staple("B001", locked=True),
+                Constraint(
+                    id="fat",
+                    kind=ConstraintKind.FAT_MAX,
+                    value=20,
+                    negotiability=Negotiability.ASK,
+                    priority=60,
+                    source_text="脂肪不超过20克",
+                ),
+                _budget(3300),
+            ]
+        )
+        quotes = QuoteManager()
+        result = None
+        for _ in range(12):
+            result = plan_next(menu, req, quotes, nutrition=nm)
+            if result.status != PlanStatus.QUOTES_PENDING:
+                break
+            for cand in result.pending_quotes:
+                quotes.register_mcp_result(cand.key, fake_calculate_price(cand, menu), quoted_at="2026-10-13 15:00:00")
+        assert result.status == PlanStatus.COMPROMISE_PROPOSED
+        fat_changes = [c for p in result.plans for c in p.proposed_changes if c.constraint_id == "fat"]
+        assert fat_changes, "应给出脂肪方向的修改建议"
+        change = fat_changes[0]
+        # 巨无霸单品实测 26g：最小改动 = 上限提高到 26g，幅度 6g
+        assert "20" in change.description and "26" in change.description
+        assert change.magnitude == 6
+        # 提案即巨无霸单品（25.50 元在预算内，其余条件保留）
+        plan = next(p for p in result.plans if any(c.constraint_id == "fat" for c in p.proposed_changes))
+        assert [e["code"] for e in plan.expanded.entries] == ["B001"]

@@ -41,7 +41,7 @@
 | `require_category` | 品类标签 | 如 `drink` |
 | `max_items` | 整数 | 总件数上限 |
 | `prefer_coupon` | 任意 | 软偏好，不影响可行性 |
-| `energy_max` / `protein_min` | kcal / g | 第二阶段；营养缺失记 unknown（菜单名失配时回退官方报价名，仍失败则 unknown，不当零） |
+| `energy_max` / `protein_min` / `fat_max` | kcal / g | 第二阶段；营养缺失记 unknown（菜单名失配时回退官方报价名，仍失败则 unknown，不当零） |
 
 ### 三个独立维度
 
@@ -80,7 +80,7 @@
 
 ### `proposedChanges` 中营养条件的描述口径
 
-营养类条件（`protein_min` / `energy_max`）的 `proposedChanges` 按**该方案的实测汇总值**描述最小改动：如「蛋白质下限从 30 g 降至 27 g（按该方案实测）」（真实联调实例）、「热量上限从 X kcal 提高到 Y kcal（按该方案实测）」，`magnitude` 为阈值改动量。实测值由营养表按展开组成汇总（官方报价名回退后），缺失组成记 unknown 时不生成此类描述（真实联调见 docs/validation-report.md 3.6）。
+营养类条件（`protein_min` / `energy_max` / `fat_max`）的 `proposedChanges` 按**该方案的实测汇总值**描述最小改动：如「蛋白质下限从 30 g 降至 27 g（按该方案实测）」（真实联调实例）、「热量上限从 X kcal 提高到 Y kcal（按该方案实测）」、「脂肪上限从 X g 提高到 Y g（按该方案实测）」，`magnitude` 为阈值改动量。实测值由营养表按展开组成汇总（官方报价名回退后），缺失组成记 unknown 时不生成此类描述（真实联调见 docs/validation-report.md 3.6）。
 
 ### `closestOptions`（仅 `not_found` 时非空）
 

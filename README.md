@@ -45,7 +45,7 @@
 
 ```bash
 pip install -e ".[dev]"     # 安装引擎（无运行时依赖）
-python -m pytest tests/     # 82 个测试：约束三态、套餐展开、最小妥协、报价预算、无解参考、营养匹配
+python -m pytest tests/     # 84 个测试：约束三态、套餐展开、最小妥协、报价预算、无解参考、营养匹配（热量/蛋白质/脂肪）
 ```
 
 ### 演示（模拟数据，无需 Token）
@@ -135,7 +135,7 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 │   ├── quote_state.py           试算去重、预算（首批 8 / 单轮 24）、无效报价识别
 │   ├── nutrition.py             第二阶段营养映射（缺失不当零，官方报价名回退）
 │   └── plan_cli.py              文件协议 CLI
-├── tests/                       82 个测试 + 人工小型菜单夹具
+├── tests/                       84 个测试 + 人工小型菜单夹具
 ├── examples/                    三个演示（模拟数据）+ real/ 脱敏真实样本
 ├── docs/                        architecture.md / validation-report.md
 └── 麦麦不将就-具体实现路径.md    设计文档（约束模型、协议、验收标准）

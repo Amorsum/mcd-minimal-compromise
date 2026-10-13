@@ -78,6 +78,7 @@ class ConstraintKind(str, Enum):
     PREFER_COUPON = "prefer_coupon"       # 优先用券（偏好）
     ENERGY_MAX = "energy_max"             # P1 热量上限，value=kcal
     PROTEIN_MIN = "protein_min"           # P1 蛋白质下限，value=g
+    FAT_MAX = "fat_max"                   # P1 脂肪上限，value=g
 
 
 class EvalState(str, Enum):
