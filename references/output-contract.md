@@ -78,6 +78,10 @@
 }
 ```
 
+### `proposedChanges` 中营养条件的描述口径
+
+营养类条件（`protein_min` / `energy_max`）的 `proposedChanges` 按**该方案的实测汇总值**描述最小改动：如「蛋白质下限从 30 g 降至 27 g（按该方案实测）」（真实联调实例）、「热量上限从 X kcal 提高到 Y kcal（按该方案实测）」，`magnitude` 为阈值改动量。实测值由营养表按展开组成汇总（官方报价名回退后），缺失组成记 unknown 时不生成此类描述（真实联调见 docs/validation-report.md 3.6）。
+
 ### `closestOptions`（仅 `not_found` 时非空）
 
 无解时给出「最近失配」的已核验参考：结构与 `plans` 相同，但 `verified=false` 且 `violatedConstraints` 非空。按违反条件组合分组、每条组合取价低者，组间按（锁定违反数 → 总违反数 → 价格）排序——不同代价路径（如「加钱保留原主食」与「加钱换主食」）各取一条，支撑「改变可比较」。宿主应明确提示：这些选项**未满足锁定条件**，改变对应锁定条件后才可能成立。

@@ -1,0 +1,560 @@
+{
+  "requestVersion": 1,
+  "context": {
+    "storeId": "1950640",
+    "diningMode": "pickup",
+    "people": 1
+  },
+  "searchScope": {
+    "store": "single",
+    "diningMode": "pickup",
+    "people": 1,
+    "maxStaples": 1,
+    "maxDrinks": 1,
+    "maxSnacks": 1,
+    "comboReplacements": "legal-choices-only",
+    "couponVariants": "store-coupon-products",
+    "excluded": [
+      "duplicate-items",
+      "split-orders",
+      "unknown-replacements",
+      "large-sharing-meals"
+    ],
+    "requestVersion": 1,
+    "storeId": "1950640"
+  },
+  "status": "quotes_pending",
+  "coverage": {
+    "generatedCount": 17,
+    "quotedCount": 8,
+    "failedCount": 0,
+    "truncated": false
+  },
+  "plans": [],
+  "closestOptions": [],
+  "pendingQuotes": [
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3757",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3010",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "9900008751",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3505\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3505",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515520\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "515520",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4437\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "4437",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 小食"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1401\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "1401",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 小食"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4437\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3757",
+          "quantity": 1
+        },
+        {
+          "productCode": "4437",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料 + 小食"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1401\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3757",
+          "quantity": 1
+        },
+        {
+          "productCode": "1401",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料 + 小食"
+    }
+  ],
+  "notes": [
+    "本批安排 9 个候选试算（本轮预算 24，已用 8）",
+    "报价前剪除 0 个违反锁定条件的候选"
+  ],
+  "quotes": {
+    "budget": {
+      "firstBatch": 8,
+      "roundBudget": 24,
+      "used": 8,
+      "remaining": 16
+    },
+    "quotes": {
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2550,
+        "originalPriceFen": 2550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3600,
+        "originalPriceFen": 3600,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3650,
+        "originalPriceFen": 3650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3650,
+        "originalPriceFen": 3650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3650,
+        "originalPriceFen": 3650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3650,
+        "originalPriceFen": 3650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3800,
+        "originalPriceFen": 3800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3750,
+        "originalPriceFen": 3750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 15:52:17",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      }
+    }
+  },
+  "nextActions": [
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3757",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3010",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "9900008751",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3505\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3505",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515520\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "515520",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4437\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 小食",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "4437",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1401\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 小食",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "1401",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4437\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料 + 小食",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3757",
+              "quantity": 1
+            },
+            {
+              "productCode": "4437",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1401\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料 + 小食",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3757",
+              "quantity": 1
+            },
+            {
+              "productCode": "1401",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "status": "quotes_pending",
+    "coverage": {
+      "generatedCount": 17,
+      "quotedCount": 8,
+      "failedCount": 0,
+      "truncated": false
+    },
+    "notes": [
+      "本批安排 9 个候选试算（本轮预算 24，已用 8）",
+      "报价前剪除 0 个违反锁定条件的候选"
+    ],
+    "pendingQuoteCount": 9,
+    "hint": "请按 nextActions 调用官方 calculate-price，并把返回写回 quotes 后重新运行"
+  }
+}

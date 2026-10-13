@@ -177,8 +177,20 @@ def _plan_from_eval(ev: CandidateEvaluation, plan_id: str, verified: bool, store
     )
 
 
-def _describe_change(c: Constraint, new_value=None, candidate_price: Optional[int] = None, alt_name: Optional[str] = None) -> tuple[str, Optional[int]]:
-    """生成修改建议的人话描述与改动幅度。"""
+def _describe_change(
+    c: Constraint,
+    new_value=None,
+    candidate_price: Optional[int] = None,
+    alt_name: Optional[str] = None,
+    actual_value=None,
+) -> tuple[str, Optional[int]]:
+    """生成修改建议的人话描述与改动幅度。
+
+    actual_value：该方案在某项指标上的实测汇总值（营养约束专用，按官方报价名
+    回退后汇总）。有时把「取消要求」写成「阈值调到该方案实测值」——这是让
+    该方案成立的最小改动，比笼统的「调整条件」可读得多（真实联调场景 B 发现：
+    蛋白质下限冲突时曾退化为「调整条件 protein」）。
+    """
     if c.kind == ConstraintKind.TOTAL_PRICE_MAX:
         old = int(c.value)
         new = candidate_price if candidate_price is not None else new_value
@@ -198,6 +210,14 @@ def _describe_change(c: Constraint, new_value=None, candidate_price: Optional[in
         return (f"取消「必须包含{c.value}」的要求", None)
     if c.kind == ConstraintKind.MAX_ITEMS:
         return (f"件数上限从 {c.value} 放宽", None)
+    if c.kind == ConstraintKind.PROTEIN_MIN:
+        if actual_value is not None:
+            return (f"蛋白质下限从 {c.value} g 降至 {actual_value:g} g（按该方案实测）", int(c.value) - int(actual_value))
+        return (f"取消「蛋白质不低于 {c.value} g」的要求", None)
+    if c.kind == ConstraintKind.ENERGY_MAX:
+        if actual_value is not None:
+            return (f"热量上限从 {c.value} kcal 提高到 {actual_value:g} kcal（按该方案实测）", int(actual_value) - int(c.value))
+        return (f"取消「热量不超过 {c.value} kcal」的要求", None)
     return (f"调整条件 {c.id}", None)
 
 
@@ -477,16 +497,32 @@ def _build_proposals(
 
             feas.sort(key=sort_key)
             best = feas[0]
+            # 营养类约束的改动幅度：取该方案实测汇总值（官方报价名回退后匹配）
+            nutrition_actual: dict = {}
+            if nutrition is not None:
+                overrides: dict[str, str] = {}
+                if best.quote is not None and best.quote.ok:
+                    for code, name in best.quote.product_code_names:
+                        overrides[code] = name
+                totals = nutrition.totals_for(best.expanded, overrides)
+                if totals is not None:
+                    nutrition_actual = totals
             changes: list[ProposedChange] = []
             for c in cset:
                 alt_name = None
                 if c.kind == ConstraintKind.INCLUDE_STAPLE:
                     staples = [e for e in best.expanded.entries if e["category"].startswith("staple")]
                     alt_name = staples[0]["name"] if staples else None
+                actual = None
+                if c.kind == ConstraintKind.PROTEIN_MIN:
+                    actual = nutrition_actual.get("protein")
+                elif c.kind == ConstraintKind.ENERGY_MAX:
+                    actual = nutrition_actual.get("energy_kcal")
                 desc, magnitude = _describe_change(
                     c,
                     candidate_price=best.quote.price_fen if best.quote else None,
                     alt_name=alt_name,
+                    actual_value=actual,
                 )
                 changes.append(
                     ProposedChange(constraint_id=c.id, description=desc, modified_value=c.value, magnitude=magnitude)

@@ -45,7 +45,7 @@
 
 ```bash
 pip install -e ".[dev]"     # 安装引擎（无运行时依赖）
-python -m pytest tests/     # 81 个测试：约束三态、套餐展开、最小妥协、报价预算、无解参考、营养匹配
+python -m pytest tests/     # 82 个测试：约束三态、套餐展开、最小妥协、报价预算、无解参考、营养匹配
 ```
 
 ### 演示（模拟数据，无需 Token）
@@ -84,6 +84,9 @@ python scripts/plan.py --input req.json --output res.json
 | `e2e-nutrition-request.json` + `e2e-nutrition-result-1/2/3.json` | 营养联调第一轮（热量≤900）：14 候选、14 次真实报价 → `feasible`（513/589/598 kcal，官方报价名回退补配规格） |
 | `e2e-nutrition-turn2-request.json` + `e2e-nutrition-turn2-result.json` | 营养联调第二轮（热量锁 700）：复用报价零新增 → `feasible` |
 | `e2e-nutrition-turn3-request.json` + `e2e-nutrition-turn3-result.json` | 营养联调第三轮（热量锁 500）：复用报价 → `not_found` + `closestOptions`（最近 513 kcal） |
+| `e2e-combo-a-request.json` + `e2e-combo-a-result-1/2.json` + `e2e-combo-a-quote-responses.json` | 组合约束场景 A（排除薯条锁定×热量≤600×预算 35）：10 候选、8 次真实报价 → `feasible`（巨无霸+纯悦 33.00/513 kcal；巨无霸+雪碧 35.00/589 kcal 压线，依赖报价名回退） |
+| `e2e-combo-b-request.json` + `e2e-combo-b-result-1/2/3.json` + `e2e-combo-b-quote-responses-1/2.json` | 组合约束场景 B（蛋白质≥30×热量≤1000×预算 33）：17 候选、17 次真实报价 → `compromise_proposed`（C1 巨无霸单点 25.50，蛋白质 30→27 g；C2 三件套 36.50，预算 33→36.50） |
+| `e2e-combo-b-turn2-request.json` + `e2e-combo-b-turn2-result.json` | 组合约束场景 B 第二轮（预算改 37）：零新增报价 → `feasible`（3 个零差价饮料替换方案，均 36.50） |
 | `store-menu-1950640.json` / `store-coupons-1950640.redacted.json` / `meal-detail-9900005466.json` / `quote-samples.json` | 脱敏真实样本 |
 
 联调中的真实发现（券商品陷阱、600012 失败、官方返回名不一致等）记录在
@@ -132,7 +135,7 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 │   ├── quote_state.py           试算去重、预算（首批 8 / 单轮 24）、无效报价识别
 │   ├── nutrition.py             第二阶段营养映射（缺失不当零，官方报价名回退）
 │   └── plan_cli.py              文件协议 CLI
-├── tests/                       81 个测试 + 人工小型菜单夹具
+├── tests/                       82 个测试 + 人工小型菜单夹具
 ├── examples/                    三个演示（模拟数据）+ real/ 脱敏真实样本
 ├── docs/                        architecture.md / validation-report.md
 └── 麦麦不将就-具体实现路径.md    设计文档（约束模型、协议、验收标准）

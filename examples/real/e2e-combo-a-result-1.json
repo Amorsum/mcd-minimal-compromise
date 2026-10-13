@@ -1,0 +1,505 @@
+{
+  "requestVersion": 1,
+  "context": {
+    "storeId": "1950640",
+    "diningMode": "pickup",
+    "people": 1
+  },
+  "searchScope": {
+    "store": "single",
+    "diningMode": "pickup",
+    "people": 1,
+    "maxStaples": 1,
+    "maxDrinks": 1,
+    "maxSnacks": 1,
+    "comboReplacements": "legal-choices-only",
+    "couponVariants": "store-coupon-products",
+    "excluded": [
+      "duplicate-items",
+      "split-orders",
+      "unknown-replacements",
+      "large-sharing-meals"
+    ],
+    "requestVersion": 1,
+    "storeId": "1950640"
+  },
+  "status": "quotes_pending",
+  "coverage": {
+    "generatedCount": 10,
+    "quotedCount": 0,
+    "failedCount": 0,
+    "truncated": true
+  },
+  "plans": [],
+  "closestOptions": [],
+  "pendingQuotes": [
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+      "items": [
+        {
+          "productCode": "9900005466",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "1100",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "4437",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "3",
+              "comboItemList": [
+                {
+                  "code": "3050",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "note": "「选择套餐内小食」换为「小杯玉米杯」"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+      "items": [
+        {
+          "productCode": "9900005466",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "1100",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "521983",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "3",
+              "comboItemList": [
+                {
+                  "code": "3050",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "note": "「选择套餐内小食」换为「5块心形薯饼+韩式辣椒黄油风味酱」"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+      "items": [
+        {
+          "productCode": "9900005466",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "1100",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "521901",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "3",
+              "comboItemList": [
+                {
+                  "code": "3050",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "note": "「选择套餐内小食」换为「月下相思扭扭薯」"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3757",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3010",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "9900008751",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3505\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3505",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    },
+    {
+      "key": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515520\", \"quantity\": 1, \"rounds\": []}]",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "515520",
+          "quantity": 1
+        }
+      ],
+      "note": "主食 + 饮料"
+    }
+  ],
+  "notes": [
+    "本批安排 8 个候选试算（本轮预算 24，已用 0）",
+    "报价前剪除 0 个违反锁定条件的候选"
+  ],
+  "quotes": {
+    "budget": {
+      "firstBatch": 8,
+      "roundBudget": 24,
+      "used": 0,
+      "remaining": 24
+    },
+    "quotes": {}
+  },
+  "nextActions": [
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+      "note": "「选择套餐内小食」换为「小杯玉米杯」",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "9900005466",
+              "quantity": 1,
+              "roundList": [
+                {
+                  "round": "1",
+                  "comboItemList": [
+                    {
+                      "code": "1100",
+                      "quantity": 1
+                    }
+                  ]
+                },
+                {
+                  "round": "2",
+                  "comboItemList": [
+                    {
+                      "code": "4437",
+                      "quantity": 1
+                    }
+                  ]
+                },
+                {
+                  "round": "3",
+                  "comboItemList": [
+                    {
+                      "code": "3050",
+                      "quantity": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+      "note": "「选择套餐内小食」换为「5块心形薯饼+韩式辣椒黄油风味酱」",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "9900005466",
+              "quantity": 1,
+              "roundList": [
+                {
+                  "round": "1",
+                  "comboItemList": [
+                    {
+                      "code": "1100",
+                      "quantity": 1
+                    }
+                  ]
+                },
+                {
+                  "round": "2",
+                  "comboItemList": [
+                    {
+                      "code": "521983",
+                      "quantity": 1
+                    }
+                  ]
+                },
+                {
+                  "round": "3",
+                  "comboItemList": [
+                    {
+                      "code": "3050",
+                      "quantity": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+      "note": "「选择套餐内小食」换为「月下相思扭扭薯」",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "9900005466",
+              "quantity": 1,
+              "roundList": [
+                {
+                  "round": "1",
+                  "comboItemList": [
+                    {
+                      "code": "1100",
+                      "quantity": 1
+                    }
+                  ]
+                },
+                {
+                  "round": "2",
+                  "comboItemList": [
+                    {
+                      "code": "521901",
+                      "quantity": 1
+                    }
+                  ]
+                },
+                {
+                  "round": "3",
+                  "comboItemList": [
+                    {
+                      "code": "3050",
+                      "quantity": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3757",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3010",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "9900008751",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3505\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "3505",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515520\", \"quantity\": 1, \"rounds\": []}]",
+      "note": "主食 + 饮料",
+      "mcpCall": {
+        "tool": "calculate-price",
+        "params": {
+          "storeCode": "1950640",
+          "orderType": 1,
+          "beType": 1,
+          "items": [
+            {
+              "productCode": "1100",
+              "quantity": 1
+            },
+            {
+              "productCode": "515520",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "status": "quotes_pending",
+    "coverage": {
+      "generatedCount": 10,
+      "quotedCount": 0,
+      "failedCount": 0,
+      "truncated": true
+    },
+    "notes": [
+      "本批安排 8 个候选试算（本轮预算 24，已用 0）",
+      "报价前剪除 0 个违反锁定条件的候选"
+    ],
+    "pendingQuoteCount": 8,
+    "hint": "请按 nextActions 调用官方 calculate-price，并把返回写回 quotes 后重新运行"
+  }
+}

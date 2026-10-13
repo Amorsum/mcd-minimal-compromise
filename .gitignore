@@ -27,3 +27,7 @@ htmlcov/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# 本地联调临时目录（交付样本在 examples/real/）
+.tmp-e2e/
+.tmp-push/

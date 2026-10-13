@@ -622,3 +622,70 @@ class TestNutrition:
         # 含未知条件的候选（如巨无霸+饮料）不出现在最近失配里
         for opt in result.closest_options:
             assert not opt.unknowns
+
+    def test_nutrition_proposal_describes_actual_value(self, menu):
+        """联调场景 B 复现：蛋白质下限冲突时，修改建议须带该方案实测值。
+
+        真实联调（2026-10-13，门店 1950640）发现：protein_min 造成违反时，
+        妥协描述曾退化为笼统的「调整条件 protein」；修复后应按预算方向的
+        同一模式写成「阈值调到该方案实测值」的最小改动。
+        """
+        from mcd_compromise.compromise import plan_next
+        from mcd_compromise.models import Constraint, ConstraintKind, Negotiability, PlanStatus
+        from mcd_compromise.nutrition import NutritionMap
+        from mcd_compromise.quote_state import QuoteManager
+
+        nm = NutritionMap.from_mcp_response(
+            {
+                "data": (
+                    "[4]{productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium}:\n"
+                    "  巨无霸,null,2146,513,27,26,42,961,171\n"
+                    "  中薯条,null,1210,289,4,12,38,165,18\n"
+                    "  可乐中杯,null,616,147,0,0,36,0,10\n"
+                    "  小杯玉米杯,null,223,53,2,1,7,1,6\n"
+                )
+            }
+        )
+        # 与场景 B 同构：巨无霸单品蛋白质 27g 不达 30g；三件套 31g 达标但 36.5 元超 33 元预算
+        req = make_request(
+            constraints=[
+                _staple("B001", locked=True),
+                Constraint(
+                    id="protein",
+                    kind=ConstraintKind.PROTEIN_MIN,
+                    value=30,
+                    negotiability=Negotiability.ASK,
+                    priority=60,
+                    source_text="蛋白质不低于30克",
+                ),
+                Constraint(
+                    id="energy",
+                    kind=ConstraintKind.ENERGY_MAX,
+                    value=1000,
+                    negotiability=Negotiability.ASK,
+                    priority=55,
+                    source_text="热量不超过1000大卡",
+                ),
+                _budget(3300),
+            ]
+        )
+        quotes = QuoteManager()
+        result = None
+        for _ in range(12):
+            result = plan_next(menu, req, quotes, nutrition=nm)
+            if result.status != PlanStatus.QUOTES_PENDING:
+                break
+            for cand in result.pending_quotes:
+                quotes.register_mcp_result(cand.key, fake_calculate_price(cand, menu), quoted_at="2026-10-13 15:00:00")
+        assert result.status == PlanStatus.COMPROMISE_PROPOSED
+        protein_changes = [c for p in result.plans for c in p.proposed_changes if c.constraint_id == "protein"]
+        assert protein_changes, "应给出蛋白质方向的修改建议"
+        change = protein_changes[0]
+        # 巨无霸单品实测 27g：最小改动 = 下限降到 27g，幅度 3g
+        assert "30" in change.description and "27" in change.description
+        assert change.magnitude == 3
+        # 预算方向描述不受影响（仍为「预算从 33.00 元提高到 36.50 元」）
+        budget_changes = [c for p in result.plans for c in p.proposed_changes if c.constraint_id == "budget"]
+        assert budget_changes, "应给出预算方向的修改建议"
+        assert "33.00" in budget_changes[0].description and "36.50" in budget_changes[0].description
+        assert budget_changes[0].magnitude == 350
