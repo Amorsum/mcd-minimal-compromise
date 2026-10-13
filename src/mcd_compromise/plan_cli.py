@@ -1,7 +1,7 @@
 """麦麦不将就规划引擎 CLI（两阶段报价协议）。
 
-完整说明见 skills/mcd-minimal-compromise/scripts/plan.py 的文档字符串；
-skills 目录下的 scripts/plan.py 是本模块的薄包装，保证 Skill 调用路径稳定。
+完整说明见 scripts/plan.py 的文档字符串；
+scripts/plan.py 是本模块的薄包装，保证 Skill 调用路径稳定。
 """
 
 from __future__ import annotations

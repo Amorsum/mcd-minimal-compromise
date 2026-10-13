@@ -3,7 +3,7 @@
 
 实际逻辑在 src/mcd_compromise/plan_cli.py；此处固定 Skill 调用路径：
 
-    python .../skills/mcd-minimal-compromise/scripts/plan.py --input request.json --output result.json
+    python .../scripts/plan.py --input request.json --output result.json
 
 输入只含需求与脱敏业务数据；输出为候选或规划结果。报价采用两阶段协议：
 首次运行返回待试算候选（nextActions 含官方 calculate-price 调用参数），
@@ -13,7 +13,7 @@
 import sys
 from pathlib import Path
 
-_SRC = Path(__file__).resolve().parents[3] / "src"
+_SRC = Path(__file__).resolve().parents[1] / "src"
 if str(_SRC) not in sys.path:
     sys.path.insert(0, str(_SRC))
 

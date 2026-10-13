@@ -1,9 +1,29 @@
 # WorkBuddy 工作区数据（记忆/任务/本地状态，非交付物）
 .workbuddy/
 
-# 系统与编辑器
+# 环境变量与本地配置（含真实 Token 的配置文件绝不入库）
+.env
+.env.*
+*.local.json
+
+# 真实接口响应样本（脱敏样本见 examples/real/，命名带 .redacted 或经人工检查）
+*.real-response.json
+responses/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 编辑器与系统
+.idea/
+.vscode/
 .DS_Store
 Thumbs.db
-
-# 说明：mcd-minimal-compromise/ 子目录内有更完整的 .gitignore
-# （Python 缓存、虚拟环境、本地配置与真实接口样本）

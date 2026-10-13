@@ -65,9 +65,9 @@ python - <<'PY'
 import json, pathlib
 # 从演示文件取出 input，按其内嵌 quotes 直接跑到终态
 data = json.loads(pathlib.Path("examples/demo-conflict.json").read_text(encoding="utf-8"))
-pathlib.Path("/tmp/req.json").write_text(json.dumps(data["input"], ensure_ascii=False), encoding="utf-8")
+pathlib.Path("req.json").write_text(json.dumps(data["input"], ensure_ascii=False), encoding="utf-8")
 PY
-python skills/mcd-minimal-compromise/scripts/plan.py --input /tmp/req.json --output /tmp/res.json
+python scripts/plan.py --input req.json --output res.json
 ```
 
 ### 真实数据验证（需要 Token）
@@ -108,17 +108,15 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 ## 目录结构
 
 ```
-mcd-minimal-compromise/
 ├── README.md                    本文件
 ├── CONTEST_DECLARATION.md       参赛声明（官方原文，未改动）
 ├── MCP_INTEGRATION.md           真实接入证据：工具、调用流程、联调发现
+├── workbuddy.md                 WorkBuddy 专项奖励说明（开发与运行上下文）
 ├── mcp-config.example.json      MCP 配置样例（仅环境变量占位符）
+├── SKILL.md                     触发场景、需求分类、工具顺序、失败处理
 ├── pyproject.toml
-├── skills/
-│   └── mcd-minimal-compromise/
-│       ├── SKILL.md             触发场景、需求分类、工具顺序、失败处理
-│       ├── references/          conversation-rules / integration-map / output-contract
-│       └── scripts/plan.py      两阶段报价协议入口
+├── references/                  conversation-rules / integration-map / output-contract
+├── scripts/plan.py              两阶段报价协议入口
 ├── src/mcd_compromise/          计算引擎（标准库，无运行时依赖）
 │   ├── models.py                数据模型（金额整数分、约束三维度、三态评价）
 │   ├── normalize.py             官方返回标准化 + 品类标注（记录依据与置信度）
@@ -130,7 +128,8 @@ mcd-minimal-compromise/
 │   └── plan_cli.py              文件协议 CLI
 ├── tests/                       76 个测试 + 人工小型菜单夹具
 ├── examples/                    三个演示（模拟数据）+ real/ 脱敏真实样本
-└── docs/                        architecture.md / validation-report.md
+├── docs/                        architecture.md / validation-report.md
+└── 麦麦不将就-具体实现路径.md    设计文档（约束模型、协议、验收标准）
 ```
 
 ## 目标用户
@@ -146,4 +145,4 @@ mcd-minimal-compromise/
 
 ## 许可
 
-MIT
+MIT，见 [LICENSE](LICENSE)。
