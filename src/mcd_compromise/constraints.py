@@ -251,7 +251,12 @@ def _eval_prefer_coupon(c: Constraint, ev: CandidateEvaluation) -> ConditionOutc
 def _eval_nutrition(c: Constraint, ev: CandidateEvaluation, nutrition) -> ConditionOutcome:
     if nutrition is None:
         return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="未提供营养数据，无法判定")
-    totals = nutrition.totals_for(ev.expanded)
+    # 官方报价商品名回退（菜单单品名常缺规格，报价名带规格且与营养表精确一致）
+    overrides: dict[str, str] = {}
+    if ev.quote is not None and ev.quote.ok:
+        for code, name in ev.quote.product_code_names:
+            overrides[code] = name
+    totals = nutrition.totals_for(ev.expanded, overrides)
     if totals is None:
         return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="营养数据不完整，缺失项不当零")
     if c.kind == ConstraintKind.ENERGY_MAX:
@@ -259,14 +264,14 @@ def _eval_nutrition(c: Constraint, ev: CandidateEvaluation, nutrition) -> Condit
         if kcal is None:
             return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="热量数据缺失")
         if kcal <= int(c.value):
-            return ConditionOutcome(c.id, EvalState.SATISFIED, target=c.value, actual=kcal, evidence="组合热量不超过上限")
-        return ConditionOutcome(c.id, EvalState.VIOLATED, target=c.value, actual=kcal, evidence=f"组合热量 {kcal} kcal 超过上限 {c.value} kcal")
+            return ConditionOutcome(c.id, EvalState.SATISFIED, target=c.value, actual=kcal, evidence=f"组合热量 {kcal:g} kcal 不超过上限 {c.value} kcal")
+        return ConditionOutcome(c.id, EvalState.VIOLATED, target=c.value, actual=kcal, evidence=f"组合热量 {kcal:g} kcal 超过上限 {c.value} kcal")
     protein = totals.get("protein")
     if protein is None:
         return ConditionOutcome(c.id, EvalState.UNKNOWN, target=c.value, actual=None, evidence="蛋白质数据缺失")
     if protein >= int(c.value):
-        return ConditionOutcome(c.id, EvalState.SATISFIED, target=c.value, actual=protein, evidence="组合蛋白质不低于下限")
-    return ConditionOutcome(c.id, EvalState.VIOLATED, target=c.value, actual=protein, evidence=f"组合蛋白质 {protein} g 低于下限 {c.value} g")
+        return ConditionOutcome(c.id, EvalState.SATISFIED, target=c.value, actual=protein, evidence=f"组合蛋白质 {protein:g} g 不低于下限 {c.value} g")
+    return ConditionOutcome(c.id, EvalState.VIOLATED, target=c.value, actual=protein, evidence=f"组合蛋白质 {protein:g} g 低于下限 {c.value} g")
 
 
 _EVALUATORS = {

@@ -403,12 +403,16 @@ def _closest_options(
     （锁定违反数 → 总违反数 → 组内最优价 → 模式名）排序——
     保证不同代价路径（如「加钱保留原主食」与「加钱换主食」）都被展示，
     支撑「改变可比较」；组内按（价 → 候选键）保证确定性。
+
+    只收完全已知的候选（无 unknown 硬条件）：存在未知条件的候选无法判断
+    「差多少」，展示为最近失配会伪造确定性（真实联调发现：营养名缺规格的
+    候选热量 UNKNOWN，曾被排到最近失配第一位）。
     """
     locked_ids = {c.id for c in request.constraints if c.negotiability == Negotiability.LOCKED}
     priced = [
         ev
         for ev in evaluated
-        if ev.quote is not None and ev.quote.ok and not ev.pre_pruned_reason
+        if ev.quote is not None and ev.quote.ok and not ev.pre_pruned_reason and not ev.unknowns
     ]
     best_by_pattern: dict[frozenset, CandidateEvaluation] = {}
     for ev in priced:

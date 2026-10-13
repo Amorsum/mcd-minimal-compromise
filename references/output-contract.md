@@ -41,7 +41,7 @@
 | `require_category` | 品类标签 | 如 `drink` |
 | `max_items` | 整数 | 总件数上限 |
 | `prefer_coupon` | 任意 | 软偏好，不影响可行性 |
-| `energy_max` / `protein_min` | kcal / g | 第二阶段；营养缺失记 unknown |
+| `energy_max` / `protein_min` | kcal / g | 第二阶段；营养缺失记 unknown（菜单名失配时回退官方报价名，仍失败则 unknown，不当零） |
 
 ### 三个独立维度
 
@@ -62,7 +62,7 @@
       "planId": "P1",
       "items": [ { "productCode": "9900005466", "quantity": 1, "roundList": [ { "round": "2", "comboItemList": [ { "code": "4437", "quantity": 1 } ] } ] } ],
       "expanded": [ { "code": "1100", "name": "巨无霸", "category": "staple_beef", "quantity": 1, "confidence": "high", "basis": "名称含牛肉堡关键词：命中「牛堡」", "source": "combo:9900005466:1" } ],
-      "officialQuote": { "candidateKey": "...", "status": "ok", "priceFen": 3600, "quotedAt": "...", "productNames": ["巨无霸三件套"] },
+      "officialQuote": { "candidateKey": "...", "status": "ok", "priceFen": 3600, "quotedAt": "...", "productNames": ["巨无霸三件套"], "productCodeNames": [["9900005466", "巨无霸三件套"]] },
       "satisfiedConstraints": [ { "constraintId": "budget", "state": "satisfied", "target": 2500, "actual": 3600, "evidence": "..." } ],
       "violatedConstraints": [],
       "proposedChanges": [ { "constraintId": "budget", "description": "预算从 25.00 元提高到 36.00 元（按试算价）", "magnitude": 1100 } ],
@@ -81,6 +81,10 @@
 ### `closestOptions`（仅 `not_found` 时非空）
 
 无解时给出「最近失配」的已核验参考：结构与 `plans` 相同，但 `verified=false` 且 `violatedConstraints` 非空。按违反条件组合分组、每条组合取价低者，组间按（锁定违反数 → 总违反数 → 价格）排序——不同代价路径（如「加钱保留原主食」与「加钱换主食」）各取一条，支撑「改变可比较」。宿主应明确提示：这些选项**未满足锁定条件**，改变对应锁定条件后才可能成立。
+
+**只收完全已知的候选**：存在 unknown 硬条件的候选不进 `closestOptions`——未知不等于「差一点」，列入会伪造确定性（真实联调发现：营养名缺规格的候选热量 unknown，曾被排到第一位）。
+
+`officialQuote.productCodeNames`：官方 `calculate-price` 返回按商品编码的商品名（带规格后缀，如 `3010→「雪碧小杯」`）。用途有二：① 展示层商品名以它为准（官方返回名可能与菜单名不一致）；② 营养匹配的回退来源——菜单单品名常缺规格（「雪碧」），营养匹配在菜单名失配时按编码回退到官方报价名（仍是精确匹配，见 MCP_INTEGRATION.md 4.13）。
 
 ## 3. 状态机
 

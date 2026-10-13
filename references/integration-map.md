@@ -11,7 +11,7 @@
 | `query-store-coupons` | 获取当前门店可用优惠（券 ID/券码/适用商品） | P0 | storeCode |
 | `query-meal-detail` | 获取套餐组成、合法替换项、特制参数 | P0 | storeCode + 餐品编码 |
 | `calculate-price` | 核验候选总价（唯一价格来源） | P0 | 合法候选 |
-| `list-nutrition-foods` | 为可靠匹配的餐品附加营养数据 | P1 | 无 |
+| `list-nutrition-foods` | 为可靠匹配的餐品附加营养数据（9 列 CSV 文本；精确名称匹配，菜单名失配时按编码回退官方报价名） | P1 | 无 |
 | `create-order` | 用户选定并确认后创建订单 | P2（范围外） | 重新核验后 |
 
 ## 2. 参数规则（以 2026-10-12 真实联调为准）
@@ -22,7 +22,8 @@
 - `query-meals`：返回 `categories`（分类→编码）与 `meals`（编码→名称/现价/原价/canWithOrder）；
 - `query-meal-detail`：套餐返回 `rounds[]`（轮次→choices）；单品返回无 rounds；
 - `query-store-coupons`：同一券 ID 可对应多个券码；`products[].productCode` 是**独立券商品编码**，与常规菜单编码不同；
-- `calculate-price`：金额单位为**分**；`items[].roundList` 用于套餐自定义（`round` 传 `rounds[].id` 的字符串，`comboItemList[].code` 传该轮选项编码）；`couponId`/`couponCode` 仅对该券指定商品有效。
+- `calculate-price`：金额单位为**分**；`items[].roundList` 用于套餐自定义（`round` 传 `rounds[].id` 的字符串，`comboItemList[].code` 传该轮选项编码）；`couponId`/`couponCode` 仅对该券指定商品有效；
+- `list-nutrition-foods`：无参数；`data` 为 9 列 CSV 风格文本（`productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium`），160 条含少量重名与真实零值；与门店菜单单品的精确同名率约 25%，未命中项必须记 unknown（不当零）。
 
 ## 3. 真实联调发现的行为（必须遵守）
 

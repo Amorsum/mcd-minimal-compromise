@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from conftest import make_request, run_until_final
+from conftest import fake_calculate_price, make_request, run_until_final
 
 from mcd_compromise.constraints import expand_candidate
 from mcd_compromise.models import (
@@ -465,3 +465,160 @@ class TestNutrition:
         assert nm.lookup("巨无霸")["protein"] == 27
         assert nm.lookup("中薯条")["energy_kcal"] == 289
         assert nm.lookup("不存在的餐品") is None
+
+    def test_nutrition_map_parses_real_sample(self):
+        """真实 list-nutrition-foods 全量样本（examples/real/nutrition-foods.json）可被完整解析。"""
+        import json
+        from pathlib import Path
+
+        from mcd_compromise.nutrition import NutritionMap
+
+        sample_path = Path(__file__).resolve().parents[1] / "examples" / "real" / "nutrition-foods.json"
+        sample = json.loads(sample_path.read_text(encoding="utf-8"))
+        nm = NutritionMap.from_mcp_response(sample["response"])
+        # 160 行数据、2 组重名（纯牛奶（盒装）/小杯玉米杯）→ 158 个唯一名称
+        assert len(nm._by_name) == 158
+        assert nm.lookup("巨无霸")["energy_kcal"] == 513
+        assert nm.lookup("中薯条")["energy_kcal"] == 289
+        assert nm.lookup("可乐中杯")["energy_kcal"] == 147
+        # 0 是真实零值（无糖可口可乐/纯悦），必须解析为 0 而不是缺失
+        assert nm.lookup("纯悦")["energy_kcal"] == 0
+        assert nm.lookup("无糖可口可乐中杯")["energy_kcal"] == 0
+        assert nm.lookup("无糖可口可乐中杯")["carbohydrate"] == 1
+        # 全角/半角括号不失配为「同一名称」：营养表只有「纯牛奶（盒装）」，查「纯牛奶」必须查不到
+        assert nm.lookup("纯牛奶") is None
+        assert nm.lookup("纯牛奶（盒装）") is not None
+
+    def test_totals_for_falls_back_to_official_quote_name(self):
+        """菜单单品名缺规格（「雪碧」）时，官方报价名（「雪碧小杯」）可精确补配。"""
+        from mcd_compromise.models import ExpandedContent
+        from mcd_compromise.nutrition import NutritionMap
+
+        text = "[2]{productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium}:\n  巨无霸,null,2146,513,27,26,42,961,171\n  雪碧小杯,null,319,76,0,0,19,21,0\n"
+        nm = NutritionMap.from_mcp_response({"data": text})
+        expanded = ExpandedContent(
+            entries=[
+                {"code": "B1", "name": "巨无霸", "category": "staple_beef", "quantity": 1},
+                {"code": "D1", "name": "雪碧", "category": "drink", "quantity": 1},
+            ]
+        )
+        # 仅按菜单名：雪碧无规格 → 营养数据不完整（不当零）
+        assert nm.totals_for(expanded) is None
+        # 官方报价名回退：仍是精确匹配（3010→「雪碧小杯」76 kcal），合计 589
+        totals = nm.totals_for(expanded, {"D1": "雪碧小杯"})
+        assert totals["energy_kcal"] == 513 + 76
+        # 回退名也查不到时仍然返回 None（不猜）
+        assert nm.totals_for(expanded, {"D1": "雪碧大杯"}) is None
+
+    def test_energy_eval_uses_official_quote_name(self):
+        """评价集成：报价携带官方规格名时，热量条件由 UNKNOWN 变为可判定。"""
+        from mcd_compromise.constraints import evaluate_candidate, expand_candidate
+        from mcd_compromise.models import (
+            Candidate,
+            Constraint,
+            ConstraintKind,
+            MealRequest,
+            OrderItem,
+            Quote,
+            QuoteStatus,
+            RequestContext,
+        )
+        from mcd_compromise.normalize import build_normalized_menu
+        from mcd_compromise.nutrition import NutritionMap
+
+        # 本地构造迷你菜单：复刻真实联调观察——菜单单品名「雪碧」无规格
+        menu = build_normalized_menu(
+            store_id="T",
+            menu_response={
+                "data": {
+                    "categories": [],
+                    "meals": {
+                        "B1": {"name": "巨无霸", "currentPrice": "25.5"},
+                        "D1": {"name": "雪碧", "currentPrice": "9.5"},
+                    },
+                }
+            },
+            detail_responses=[],
+        )
+        nm = NutritionMap.from_mcp_response(
+            {
+                "data": (
+                    "[2]{productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium}:\n"
+                    "  巨无霸,null,2146,513,27,26,42,961,171\n"
+                    "  雪碧小杯,null,319,76,0,0,19,21,0\n"
+                )
+            }
+        )
+        cand = Candidate(
+            key="k1",
+            items=(OrderItem(product_code="B1", quantity=1), OrderItem(product_code="D1", quantity=1)),
+        )
+        expanded = expand_candidate(cand, menu)
+        req = MealRequest(
+            request_version=1,
+            context=RequestContext(store_id="T"),
+            constraints=[Constraint(id="energy", kind=ConstraintKind.ENERGY_MAX, value=600, source_text="热量不超过600大卡")],
+        )
+        # 无报价（或报价无官方名）：雪碧失配 → 热量 UNKNOWN，不当作满足也不当作违反
+        ev = evaluate_candidate(cand, expanded, None, req, nm)
+        assert [u.constraint_id for u in ev.unknowns] == ["energy"]
+        assert not ev.violations
+        # 官方报价名「雪碧小杯」：513+76=589 ≤ 600 → 满足，证据带真实汇总值
+        quote = Quote(
+            candidate_key="k1",
+            status=QuoteStatus.OK,
+            price_fen=3500,
+            product_code_names=(("B1", "巨无霸"), ("D1", "雪碧小杯")),
+        )
+        ev2 = evaluate_candidate(cand, expanded, quote, req, nm)
+        assert not ev2.unknowns
+        assert ev2.hard_pass
+        assert ev2.satisfied[0].actual == 589
+        assert "589" in ev2.satisfied[0].evidence
+
+    def test_closest_options_excludes_unknown_candidates(self, menu):
+        """not_found 的最近失配只收完全已知候选：热量 UNKNOWN 的候选不得冒充「最接近」。"""
+        from mcd_compromise.compromise import plan_next
+        from mcd_compromise.models import Constraint, ConstraintKind, Negotiability, PlanStatus
+        from mcd_compromise.nutrition import NutritionMap
+        from mcd_compromise.quote_state import QuoteBudget, QuoteManager
+
+        # 只提供巨无霸的营养：其余餐品的热量一律 UNKNOWN
+        nm = NutritionMap.from_mcp_response(
+            {
+                "data": (
+                    "[1]{productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium}:\n"
+                    "  巨无霸,null,2146,513,27,26,42,961,171\n"
+                )
+            }
+        )
+        req = make_request(
+            constraints=[
+                _staple("B001"),
+                Constraint(
+                    id="energy",
+                    kind=ConstraintKind.ENERGY_MAX,
+                    value=400,
+                    negotiability=Negotiability.LOCKED,
+                    source_text="热量不超过400大卡",
+                ),
+            ]
+        )
+        budget = QuoteBudget(first_batch=8, round_budget=24)
+        quotes = QuoteManager(budget)
+        result = None
+        for _ in range(12):
+            result = plan_next(menu, req, quotes, budget=budget, nutrition=nm)
+            if result.status != PlanStatus.QUOTES_PENDING:
+                break
+            for cand in result.pending_quotes:
+                quotes.register_mcp_result(cand.key, fake_calculate_price(cand, menu), quoted_at="2026-10-13 15:00:00")
+        assert result.status == PlanStatus.NOT_FOUND
+        # 唯一完全已知的候选是「巨无霸」单品（513 > 400 违反锁定的热量条件）
+        assert len(result.closest_options) == 1
+        only = result.closest_options[0]
+        assert [e["code"] for e in only.expanded.entries] == ["B001"]
+        assert [v.constraint_id for v in only.violated] == ["energy"]
+        # 含未知条件的候选（如巨无霸+饮料）不出现在最近失配里
+        for opt in result.closest_options:
+            assert not opt.unknowns

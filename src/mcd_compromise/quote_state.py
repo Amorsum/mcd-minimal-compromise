@@ -88,6 +88,11 @@ class QuoteManager:
                     error_message="官方返回成功但商品清单为空或价格缺失，按无效报价处理（疑似券商品未带券）",
                 )
             else:
+                code_names = tuple(
+                    (str(p.get("productCode", "")), str(p.get("productName", "")))
+                    for p in product_list
+                    if isinstance(p, dict) and p.get("productCode")
+                )
                 quote = Quote(
                     candidate_key=candidate_key,
                     status=QuoteStatus.OK,
@@ -96,6 +101,7 @@ class QuoteManager:
                     discount_fen=data.get("discount"),
                     quoted_at=quoted_at,
                     product_names=tuple(str(p.get("productName", "")) for p in product_list if isinstance(p, dict)),
+                    product_code_names=code_names,
                 )
         self.register(quote)
         return quote

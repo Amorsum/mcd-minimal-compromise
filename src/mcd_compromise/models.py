@@ -385,10 +385,21 @@ class Quote:
     error_code: str = ""
     error_message: str = ""
     product_names: tuple[str, ...] = ()
+    # 官方报价按商品编码返回的商品名（含规格后缀，如 3010→「雪碧小杯」）。
+    # 真实联调发现：query-meals 的单品名常缺规格（「雪碧」），而 calculate-price
+    # 的 productName 带规格且与营养表精确一致；营养匹配在菜单名失配时回退到它。
+    product_code_names: tuple[tuple[str, str], ...] = ()
 
     @property
     def ok(self) -> bool:
         return self.status == QuoteStatus.OK and self.price_fen is not None
+
+    def official_name(self, code: str) -> str:
+        """官方报价中该编码的商品名；无则空串。"""
+        for c, n in self.product_code_names:
+            if c == code and n:
+                return n
+        return ""
 
     def to_dict(self) -> dict:
         return {
@@ -401,10 +412,15 @@ class Quote:
             "errorCode": self.error_code,
             "errorMessage": self.error_message,
             "productNames": list(self.product_names),
+            "productCodeNames": [list(p) for p in self.product_code_names],
         }
 
     @classmethod
     def from_dict(cls, d: dict) -> "Quote":
+        pairs = []
+        for p in d.get("productCodeNames", ()) or ():
+            if isinstance(p, (list, tuple)) and len(p) == 2:
+                pairs.append((str(p[0]), str(p[1])))
         return cls(
             candidate_key=d["candidateKey"],
             status=QuoteStatus(d["status"]),
@@ -415,6 +431,7 @@ class Quote:
             error_code=d.get("errorCode", ""),
             error_message=d.get("errorMessage", ""),
             product_names=tuple(d.get("productNames", ())),
+            product_code_names=tuple(pairs),
         )
 
 

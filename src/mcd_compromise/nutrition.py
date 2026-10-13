@@ -16,7 +16,14 @@ from .models import ExpandedContent
 
 
 class NutritionMap:
-    """名称 → 营养条目。confidence=high 才允许进入硬约束计算。"""
+    """名称 → 营养条目。仅精确名称匹配进入硬约束计算；模糊相似不进入。
+
+    匹配来源（按优先级，均为官方数据的精确匹配，不做任何推断）：
+    1. 套餐选项名 / 菜单单品名（query-meal-detail / query-meals）；
+    2. 官方报价商品名（calculate-price 的 productName，带规格后缀，
+       如「雪碧小杯」）——真实联调发现菜单单品名常缺规格，
+       而报价名与营养表精确一致（见 MCP_INTEGRATION.md 4.13）。
+    """
 
     def __init__(self) -> None:
         self._by_name: dict[str, dict] = {}
@@ -74,8 +81,12 @@ class NutritionMap:
             return self._by_code[code]
         return self._by_name.get(name)
 
-    def totals_for(self, expanded: ExpandedContent) -> Optional[dict]:
-        """按展开组成汇总。任一组成缺失营养 → 返回 None（不把缺失当零）。"""
+    def totals_for(self, expanded: ExpandedContent, name_overrides: Optional[dict[str, str]] = None) -> Optional[dict]:
+        """按展开组成汇总。任一组成缺失营养 → 返回 None（不把缺失当零）。
+
+        name_overrides: 商品编码 → 官方报价商品名。条目按自身名称匹配失败时，
+        才用该编码的官方报价名再做一次精确匹配（见类文档字符串的来源 2）。
+        """
         totals = {
             "energy_kj": 0.0,
             "energy_kcal": 0.0,
@@ -87,6 +98,10 @@ class NutritionMap:
         }
         for e in expanded.entries:
             rec = self.lookup(e["name"], e["code"])
+            if rec is None and name_overrides:
+                official = name_overrides.get(e["code"], "")
+                if official:
+                    rec = self.lookup(official)
             if rec is None:
                 return None
             for k in totals:

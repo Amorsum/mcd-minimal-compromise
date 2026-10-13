@@ -1,0 +1,669 @@
+{
+  "requestVersion": 2,
+  "context": {
+    "storeId": "1950640",
+    "diningMode": "pickup",
+    "people": 1
+  },
+  "searchScope": {
+    "store": "single",
+    "diningMode": "pickup",
+    "people": 1,
+    "maxStaples": 1,
+    "maxDrinks": 1,
+    "maxSnacks": 1,
+    "comboReplacements": "legal-choices-only",
+    "couponVariants": "store-coupon-products",
+    "excluded": [
+      "duplicate-items",
+      "split-orders",
+      "unknown-replacements",
+      "large-sharing-meals"
+    ],
+    "requestVersion": 2,
+    "storeId": "1950640"
+  },
+  "status": "feasible",
+  "coverage": {
+    "generatedCount": 14,
+    "quotedCount": 14,
+    "failedCount": 0,
+    "truncated": false
+  },
+  "plans": [
+    {
+      "planId": "P1",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3757",
+          "quantity": 1
+        }
+      ],
+      "expanded": [
+        {
+          "code": "1100",
+          "name": "巨无霸",
+          "category": "staple_beef",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "名称含牛肉堡关键词：命中「巨无霸」",
+          "source": "item"
+        },
+        {
+          "code": "3757",
+          "name": "纯悦",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "名称含饮料关键词：命中「纯悦」",
+          "source": "item"
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3300,
+        "originalPriceFen": 3300,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "budget",
+          "state": "satisfied",
+          "target": 4000,
+          "actual": 3300,
+          "evidence": "试算总价不超过预算"
+        },
+        {
+          "constraintId": "staple",
+          "state": "satisfied",
+          "target": "1100",
+          "actual": "巨无霸",
+          "evidence": "包含指定餐品「巨无霸」"
+        },
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "纯悦"
+          ],
+          "evidence": "候选包含drink：纯悦"
+        },
+        {
+          "constraintId": "energy",
+          "state": "satisfied",
+          "target": 700,
+          "actual": 513.0,
+          "evidence": "组合热量 513 kcal 不超过上限 700 kcal"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1950640",
+      "quotedAt": "2026-10-13 14:41:40"
+    },
+    {
+      "planId": "P2",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "3010",
+          "quantity": 1
+        }
+      ],
+      "expanded": [
+        {
+          "code": "1100",
+          "name": "巨无霸",
+          "category": "staple_beef",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "名称含牛肉堡关键词：命中「巨无霸」",
+          "source": "item"
+        },
+        {
+          "code": "3010",
+          "name": "雪碧",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "名称含饮料关键词：命中「雪碧」",
+          "source": "item"
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3500,
+        "originalPriceFen": 3500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "budget",
+          "state": "satisfied",
+          "target": 4000,
+          "actual": 3500,
+          "evidence": "试算总价不超过预算"
+        },
+        {
+          "constraintId": "staple",
+          "state": "satisfied",
+          "target": "1100",
+          "actual": "巨无霸",
+          "evidence": "包含指定餐品「巨无霸」"
+        },
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "雪碧"
+          ],
+          "evidence": "候选包含drink：雪碧"
+        },
+        {
+          "constraintId": "energy",
+          "state": "satisfied",
+          "target": 700,
+          "actual": 589.0,
+          "evidence": "组合热量 589 kcal 不超过上限 700 kcal"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1950640",
+      "quotedAt": "2026-10-13 14:41:40"
+    },
+    {
+      "planId": "P3",
+      "items": [
+        {
+          "productCode": "1100",
+          "quantity": 1
+        },
+        {
+          "productCode": "515280",
+          "quantity": 1
+        }
+      ],
+      "expanded": [
+        {
+          "code": "1100",
+          "name": "巨无霸",
+          "category": "staple_beef",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "名称含牛肉堡关键词：命中「巨无霸」",
+          "source": "item"
+        },
+        {
+          "code": "515280",
+          "name": "阳光柠檬红茶",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "名称含饮料关键词：命中「红茶」",
+          "source": "item"
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515280\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3500,
+        "originalPriceFen": 3500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "阳光柠檬红茶小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "515280",
+            "阳光柠檬红茶小杯"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "budget",
+          "state": "satisfied",
+          "target": 4000,
+          "actual": 3500,
+          "evidence": "试算总价不超过预算"
+        },
+        {
+          "constraintId": "staple",
+          "state": "satisfied",
+          "target": "1100",
+          "actual": "巨无霸",
+          "evidence": "包含指定餐品「巨无霸」"
+        },
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "阳光柠檬红茶"
+          ],
+          "evidence": "候选包含drink：阳光柠檬红茶"
+        },
+        {
+          "constraintId": "energy",
+          "state": "satisfied",
+          "target": 700,
+          "actual": 598.0,
+          "evidence": "组合热量 598 kcal 不超过上限 700 kcal"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1950640",
+      "quotedAt": "2026-10-13 14:41:40"
+    }
+  ],
+  "closestOptions": [],
+  "pendingQuotes": [],
+  "notes": [],
+  "quotes": {
+    "budget": {
+      "firstBatch": 8,
+      "roundBudget": 24,
+      "used": 14,
+      "remaining": 10
+    },
+    "quotes": {
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3500,
+        "originalPriceFen": 3500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3505\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3505\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3700,
+        "originalPriceFen": 3700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "锡兰红茶"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "3505",
+            "锡兰红茶"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3300,
+        "originalPriceFen": 3300,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515280\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515280\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3500,
+        "originalPriceFen": 3500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "阳光柠檬红茶小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "515280",
+            "阳光柠檬红茶小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515520\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515520\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3700,
+        "originalPriceFen": 3700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "中杯怡泉+C"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "515520",
+            "中杯怡泉+C"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3500,
+        "originalPriceFen": 3500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2550,
+        "originalPriceFen": 2550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:45:06",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3600,
+        "originalPriceFen": 3600,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3650,
+        "originalPriceFen": 3650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3650,
+        "originalPriceFen": 3650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3650,
+        "originalPriceFen": 3650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3755\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4810\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3755\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3700,
+        "originalPriceFen": 3700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521901\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3800,
+        "originalPriceFen": 3800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005466\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1100\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 3750,
+        "originalPriceFen": 3750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-13 14:41:40",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900005466",
+            "巨无霸三件套"
+          ]
+        ]
+      }
+    }
+  },
+  "nextActions": [],
+  "summary": {
+    "status": "feasible",
+    "coverage": {
+      "generatedCount": 14,
+      "quotedCount": 14,
+      "failedCount": 0,
+      "truncated": false
+    },
+    "notes": [],
+    "plans": [
+      {
+        "planId": "P1",
+        "items": [
+          "巨无霸",
+          "纯悦"
+        ],
+        "priceYuan": 33.0,
+        "quotedAt": "2026-10-13 14:41:40"
+      },
+      {
+        "planId": "P2",
+        "items": [
+          "巨无霸",
+          "雪碧"
+        ],
+        "priceYuan": 35.0,
+        "quotedAt": "2026-10-13 14:41:40"
+      },
+      {
+        "planId": "P3",
+        "items": [
+          "巨无霸",
+          "阳光柠檬红茶"
+        ],
+        "priceYuan": 35.0,
+        "quotedAt": "2026-10-13 14:41:40"
+      }
+    ]
+  }
+}
