@@ -532,6 +532,7 @@ class Plan:
     expanded: ExpandedContent
     quote: Quote
     satisfied: list[ConditionOutcome]
+    violated: list[ConditionOutcome]
     proposed_changes: list[ProposedChange]
     unknowns: list[ConditionOutcome]
     verified: bool  # True=已核验且满足全部硬条件；False=待接受修改
@@ -545,6 +546,7 @@ class Plan:
             "expanded": self.expanded.entries,
             "officialQuote": self.quote.to_dict(),
             "satisfiedConstraints": [s.to_dict() for s in self.satisfied],
+            "violatedConstraints": [v.to_dict() for v in self.violated],
             "proposedChanges": [p.to_dict() for p in self.proposed_changes],
             "unknowns": [u.to_dict() for u in self.unknowns],
             "verified": self.verified,
@@ -560,6 +562,7 @@ class PlanResult:
     status: PlanStatus
     coverage: Coverage
     plans: list[Plan] = field(default_factory=list)
+    closest_options: list[Plan] = field(default_factory=list)  # not_found 时最近失配的已核验参考
     pending_quotes: list[Candidate] = field(default_factory=list)  # 第一阶段待报价候选
     search_scope: dict = field(default_factory=dict)
     notes: list[str] = field(default_factory=list)
@@ -572,6 +575,7 @@ class PlanResult:
             "status": self.status.value,
             "coverage": self.coverage.to_dict(),
             "plans": [p.to_dict() for p in self.plans],
+            "closestOptions": [p.to_dict() for p in self.closest_options],
             "pendingQuotes": [c.to_dict() for c in self.pending_quotes],
             "notes": self.notes,
         }

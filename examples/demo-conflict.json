@@ -1040,6 +1040,7 @@
             "evidence": "候选不含该品类"
           }
         ],
+        "violatedConstraints": [],
         "proposedChanges": [
           {
             "constraintId": "budget",
@@ -1124,6 +1125,7 @@
             "evidence": "候选不含该品类"
           }
         ],
+        "violatedConstraints": [],
         "proposedChanges": [
           {
             "constraintId": "staple",
@@ -1138,6 +1140,7 @@
         "quotedAt": "2026-10-12 16:00:00"
       }
     ],
+    "closestOptions": [],
     "pendingQuotes": [],
     "notes": [
       "以下方案均未满足原需求全部条件；用户接受后新条件才生效，并将重新试算"

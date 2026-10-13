@@ -8,6 +8,7 @@ from mcd_compromise.constraints import expand_candidate
 from mcd_compromise.models import (
     Constraint,
     ConstraintKind,
+    EvalState,
     Negotiability,
     PlanStatus,
     Strength,
@@ -216,6 +217,43 @@ class TestAllLocked:
         assert result.plans == []
         assert any("锁定条件" in n for n in result.notes)
         assert any("不等于证明无解" in n or "未找到" in n for n in result.notes)
+
+    def test_not_found_reports_closest_options(self, menu):
+        # 全锁定且无解时，必须给出「最近失配」的已核验参考，并说明差在哪
+        req = make_request(
+            constraints=[
+                _budget(2500, locked=True),
+                _staple("B001", locked=True),
+                _need_drink(),
+                _no_fries(locked=True),
+            ]
+        )
+        result, _ = run_until_final(menu, req)
+        assert result.status == PlanStatus.NOT_FOUND
+        assert result.closest_options, "not_found 时应给出最近失配的参考选项"
+        for opt in result.closest_options:
+            assert not opt.verified, "参考选项不是可接受方案"
+            assert opt.violated, "参考选项必须展示违反的条件"
+            assert all(v.state == EvalState.VIOLATED for v in opt.violated)
+        # 最近失配：巨无霸+饮料只违反锁定预算，其余条件全部满足
+        first = result.closest_options[0]
+        assert first.quote.price_fen == 3500
+        assert [v.constraint_id for v in first.violated] == ["budget"]
+        assert any(s.constraint_id == "staple" for s in first.satisfied)
+        # 违反模式两两不同（每条代价路径只取最优），且按（锁定违反数 → 总违反数）升序
+        patterns = [frozenset(v.constraint_id for v in o.violated) for o in result.closest_options]
+        assert len(set(patterns)) == len(patterns), "同一违反模式只应出现一次"
+        locked_ids = {"budget", "staple", "no_fries"}
+        counts = [
+            (sum(1 for c in p if c in locked_ids), len(p))
+            for p in patterns
+        ]
+        assert counts == sorted(counts)
+        assert any("最接近" in n for n in result.notes)
+        # 序列化字段齐全
+        d = result.to_dict()
+        assert len(d["closestOptions"]) == len(result.closest_options)
+        assert d["closestOptions"][0]["violatedConstraints"]
 
 
 class TestQuoteFailures:

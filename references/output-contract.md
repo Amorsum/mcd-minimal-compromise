@@ -64,17 +64,23 @@
       "expanded": [ { "code": "1100", "name": "巨无霸", "category": "staple_beef", "quantity": 1, "confidence": "high", "basis": "名称含牛肉堡关键词：命中「牛堡」", "source": "combo:9900005466:1" } ],
       "officialQuote": { "candidateKey": "...", "status": "ok", "priceFen": 3600, "quotedAt": "...", "productNames": ["巨无霸三件套"] },
       "satisfiedConstraints": [ { "constraintId": "budget", "state": "satisfied", "target": 2500, "actual": 3600, "evidence": "..." } ],
+      "violatedConstraints": [],
       "proposedChanges": [ { "constraintId": "budget", "description": "预算从 25.00 元提高到 36.00 元（按试算价）", "magnitude": 1100 } ],
       "unknowns": [],
       "verified": true,
       "storeId": "1950640",
       "quotedAt": "..."
   } ],
+  "closestOptions": [],
   "pendingQuotes": [ { "key": "...", "items": [ "..." ], "note": "默认搭配" } ],
   "nextActions": [ { "candidateKey": "...", "note": "...", "mcpCall": { "tool": "calculate-price", "params": { "storeCode": "1950640", "orderType": 1, "beType": 1, "items": [ "..." ] } } } ],
   "notes": [ "搜索范围不完整（受试算预算限制），以下为已核验候选中的推荐" ]
 }
 ```
+
+### `closestOptions`（仅 `not_found` 时非空）
+
+无解时给出「最近失配」的已核验参考：结构与 `plans` 相同，但 `verified=false` 且 `violatedConstraints` 非空。按违反条件组合分组、每条组合取价低者，组间按（锁定违反数 → 总违反数 → 价格）排序——不同代价路径（如「加钱保留原主食」与「加钱换主食」）各取一条，支撑「改变可比较」。宿主应明确提示：这些选项**未满足锁定条件**，改变对应锁定条件后才可能成立。
 
 ## 3. 状态机
 
@@ -96,7 +102,9 @@ quotes_pending ──(宿主补报价后再次运行)──▶ 重新进入 plan
 | `expanded` | 餐品与规格（套餐展开为具体组成） |
 | `officialQuote.priceFen` | 试算总价（分 ÷ 100 = 元） |
 | `satisfiedConstraints` | 保留条件 |
+| `violatedConstraints` | 违反的条件（`closestOptions` 中说明「差在哪」） |
 | `proposedChanges[].description` | 待接受改变 |
+| `closestOptions` | 无解时的最近失配参考（须提示未满足锁定条件） |
 | `quotedAt` / `storeId` | 查询时间与门店 |
 | `candidateKey` / `evidence` | 可展开的「依据」 |
 | `coverage.truncated` | 为 true 时必须提示「已核验候选中推荐」 |
@@ -106,5 +114,6 @@ quotes_pending ──(宿主补报价后再次运行)──▶ 重新进入 plan
 - 金额只来自 `officialQuote`；报价失败/无效的候选不出现在 `plans`；
 - `verified=true` 的方案满足全部硬条件且无未知硬条件；
 - `compromise_proposed` 的方案不违反锁定条件，且除 `proposedChanges` 外满足其余原条件；
+- `not_found` 的 `closestOptions` 全部 `verified=false` 且 `violatedConstraints` 非空，违反模式两两不同；
 - 同一输入重复运行，方案顺序一致（确定性）；
 - 同一候选在本轮只报价一次（`candidateKey` 去重）。

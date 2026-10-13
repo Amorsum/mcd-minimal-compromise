@@ -109,6 +109,7 @@
           "evidence": "候选不含该品类"
         }
       ],
+      "violatedConstraints": [],
       "proposedChanges": [],
       "unknowns": [],
       "verified": true,
@@ -193,6 +194,7 @@
           "evidence": "候选不含该品类"
         }
       ],
+      "violatedConstraints": [],
       "proposedChanges": [],
       "unknowns": [],
       "verified": true,
@@ -339,6 +341,7 @@
           "evidence": "候选不含该品类"
         }
       ],
+      "violatedConstraints": [],
       "proposedChanges": [],
       "unknowns": [],
       "verified": true,
@@ -346,6 +349,7 @@
       "quotedAt": "2026-10-12 16:43:54"
     }
   ],
+  "closestOptions": [],
   "pendingQuotes": [],
   "notes": [
     "搜索范围不完整（受试算预算限制），以下为已核验候选中的推荐"

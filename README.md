@@ -45,7 +45,7 @@
 
 ```bash
 pip install -e ".[dev]"     # 安装引擎（无运行时依赖）
-python -m pytest tests/     # 76 个测试：约束三态、套餐展开、最小妥协、报价预算
+python -m pytest tests/     # 77 个测试：约束三态、套餐展开、最小妥协、报价预算、无解参考
 ```
 
 ### 演示（模拟数据，无需 Token）
@@ -72,12 +72,14 @@ python scripts/plan.py --input req.json --output res.json
 
 ### 真实数据验证（需要 Token）
 
-`examples/real/` 保存了 2026-10-12 在真实门店 1950640 的端到端联调过程文件（凭证脱敏）：
+`examples/real/` 保存了 2026-10-12 至 10-13 在真实门店 1950640 的端到端联调过程文件（凭证脱敏）：
 
 | 文件 | 说明 |
 |---|---|
 | `e2e-request.json` + `e2e-result-1/2/3.json` | 冲突场景（预算 25 元）：26 候选、24 次真实报价 → `compromise_proposed`（巨无霸+雪碧 35.00，仅预算 25→35） |
 | `e2e-feasible-request.json` + `e2e-feasible-result-1/2.json` | 可行场景（预算 40 元）：首批报价后即收敛 → `feasible`（3 个已核验方案） |
+| `e2e-followup-request.json` + `e2e-followup-result-1.json` | 多轮第二轮（预算锁 25、主食开放）：跨轮复用报价，零新增报价 → `not_found` + `closestOptions` 两条代价路径 |
+| `e2e-turn3-request.json` + `e2e-turn3-result.json` | 多轮第三轮（预算锁 32）：复用报价 → `compromise_proposed`（麦辣鸡腿汉堡+雪碧 32.00，只换主食） |
 | `store-menu-1950640.json` / `store-coupons-1950640.redacted.json` / `meal-detail-9900005466.json` / `quote-samples.json` | 脱敏真实样本 |
 
 联调中的真实发现（券商品陷阱、600012 失败、官方返回名不一致等）记录在
@@ -126,7 +128,7 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 │   ├── quote_state.py           试算去重、预算（首批 8 / 单轮 24）、无效报价识别
 │   ├── nutrition.py             第二阶段营养映射（缺失不当零）
 │   └── plan_cli.py              文件协议 CLI
-├── tests/                       76 个测试 + 人工小型菜单夹具
+├── tests/                       77 个测试 + 人工小型菜单夹具
 ├── examples/                    三个演示（模拟数据）+ real/ 脱敏真实样本
 ├── docs/                        architecture.md / validation-report.md
 └── 麦麦不将就-具体实现路径.md    设计文档（约束模型、协议、验收标准）
@@ -140,7 +142,7 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 
 - 首版仅支持到店自取单人选餐；营养约束为第二阶段（数据可靠才接入）；
 - 搜索受试算预算限制（首批 8、单轮 24 个候选），输出会标注覆盖度，不宣称全局最优；
-- 官方接口行为以 2026-10-12 联调为准（见 `MCP_INTEGRATION.md`），后续可能变化；
+- 官方接口行为以 2026-10-12 至 10-13 联调为准（见 `MCP_INTEGRATION.md`），后续可能变化；
 - 输出仅供参考，不构成医疗或营养建议；餐品、价格与供应状态以麦当劳官方实时结果为准。
 
 ## 许可

@@ -61,13 +61,15 @@ python <skill>/scripts/plan.py --input request.json --output result.json
 - **输入**只含需求与脱敏业务数据（官方返回原样放入 `mcp` 字段），**不接收 Token**；
 - **首次运行**：返回 `status=quotes_pending` 与 `nextActions`（每个待报价候选附带完整 `calculate-price` 调用参数）；
 - **宿主动作**：按 `nextActions` 调用官方工具，把每个返回按 `candidateKey` 写回输入的 `quotes.quotes` 后再次运行；
-- **终态**：`feasible` / `compromise_proposed` / `not_found` / `data_incomplete`，含 `plans`、`coverage`、`searchScope`、`notes`。
+- **终态**：`feasible` / `compromise_proposed` / `not_found` / `data_incomplete`，含 `plans`、`coverage`、`searchScope`、`notes`；
+- **`not_found` 时**：输出 `closestOptions`（最近失配的已核验参考，含各方案 `violatedConstraints`），必须说明这些选项未满足锁定条件。
 
 完整输入输出契约见 references/output-contract.md。
 
 ## 6. 输出规则
 
 - 每个方案只展示五类信息：**餐品与规格、试算总价、保留条件、待接受改变、查询时间与门店**；
+- `closestOptions`（无解时的参考）必须同时说明**违反的条件**与「改变对应锁定条件后才可能成立」，不得当作可接受方案推荐；
 - 技术请求标识放进可展开的「依据」，不铺满主对话；
 - 超预算方案**不得**标为满足原需求；必须标注「待接受」；
 - 搜索范围不完整时说「在已核验的候选中推荐」，不说「全网最低」；
@@ -79,7 +81,7 @@ python <skill>/scripts/plan.py --input request.json --output result.json
 - 用户修改一个条件时，只更新该条件，其余原样保留；
 - 用户说「选 A」后，新条件才进入生效条件，并**重新试算**；
 - 用户强调「绝不 / 必须保留」时，该条件设为 locked，之后不得再提修改建议；
-- 同一轮内候选报价复用；新版本重新报价。
+- 同一轮内候选报价复用；菜单快照未变（`fetchedAt` 一致）时可跨轮复用已核验报价，相同 `candidateKey` 不重复调用官方接口；菜单变化后重新报价。
 
 ## 8. 失败处理
 

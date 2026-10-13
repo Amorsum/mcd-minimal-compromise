@@ -168,6 +168,7 @@ def _plan_from_eval(ev: CandidateEvaluation, plan_id: str, verified: bool, store
         expanded=ev.expanded,
         quote=ev.quote,  # type: ignore[arg-type]
         satisfied=ev.satisfied,
+        violated=ev.violations,
         proposed_changes=proposed,
         unknowns=ev.unknowns,
         verified=verified,
@@ -376,14 +377,58 @@ def _finalize(
     locked = [c for c in request.constraints if c.negotiability == Negotiability.LOCKED]
     if locked:
         notes.append("当前锁定条件：" + "、".join(c.source_text or c.id for c in locked))
+    closest = _closest_options(menu, request, evaluated, max_plans)
+    if closest:
+        notes.append("以下是最接近的已核验选项（未满足锁定条件，仅作参考；改变对应锁定条件后才可能成立）")
     return PlanResult(
         request_version=request.request_version,
         context=request.context,
         status=PlanStatus.NOT_FOUND,
         coverage=coverage,
+        closest_options=closest,
         search_scope=scope,
         notes=notes,
     )
+
+
+def _closest_options(
+    menu: NormalizedMenu,
+    request: MealRequest,
+    evaluated: list[CandidateEvaluation],
+    max_plans: int,
+) -> list[Plan]:
+    """not_found 时挑出「最近失配」的已核验候选。
+
+    按违反条件组合（模式）分组、每条模式取价低者，组间按
+    （锁定违反数 → 总违反数 → 组内最优价 → 模式名）排序——
+    保证不同代价路径（如「加钱保留原主食」与「加钱换主食」）都被展示，
+    支撑「改变可比较」；组内按（价 → 候选键）保证确定性。
+    """
+    locked_ids = {c.id for c in request.constraints if c.negotiability == Negotiability.LOCKED}
+    priced = [
+        ev
+        for ev in evaluated
+        if ev.quote is not None and ev.quote.ok and not ev.pre_pruned_reason
+    ]
+    best_by_pattern: dict[frozenset, CandidateEvaluation] = {}
+    for ev in priced:
+        pattern = frozenset(v.constraint_id for v in ev.violations)
+        cur = best_by_pattern.get(pattern)
+        if cur is None or (_price_of(ev), ev.candidate.key) < (_price_of(cur), cur.candidate.key):
+            best_by_pattern[pattern] = ev
+    groups = sorted(
+        best_by_pattern.values(),
+        key=lambda ev: (
+            sum(1 for v in ev.violations if v.constraint_id in locked_ids),
+            len(ev.violations),
+            _price_of(ev),
+            sorted(v.constraint_id for v in ev.violations),
+        ),
+    )
+    return [
+        _plan_from_eval(ev, f"N{i + 1}", False, request.context.store_id, [])
+        for i, ev in enumerate(groups[:max_plans])
+    ]
 
 
 def _build_proposals(
