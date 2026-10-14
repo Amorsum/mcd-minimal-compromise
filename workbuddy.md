@@ -83,7 +83,7 @@ WorkBuddy 的执行路径：
 | 材料 | 状态 | 说明 |
 |---|---|---|
 | 本次验收会话（2026-10-14） | **已整理为摘要** | [`docs/acceptance-session-2026-10-14.md`](docs/acceptance-session-2026-10-14.md)：按时间顺序记录用户下发任务、3 个决策点（门店 1990455 / 第2轮预算32 / 第3轮接受P3）与助手核验结论；为**验收摘要**（非原始逐字全文），已脱敏，不含 Token/券码/手机号。脱敏联调样本（R1/R2/R3、真实妥协协商的请求与结果、门店发现）见 [`examples/real/acceptance-20261014/`](examples/real/acceptance-20261014/README.md) |
-| 原开发聊天（2026-10-12 至 10-13） | **待人工导出** | 助手无法直接从本会话导出原开发对话（`conversation_search` 返回 400，且仅返回片段不足以复原完整对话）；**不生成虚构会话代替** |
+| 原开发聊天（2026-10-12 至 10-13） | **已重建为证据摘要**（逐字原文仍待人工导出） | [`docs/dev-session-reconstruction-2026-10-14.md`](docs/dev-session-reconstruction-2026-10-14.md)：依据 git 历史、提交信息、验证报告、修复报告与联调产物重建的过程记录，**非逐字原文、不含虚构对话**；助手无法直接导出原聊天（`conversation_search` 检索 0 条），逐字导出仍按下方步骤人工完成 |
 
 **原开发聊天人工导出步骤（请在 WorkBuddy 界面完成）**：
 
@@ -93,7 +93,7 @@ WorkBuddy 的执行路径：
 4. 将文件放入仓库 `docs/` 并命名为如 `dev-session-2026-10-12.md`；
 5. 回到本文件，把上方表格第二行状态改为「已导出」并补上链接。
 
-> 注意：本文件和修复报告均为摘要或忠实记录，**均不冒充原始开发会话**。在 `docs/dev-session-*.md` 就绪前，原开发聊天不得声称为已归档。
+> 注意：本文件、修复报告与重建记录均为摘要或证据重建，**均不冒充原始开发会话**。在逐字原文 `docs/dev-session-2026-10-12.md` 按上方步骤导出就绪前，原开发聊天不得声称为已逐字归档。
 
 ---
 
@@ -111,7 +111,7 @@ WorkBuddy 的执行路径：
 ## 5. 声明
 
 - 最新公开规则要求专项奖励作品真实使用 WorkBuddy 并提交上下文，未规定开发工具独占；本项目如实披露来源，资格以主办方核验为准：[官方规则](https://github.com/M-China/mcd-developer-innovation-challenge/blob/main/activityGuidelines.md)。
-- 会话材料：本次验收会话已导出并链接（见 3.1 节 [`docs/acceptance-session-2026-10-14.md`](docs/acceptance-session-2026-10-14.md)）；**原开发聊天仍待人工导出**（助手无法直接导出，不虚构代替，步骤见 3.1 节）。本文件和修复报告均不冒充原始开发会话。
+- 会话材料：本次验收会话已导出并链接（见 3.1 节 [`docs/acceptance-session-2026-10-14.md`](docs/acceptance-session-2026-10-14.md)）；**原开发聊天已重建为证据摘要** [`docs/dev-session-reconstruction-2026-10-14.md`](docs/dev-session-reconstruction-2026-10-14.md)（非逐字原文，逐字导出步骤见 3.1 节）。本文件、修复报告与重建记录均不冒充原始开发会话。
 
 - 本项目为参赛独立开发作品，非麦当劳官方产品，亦非腾讯官方产品；
 - 所有价格数据来自麦当劳官方 `calculate-price` 接口实时返回；

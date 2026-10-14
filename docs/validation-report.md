@@ -271,7 +271,7 @@
 | ② Skill 安装与触发 | 检查根目录 `SKILL.md/references/scripts/src`；`SKILL.md` 前置 `name`+`description` 触发词；`live_fast.py --help` / `plan.py --help`；软链 `~/.workbuddy/skills/mcd-minimal-compromise` | **结构检查通过**：四目录齐全；`name`+`description` 含 7 个触发词；脚本路径可解析；已软链供 WorkBuddy 加载。**应用内自然语言自动触发：待验证**（需用户在新聊天用自然语言实测，助手无法注入聊天，不宣称自动触发已通过） |
 | ③ 完整需求快速入口真实联调 | `live_fast.py --request meal-request.json --out-dir .workbuddy/runs/acceptance`（门店 1990455，用户选定，非旧门店 1950640） | **通过**：feasible；版本 1；`exclude_fries`=locked（保留并满足）；官方报价 ¥14.90（priceFen=1490, status=ok）；查询时间 14:59:26；覆盖度 111/8/0/截断；产物已脱敏 |
 | ④ 三轮协商（与用户交互） | R1 预算25/牛肉/饮料/不要薯条(locked) → R2 仅预算→32（其余保留）→ R3 接受 P3（=选定方案） | **通过**：R1 v1 feasible；R2 v2 仅预算变、锁定薯条保留、feasible；R3 仅「接受 P3」表示选中方案，**不修改预算、不锁定价格**，保留第二轮预算 32 元与其他条件，对 P3 绑定餐品（套餐 `9900013304`：round1=1120 双层吉士汉堡、round2=3071 无糖可口可乐中杯）重新调用官方 `calculate-price` 核验得 ¥14.90（与引擎原报价一致）。全程未替用户妥协或修改锁定项 |
-| ⑤ 开发会话材料 | 导出本次验收会话为 `docs/acceptance-session-2026-10-14.md` 并链接；原开发聊天经查无法直接导出 | **部分通过**：验收会话已导出（脱敏）；原开发聊天**待人工导出**（助手无法导出，未虚构） |
+| ⑤ 开发会话材料 | 导出本次验收会话为 `docs/acceptance-session-2026-10-14.md` 并链接；原开发聊天经查无法逐字导出 | **部分通过**：验收会话已导出（脱敏，标为验收摘要）；原开发聊天**已重建为证据摘要** [`docs/dev-session-reconstruction-2026-10-14.md`](dev-session-reconstruction-2026-10-14.md)（依据 git 历史/提交信息/报告/产物重建，未虚构对话），逐字原文仍需人工导出（步骤见 `workbuddy.md` 3.1） |
 | ⑥ 验收结果整理 | 更新本报告；扫描待提交文件脱敏；核对 Git 本地/远端与报名模板 | 见 7.2 / 7.3 |
 
 ### 7.2 失败项 / 风险项（需处理后再推送）
@@ -281,9 +281,9 @@
 
 ### 7.3 未完成 / 待用户确认项
 
-- **原开发聊天导出**：助手无法从当前环境导出原开发对话（`conversation_search` 返回 400，且仅返回片段，不足以复原完整对话）；按任务要求**不生成虚构会话**。人工导出步骤见 `workbuddy.md` 3.1 节。
-- **比赛平台报名状态**：本地仓库已包含填写完整的 `CONTEST_DECLARATION.md`（原创性/合规/信息安全/使用提示/规则遵守 五节齐全），但**比赛站点上的实际报名**无法在本地环境核实，需用户在麦当劳程序员节创意开发大赛官网确认。
-- **Git 本地/远端差异**：本地 `main` **领先 `origin/main` 1 个提交（`897848f`，即重写后的 `830ed9a`）且未推送**；全部修复、脱敏与验收材料已纳入该提交（78 文件）。重写后提交经复核：真实手机号 0、未脱敏 `cardId`/`couponId`/`couponCode` 0、Bearer/JWT 0。远端为个人 Fork `Amorsum/mcd-minimal-compromise.git`。**尚未推送、未提交报名、未下单。**
+- **原开发聊天逐字导出**：助手无法从当前环境导出原开发对话逐字原文（`conversation_search` 检索 0 条；此前一次为接口错误 400）；**未生成虚构会话**。已改为依据仓库证据重建过程记录（见 7.8 与 `docs/dev-session-reconstruction-2026-10-14.md`）；逐字原文仍需用户按 `workbuddy.md` 3.1 节步骤人工导出。
+- **比赛平台报名状态**：已核实官方活动仓库（M-China/mcd-developer-innovation-challenge）存在本人参赛 Issue **#602**【参赛申请】麦麦不将就——点餐冲突下的最小妥协引擎（state=open，作者 Amorsum），链接：https://github.com/M-China/mcd-developer-innovation-challenge/issues/602 。本地仓库另含填写完整的 `CONTEST_DECLARATION.md`（原创性/合规/信息安全/使用提示/规则遵守五节）。**未重复报名、未自动提交任何新 Issue。**
+- **Git 本地/远端差异（截至 2026-10-14 18:05）**：本地 `main` **领先 `origin/main` 2 个提交，均未推送**——`897848f`（脱敏重写原 `830ed9a`：明文券/卡/手机号清零，78 文件）与 `580f038`（发布前收尾三项引擎修复 + 117 测试 + 联调样本重建，13 文件）。两个提交树经脱敏复核：`examples/real/` 无明文券/卡/traceId/手机号/Token（仅 `tests/fixtures` 与 `examples/demo-*` 的 `CP-TEST-*`/`PRIVATE-*` 为故意假测试值）。远端为个人 Fork `Amorsum/mcd-minimal-compromise.git`。**尚未推送、未提交报名、未下单。**
 - **两阶段 `plan.py` 宿主回归**：本轮以快速入口（`live_fast.py`）完成真实联调，未单独重跑两阶段协议；该路径已在 10-13 验证报告中覆盖，如需本轮补做可另行执行 `scripts/plan.py --input/--output` 两阶段。
 
 ### 7.5 第三轮验收结论修正（2026-10-14 16:1x 补充）
@@ -316,8 +316,15 @@
 - **回归测试（+5，`tests/test_compromise.py::TestProposalConsistencyAndAcceptance`）**：`_describe_change` 全类型 modifiedValue 契约；预算方向 modifiedValue=试算价（集成）；合成菜单+饮料券单复现「换主食不退化」；`apply_accepted_change` 数值类（版本+1/仅改值/保留 negotiability）与取消类（移除约束）。全套 **117 passed**。
 - **归档/报告矛盾清理**：`r3-request.json` 误存的「预算 1490 locked」已更正为保持第二轮 **3200 分（ask）**、requestVersion=3；验收会话标题与「忠实导出」表述统一为**验收摘要**；验证报告 ② 将「应用内自然语言自动触发」标为**待验证**（结构检查通过≠自动触发通过）。
 
+### 7.8 文档状态同步与原开发会话重建（2026-10-14 18:1x）
+
+- **原开发聊天无法逐字导出（已再次确认）**：`conversation_search` 检索返回 0 条（此前一次为接口错误 400），原开发对话不可从工具侧复原。
+- **证据重建（不虚构）**：新增 [`docs/dev-session-reconstruction-2026-10-14.md`](dev-session-reconstruction-2026-10-14.md)，依据 git 历史（6 个开发提交的时间戳与信息）、`workbuddy.md` 第 3 节摘要、本报告 3–5 节、`docs/repair-review-2026-10-14.md`、`MCP_INTEGRATION.md` 与联调产物时间戳，重建 2026-10-12 至 10-13 开发时间线、关键设计决策与 14 项缺陷修复清单；文中**明确声明非逐字原文**，逐字导出仍按 `workbuddy.md` 3.1 步骤人工完成。
+- **状态同步**：`workbuddy.md` 3.1 表格第二行改为「已重建为证据摘要（逐字原文仍待人工导出）」并链接；`docs/acceptance-session-2026-10-14.md` 第 ⑤ 步同步该链接并追加「发布前收尾两轮」附记；本报告 ⑤/7.3/7.4 同步 Git（领先 `origin/main` 2 个提交未推送）、报名（Issue #602 已核实存在）与合规表述（提交经用户要求进行、仍未推送）。
+- **README 同步**：测试数 112→117；文档目录清单补全为 `docs/` 现有文件。
+
 ### 7.4 合规确认
 
 - 未向对话输出任何 Token / 券码 / 手机号 / 精确位置；门店编码（1990455 等）为公开营业信息。
 - 未调用 `create-order`，未下单、未支付。
-- 未执行 `git push`、未 `git commit`、未提交任何报名或下单操作（按用户要求先汇报）。
+- 未执行 `git push`；提交均在用户明确要求「提交剩余改动、暂不推送」后进行（`897848f`、`580f038`），未推送、未提交报名、未下单。

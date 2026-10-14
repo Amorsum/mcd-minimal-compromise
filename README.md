@@ -45,7 +45,7 @@
 
 ```bash
 pip install -e ".[dev]"     # 安装引擎（无运行时依赖）
-python -m pytest tests/     # 112 个测试：约束、妥协、营养、缓存隔离、快速入口及归档脱敏
+python -m pytest tests/     # 117 个测试：约束、妥协、营养、缓存隔离、快速入口、归档脱敏、提案一致性与接受状态
 ```
 
 ### 真实联调（需要 Token）
@@ -175,9 +175,9 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 │   ├── quote_state.py           试算去重、预算（首批 8 / 单轮 24）、无效报价识别
 │   ├── nutrition.py             第二阶段营养映射（缺失不当零，官方报价名回退）
 │   └── plan_cli.py              文件协议 CLI
-├── tests/                       112 个测试 + 人工小型菜单夹具
+├── tests/                       117 个测试 + 人工小型菜单夹具
 ├── examples/                    三个演示（模拟数据）+ real/ 脱敏真实样本
-├── docs/                        architecture.md / validation-report.md
+├── docs/                        architecture.md / validation-report.md / repair-review-2026-10-14.md / acceptance-session-2026-10-14.md / dev-session-reconstruction-2026-10-14.md
 └── 麦麦不将就-具体实现路径.md    设计文档（约束模型、协议、验收标准）
 ```
 
@@ -188,7 +188,7 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 ## 已知限制
 
 - 两阶段报价缓存绑定门店、就餐方式、菜单快照和官方数据指纹，5 分钟后失效；接受方案后使用 `--force-requote`。历史样本需显式 `--replay`，不可当作实时价格；
-- 完整需求快速入口已通过受控测试，更新后的真实 WorkBuddy 宿主操作仍需复验；开发来源与待补完整会话见 `workbuddy.md`，本次修复见 `docs/repair-review-2026-10-14.md`；
+- 完整需求快速入口已通过受控测试，更新后的真实 WorkBuddy 宿主操作仍需复验；开发来源、验收摘要与原开发会话的证据重建见 `workbuddy.md` 与 `docs/acceptance-session-2026-10-14.md`、`docs/dev-session-reconstruction-2026-10-14.md`，本次修复见 `docs/repair-review-2026-10-14.md`；
 
 - 首版仅支持到店自取单人选餐；营养约束为第二阶段（数据可靠才接入）；
 - 搜索受试算预算限制（首批 8、单轮 24 个候选），输出会标注覆盖度，不宣称全局最优；
