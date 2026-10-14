@@ -82,7 +82,7 @@ WorkBuddy 的执行路径：
 
 | 材料 | 状态 | 说明 |
 |---|---|---|
-| 本次验收会话（2026-10-14） | **已导出** | [`docs/acceptance-session-2026-10-14.md`](docs/acceptance-session-2026-10-14.md)：按时间顺序记录用户下发任务、3 个决策点（门店 1990455 / 第2轮预算32 / 第3轮接受P3）与助手核验结论；已脱敏，不含 Token/券码/手机号。脱敏联调样本（R1/R2/R3 请求与结果、门店发现）见 [`examples/real/acceptance-20261014/`](examples/real/acceptance-20261014/README.md) |
+| 本次验收会话（2026-10-14） | **已整理为摘要** | [`docs/acceptance-session-2026-10-14.md`](docs/acceptance-session-2026-10-14.md)：按时间顺序记录用户下发任务、3 个决策点（门店 1990455 / 第2轮预算32 / 第3轮接受P3）与助手核验结论；为**验收摘要**（非原始逐字全文），已脱敏，不含 Token/券码/手机号。脱敏联调样本（R1/R2/R3、真实妥协协商的请求与结果、门店发现）见 [`examples/real/acceptance-20261014/`](examples/real/acceptance-20261014/README.md) |
 | 原开发聊天（2026-10-12 至 10-13） | **待人工导出** | 助手无法直接从本会话导出原开发对话（`conversation_search` 返回 400，且仅返回片段不足以复原完整对话）；**不生成虚构会话代替** |
 
 **原开发聊天人工导出步骤（请在 WorkBuddy 界面完成）**：

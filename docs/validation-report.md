@@ -7,7 +7,7 @@
 
 | 层 | 内容 | 结果 |
 |---|---|---|
-| 单元测试 | 约束评价、候选生成、报价状态机、最小妥协、营养映射、协议两阶段 | **84 个测试全部通过**（`pytest tests/`） |
+| 单元测试 | 约束评价、候选生成、报价状态机、最小妥协、营养映射、协议两阶段、提案一致性/接受状态 | **117 个测试全部通过**（`pytest tests/`，含发布前收尾新增 5 个回归） |
 | 真实数据端到端 | 门店 1950640 全链路：菜单 → 套餐详情 → 优惠 → 26 候选 → 24 次真实 `calculate-price` → 终态 | **三种终态均达成**（feasible / compromise_proposed / not_found，见第 3 节） |
 | 真实多轮对话 | 同一门店三轮递进请求（冲突 → 收紧预算 → 接受换主食），跨轮报价复用 | **三轮终态全部符合预期**（见 3.4） |
 | 真实营养联调 | `list-nutrition-foods` 真实 160 条 + 热量上限约束三轮递进（900→700→500 锁定） | **feasible / feasible / not_found 均达成**（见 3.5） |
@@ -267,8 +267,8 @@
 
 | 验收项 | 方法 | 结论 |
 |---|---|---|
-| ① 改动检查 + `pytest tests/` | `.venv` 运行 `python -m pytest tests/`；`git diff --check` | **通过**：112 passed；diff 仅 LF/CRLF 规范化提示 |
-| ② Skill 安装与触发 | 检查根目录 `SKILL.md/references/scripts/src`；`SKILL.md` 前置 `name`+`description` 触发词；`live_fast.py --help` / `plan.py --help` | **通过**：四目录齐全；自然语言触发清单完整；脚本路径可解析 |
+| ① 改动检查 + `pytest tests/` | `.venv` 运行 `python -m pytest tests/`；`git diff --check` | **通过**：117 passed（含收尾新增 5 个回归：modifiedValue 一致性 / 换主食不退化 / 接受后需求状态）；diff 仅 LF/CRLF 规范化提示 |
+| ② Skill 安装与触发 | 检查根目录 `SKILL.md/references/scripts/src`；`SKILL.md` 前置 `name`+`description` 触发词；`live_fast.py --help` / `plan.py --help`；软链 `~/.workbuddy/skills/mcd-minimal-compromise` | **结构检查通过**：四目录齐全；`name`+`description` 含 7 个触发词；脚本路径可解析；已软链供 WorkBuddy 加载。**应用内自然语言自动触发：待验证**（需用户在新聊天用自然语言实测，助手无法注入聊天，不宣称自动触发已通过） |
 | ③ 完整需求快速入口真实联调 | `live_fast.py --request meal-request.json --out-dir .workbuddy/runs/acceptance`（门店 1990455，用户选定，非旧门店 1950640） | **通过**：feasible；版本 1；`exclude_fries`=locked（保留并满足）；官方报价 ¥14.90（priceFen=1490, status=ok）；查询时间 14:59:26；覆盖度 111/8/0/截断；产物已脱敏 |
 | ④ 三轮协商（与用户交互） | R1 预算25/牛肉/饮料/不要薯条(locked) → R2 仅预算→32（其余保留）→ R3 接受 P3（=选定方案） | **通过**：R1 v1 feasible；R2 v2 仅预算变、锁定薯条保留、feasible；R3 仅「接受 P3」表示选中方案，**不修改预算、不锁定价格**，保留第二轮预算 32 元与其他条件，对 P3 绑定餐品（套餐 `9900013304`：round1=1120 双层吉士汉堡、round2=3071 无糖可口可乐中杯）重新调用官方 `calculate-price` 核验得 ¥14.90（与引擎原报价一致）。全程未替用户妥协或修改锁定项 |
 | ⑤ 开发会话材料 | 导出本次验收会话为 `docs/acceptance-session-2026-10-14.md` 并链接；原开发聊天经查无法直接导出 | **部分通过**：验收会话已导出（脱敏）；原开发聊天**待人工导出**（助手无法导出，未虚构） |
@@ -283,7 +283,7 @@
 
 - **原开发聊天导出**：助手无法从当前环境导出原开发对话（`conversation_search` 返回 400，且仅返回片段，不足以复原完整对话）；按任务要求**不生成虚构会话**。人工导出步骤见 `workbuddy.md` 3.1 节。
 - **比赛平台报名状态**：本地仓库已包含填写完整的 `CONTEST_DECLARATION.md`（原创性/合规/信息安全/使用提示/规则遵守 五节齐全），但**比赛站点上的实际报名**无法在本地环境核实，需用户在麦当劳程序员节创意开发大赛官网确认。
-- **Git 本地/远端差异**：本地 `main` **领先 `origin/main` 1 个提交（`830ed9a`）且未推送**；工作区另有 11 个已修改跟踪文件 + 6 个未跟踪文件（含本轮新增 `docs/acceptance-session-2026-10-14.md`、`docs/repair-review-2026-10-14.md`、`meal-request.json`、新模块 `quote_context.py`、新测试 `test_live_fast.py`/`test_plan_cli.py`）。远端为个人 Fork `Amorsum/mcd-minimal-compromise.git`。
+- **Git 本地/远端差异**：本地 `main` **领先 `origin/main` 1 个提交（`897848f`，即重写后的 `830ed9a`）且未推送**；全部修复、脱敏与验收材料已纳入该提交（78 文件）。重写后提交经复核：真实手机号 0、未脱敏 `cardId`/`couponId`/`couponCode` 0、Bearer/JWT 0。远端为个人 Fork `Amorsum/mcd-minimal-compromise.git`。**尚未推送、未提交报名、未下单。**
 - **两阶段 `plan.py` 宿主回归**：本轮以快速入口（`live_fast.py`）完成真实联调，未单独重跑两阶段协议；该路径已在 10-13 验证报告中覆盖，如需本轮补做可另行执行 `scripts/plan.py --input/--output` 两阶段。
 
 ### 7.5 第三轮验收结论修正（2026-10-14 16:1x 补充）
@@ -294,6 +294,27 @@
 - **条件保留**：第二轮预算 32 元、牛肉主食、需饮料、不要薯条（locked）全部原样保留；未生成任何「预算→1490」或「锁定成交价」的约束。
 - **重新核验（非锁定）**：对 P3 绑定餐品调用官方 `calculate-price`，返回 `priceFen=1490`（¥14.90），与引擎在 R2 的原报价一致，证明该官方价格当前有效；此为「核验」而非「锁定」。
 - 产物：`.workbuddy/runs/acceptance/r3/pinned-p3-quote.json`（含绑定餐品、保留条件、官方返回脱敏摘要）。
+
+### 7.6 发布前收尾 Task 3：真实妥协协商（2026-10-14，已按收尾修复重建）
+
+> 目标：在既有 R1/R2/R3 三轮递进之外，**补一次完整的「冲突 → 提案 → 用户确认 → 重报价」真实协商**，全程不下单、不支付、不替用户改条件。
+
+- **冲突需求（与用户确认）**：预算 12 元 / 要牛肉汉堡 / 要饮料 / 不要薯条（**locked**），门店 1990455。`meal-request-conflict.json`（requestVersion 1、budget=1200 分 ask）。
+- **验证 `compromise_proposed`（真实联调，修复后重建）**：`live_fast.py --request meal-request-conflict.json` → 真实抓取菜单、券、套餐详情、96 候选报价 → 终态 **`compromise_proposed`**，唯一提案：
+  - **C1**：预算 12.00 → **13.90 元**（保留牛肉/饮料/不要薯条）；`modifiedValue=1390`、`magnitude=190`，结构化新值与文字一致。
+  - （原 C2 曾退化为「只有可乐中杯」却描述成「换为 staple_beef」，收尾已修复：放宽牛肉须仍含主食，该门店 ¥12 内无更便宜主食+饮料组合，故不再产出无主食提案——见 7.7。）
+- **展示保留条件与待接受改变**后，由用户**明确选择接受 C1**（预算提到 ¥13.90），未自行修改任何条件。
+- **更新需求并重报价（真实）**：用新增的 `apply_accepted_change` 生成接受后需求——`requestVersion=2`、预算=1390 分、**negotiability 保留 ask**（用户未要求锁定则不锁）、其余条件原样；存为 `meal-request-accepted.json`。重跑 → 终态 **`feasible`**：P1 高达吉士双牛堡 + 阳光柠檬红茶中杯，官方试算 **¥13.90**，四项条件（budget/staple/drink/exclude_fries）**全部保留**。
+- **合规**：全程未替用户妥协、未调用 `create-order`、未下单、未支付。
+- **脱敏样本**：`examples/real/acceptance-20261014/conflict-request.json`、`conflict-result.json`、`conflict-accepted-request.json`、`conflict-accepted-result.json`；该目录经复核：真实手机号 0、未脱敏 `cardId`/`couponId`/`couponCode`/`traceId` 0。
+
+### 7.7 发布前收尾：三项引擎/归档缺陷修复与回归（2026-10-14）
+
+1. **`ProposedChange.modifiedValue` 与文字不一致（已修）**：冲突结果 C1 文字写「预算从 12.00 提高到 13.90」，但 `modifiedValue` 仍是旧值 1200。`_describe_change` 改为返回 `(description, magnitude, modified_value)` 三元组，**结构化新值与文字严格一致**：预算=该方案试算价；蛋白质/热量/脂肪阈值=该方案实测值；换主食=替代主食品类/编码；「取消类」改变 `modified_value=None`（表示接受时移除约束）。营养等其他妥协类型同步覆盖。
+2. **放宽主食退化为「只有饮料」（已修）**：C2 候选是展开后仅含「可乐中杯」的组合，却被描述成「换为 staple_beef」。修复：`_build_proposals` 中放宽 `include_staple` 的方向**只保留仍含至少一种主食的候选**；描述改用实际替代主食名，缺省回退「其他主食」而不再回退成原始 `staple_beef`。
+3. **接受提案后的需求状态（已修）**：新增 `apply_accepted_change(request, change)`：`request_version`+1、**只更新被接受条件的值**、取消类改变移除该约束、**保留原有 negotiability**（除非用户显式要求锁定）。真实协商据此生成 v2/预算 1390/ask 的接受后需求并归档。
+- **回归测试（+5，`tests/test_compromise.py::TestProposalConsistencyAndAcceptance`）**：`_describe_change` 全类型 modifiedValue 契约；预算方向 modifiedValue=试算价（集成）；合成菜单+饮料券单复现「换主食不退化」；`apply_accepted_change` 数值类（版本+1/仅改值/保留 negotiability）与取消类（移除约束）。全套 **117 passed**。
+- **归档/报告矛盾清理**：`r3-request.json` 误存的「预算 1490 locked」已更正为保持第二轮 **3200 分（ask）**、requestVersion=3；验收会话标题与「忠实导出」表述统一为**验收摘要**；验证报告 ② 将「应用内自然语言自动触发」标为**待验证**（结构检查通过≠自动触发通过）。
 
 ### 7.4 合规确认
 

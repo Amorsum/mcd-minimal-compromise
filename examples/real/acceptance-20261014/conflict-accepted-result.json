@@ -1,0 +1,2425 @@
+{
+  "requestVersion": 2,
+  "context": {
+    "storeId": "1990455",
+    "diningMode": "pickup",
+    "people": 1
+  },
+  "searchScope": {
+    "store": "single",
+    "diningMode": "pickup",
+    "people": 1,
+    "maxStaples": 1,
+    "maxDrinks": 1,
+    "maxSnacks": 1,
+    "comboReplacements": "legal-choices-only",
+    "couponVariants": "store-coupon-products",
+    "excluded": [
+      "duplicate-items",
+      "split-orders",
+      "unknown-replacements",
+      "large-sharing-meals"
+    ],
+    "requestVersion": 2,
+    "storeId": "1990455"
+  },
+  "status": "feasible",
+  "coverage": {
+    "generatedCount": 111,
+    "quotedCount": 96,
+    "failedCount": 0,
+    "truncated": true
+  },
+  "plans": [
+    {
+      "planId": "P1",
+      "items": [
+        {
+          "productCode": "9900015568",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "521316",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "515281",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expanded": [
+        {
+          "code": "521316",
+          "name": "高达吉士双牛堡",
+          "category": "staple_beef",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「精选超值随心配」轮次「蓝区」：名称含牛肉堡关键词：命中「牛堡」",
+          "source": "combo:9900015568:1",
+          "modifications": [
+            {
+              "code": "100202",
+              "name": "酸黄瓜",
+              "selected": true
+            },
+            {
+              "code": "100212",
+              "name": "洋葱粒",
+              "selected": true
+            },
+            {
+              "code": "100214",
+              "name": "番茄酱",
+              "selected": true
+            },
+            {
+              "code": "102230",
+              "name": "芥末酱",
+              "selected": true
+            },
+            {
+              "code": "102215",
+              "name": "高达干酪片",
+              "selected": true
+            }
+          ]
+        },
+        {
+          "code": "515281",
+          "name": "阳光柠檬红茶中杯",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「精选超值随心配」轮次「粉区」：名称含饮料关键词：命中「红茶」",
+          "source": "combo:9900015568:2",
+          "modifications": [
+            {
+              "code": "200002",
+              "name": "标准",
+              "selected": true
+            },
+            {
+              "code": "200002",
+              "name": "去冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "多冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "少冰",
+              "selected": false
+            }
+          ]
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521316\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "budget",
+          "state": "satisfied",
+          "target": 1390,
+          "actual": 1390,
+          "evidence": "试算总价不超过预算"
+        },
+        {
+          "constraintId": "staple",
+          "state": "satisfied",
+          "target": "staple_beef",
+          "actual": "高达吉士双牛堡",
+          "evidence": "主食「高达吉士双牛堡」品类匹配"
+        },
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "阳光柠檬红茶中杯"
+          ],
+          "evidence": "候选包含drink：阳光柠檬红茶中杯"
+        },
+        {
+          "constraintId": "exclude_fries",
+          "state": "satisfied",
+          "target": "fries",
+          "actual": null,
+          "evidence": "候选不含该品类"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1990455",
+      "quotedAt": "2026-10-14T17:53:39+08:00"
+    }
+  ],
+  "closestOptions": [],
+  "pendingQuotes": [],
+  "notes": [
+    "搜索范围不完整（受试算预算限制），以下为已核验候选中的推荐"
+  ],
+  "replay": false,
+  "quotes": {
+    "context": {
+      "storeId": "1990455",
+      "diningMode": "pickup",
+      "fetchedAt": "2026-10-14T17:53:34+08:00",
+      "menuFingerprint": "263e100496e6841063ebadb195f1fc6ce5302f463831d04e9b42beaf3aff83ac"
+    },
+    "budget": {
+      "firstBatch": 8,
+      "roundBudget": 96,
+      "used": 96,
+      "remaining": 0
+    },
+    "quotes": {
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3550,
+        "originalPriceFen": 3550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3350,
+        "originalPriceFen": 3350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4900,
+        "originalPriceFen": 4900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3590,
+        "originalPriceFen": 4900,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3550,
+        "originalPriceFen": 3550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1100\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3590,
+        "originalPriceFen": 3590,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "巨无霸",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "1100",
+            "巨无霸"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3400,
+        "originalPriceFen": 3400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1106",
+            "培根蔬萃双层牛堡"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3900,
+        "originalPriceFen": 3900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡",
+          "纯悦",
+          "苹果片一袋(60g)"
+        ],
+        "productCodeNames": [
+          [
+            "1106",
+            "培根蔬萃双层牛堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ],
+          [
+            "6102",
+            "苹果片一袋(60g)"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3200,
+        "originalPriceFen": 3200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "1106",
+            "培根蔬萃双层牛堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4750,
+        "originalPriceFen": 4750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "1106",
+            "培根蔬萃双层牛堡"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3440,
+        "originalPriceFen": 4750,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "1106",
+            "培根蔬萃双层牛堡"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3400,
+        "originalPriceFen": 3400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "1106",
+            "培根蔬萃双层牛堡"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1106\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3440,
+        "originalPriceFen": 3440,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "1106",
+            "培根蔬萃双层牛堡"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3250,
+        "originalPriceFen": 3250,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层吉士汉堡",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1120",
+            "双层吉士汉堡"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3750,
+        "originalPriceFen": 3750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层吉士汉堡",
+          "纯悦",
+          "苹果片一袋(60g)"
+        ],
+        "productCodeNames": [
+          [
+            "1120",
+            "双层吉士汉堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ],
+          [
+            "6102",
+            "苹果片一袋(60g)"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3050,
+        "originalPriceFen": 3050,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层吉士汉堡",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "1120",
+            "双层吉士汉堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4600,
+        "originalPriceFen": 4600,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层吉士汉堡",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "1120",
+            "双层吉士汉堡"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3290,
+        "originalPriceFen": 4600,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层吉士汉堡",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "1120",
+            "双层吉士汉堡"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3250,
+        "originalPriceFen": 3250,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层吉士汉堡",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "1120",
+            "双层吉士汉堡"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1120\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3290,
+        "originalPriceFen": 3290,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层吉士汉堡",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "1120",
+            "双层吉士汉堡"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1450\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1450\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2650,
+        "originalPriceFen": 2650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦香鸡",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1450",
+            "麦香鸡"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1450\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1450\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦香鸡",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "1450",
+            "麦香鸡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1450\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1450\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2650,
+        "originalPriceFen": 2650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦香鸡",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "1450",
+            "麦香鸡"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡翅2块",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "1700",
+            "麦辣鸡翅2块"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2200,
+        "originalPriceFen": 2200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡翅2块",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "1700",
+            "麦辣鸡翅2块"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3750,
+        "originalPriceFen": 3750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡翅2块",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "1700",
+            "麦辣鸡翅2块"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2440,
+        "originalPriceFen": 3750,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡翅2块",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "1700",
+            "麦辣鸡翅2块"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡翅2块",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "1700",
+            "麦辣鸡翅2块"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"1700\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2440,
+        "originalPriceFen": 2440,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:41+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦辣鸡翅2块",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "1700",
+            "麦辣鸡翅2块"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3600,
+        "originalPriceFen": 3600,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "不素之霸双层牛堡",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "4648",
+            "不素之霸双层牛堡"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4100,
+        "originalPriceFen": 4100,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝士安格斯厚牛堡",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "511782",
+            "芝士安格斯厚牛堡"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3200,
+        "originalPriceFen": 3200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达吉士双牛堡",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "521316",
+            "高达吉士双牛堡"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 6850,
+        "originalPriceFen": 6850,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡四件套",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900000885",
+            "培根蔬萃双层牛堡四件套"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2140,
+        "originalPriceFen": 2140,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "蘸酱炸鸡",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900016077",
+            "蘸酱炸鸡"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4437\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4437\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3450,
+        "originalPriceFen": 3450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "纯悦",
+          "小杯玉米杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ],
+          [
+            "4437",
+            "小杯玉米杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3400,
+        "originalPriceFen": 3400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "不素之霸双层牛堡",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "4648",
+            "不素之霸双层牛堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3900,
+        "originalPriceFen": 3900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝士安格斯厚牛堡",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "511782",
+            "芝士安格斯厚牛堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3700,
+        "originalPriceFen": 3700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达吉士双牛堡",
+          "纯悦",
+          "苹果片一袋(60g)"
+        ],
+        "productCodeNames": [
+          [
+            "521316",
+            "高达吉士双牛堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ],
+          [
+            "6102",
+            "苹果片一袋(60g)"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3000,
+        "originalPriceFen": 3000,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达吉士双牛堡",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "521316",
+            "高达吉士双牛堡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"6102\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2850,
+        "originalPriceFen": 2850,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "纯悦",
+          "苹果片一袋(60g)"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ],
+          [
+            "6102",
+            "苹果片一袋(60g)"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 6650,
+        "originalPriceFen": 6650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡四件套",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900000885",
+            "培根蔬萃双层牛堡四件套"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2150,
+        "originalPriceFen": 2150,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 1940,
+        "originalPriceFen": 1940,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "蘸酱炸鸡",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900016077",
+            "蘸酱炸鸡"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4950,
+        "originalPriceFen": 4950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "不素之霸双层牛堡",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "4648",
+            "不素之霸双层牛堡"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3640,
+        "originalPriceFen": 4950,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "不素之霸双层牛堡",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "4648",
+            "不素之霸双层牛堡"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3600,
+        "originalPriceFen": 3600,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:37+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "不素之霸双层牛堡",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "4648",
+            "不素之霸双层牛堡"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"4648\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3640,
+        "originalPriceFen": 3640,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "不素之霸双层牛堡",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "4648",
+            "不素之霸双层牛堡"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 5450,
+        "originalPriceFen": 5450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝士安格斯厚牛堡",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "511782",
+            "芝士安格斯厚牛堡"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4550,
+        "originalPriceFen": 4550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达吉士双牛堡",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "521316",
+            "高达吉士双牛堡"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 8200,
+        "originalPriceFen": 8200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡四件套",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900000885",
+            "培根蔬萃双层牛堡四件套"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3700,
+        "originalPriceFen": 3700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3490,
+        "originalPriceFen": 3490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "蘸酱炸鸡",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900016077",
+            "蘸酱炸鸡"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4140,
+        "originalPriceFen": 5450,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝士安格斯厚牛堡",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "511782",
+            "芝士安格斯厚牛堡"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4100,
+        "originalPriceFen": 4100,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝士安格斯厚牛堡",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "511782",
+            "芝士安格斯厚牛堡"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"511782\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4140,
+        "originalPriceFen": 4140,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝士安格斯厚牛堡",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "511782",
+            "芝士安格斯厚牛堡"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3240,
+        "originalPriceFen": 4550,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达吉士双牛堡",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "521316",
+            "高达吉士双牛堡"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3200,
+        "originalPriceFen": 3200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达吉士双牛堡",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "521316",
+            "高达吉士双牛堡"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521316\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3240,
+        "originalPriceFen": 3240,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达吉士双牛堡",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "521316",
+            "高达吉士双牛堡"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 6890,
+        "originalPriceFen": 8200,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡四件套",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "9900000885",
+            "培根蔬萃双层牛堡四件套"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2390,
+        "originalPriceFen": 3700,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2180,
+        "originalPriceFen": 3490,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "蘸酱炸鸡",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "9900016077",
+            "蘸酱炸鸡"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 6850,
+        "originalPriceFen": 6850,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡四件套",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "9900000885",
+            "培根蔬萃双层牛堡四件套"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900000885\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 6890,
+        "originalPriceFen": 6890,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:38+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "培根蔬萃双层牛堡四件套",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "9900000885",
+            "培根蔬萃双层牛堡四件套"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900004835\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900004835\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦乐鸡经典中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900004835",
+            "麦乐鸡经典中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900004835\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900004835\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2700,
+        "originalPriceFen": 2700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦乐鸡经典中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900004835",
+            "麦乐鸡经典中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900004835\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900004835\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2650,
+        "originalPriceFen": 2650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "麦乐鸡经典中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900004835",
+            "麦乐鸡经典中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士汉堡包中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900005449",
+            "吉士汉堡包中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2750,
+        "originalPriceFen": 2750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士汉堡包中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900005449",
+            "吉士汉堡包中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2700,
+        "originalPriceFen": 2700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士汉堡包中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900005449",
+            "吉士汉堡包中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2390,
+        "originalPriceFen": 2390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:36+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2140,
+        "originalPriceFen": 2140,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "蘸酱炸鸡",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "9900016077",
+            "蘸酱炸鸡"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3021\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3021\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "“辣”么快乐套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011123",
+            "“辣”么快乐套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "“辣”么快乐套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011123",
+            "“辣”么快乐套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3111\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3111\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2600,
+        "originalPriceFen": 2600,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "“辣”么快乐套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011123",
+            "“辣”么快乐套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3505\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011123\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1700\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515106\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3505\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2550,
+        "originalPriceFen": 2550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "“辣”么快乐套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011123",
+            "“辣”么快乐套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:35+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1450\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1450\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1600\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1600\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015561\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016077\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2180,
+        "originalPriceFen": 2180,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "蘸酱炸鸡",
+          "麦咖啡冰爽一夏"
+        ],
+        "productCodeNames": [
+          [
+            "9900016077",
+            "蘸酱炸鸡"
+          ],
+          [
+            "9900015561",
+            "麦咖啡冰爽一夏"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1401\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1450\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1450\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521156\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521316\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015568\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521316\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"515281\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1390,
+        "originalPriceFen": 1390,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:39+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "精选超值随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900015568",
+            "精选超值随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015602\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521147\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900015602\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521147\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2440,
+        "originalPriceFen": 2440,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "大堡口福三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900015602",
+            "大堡口福三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016073\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521952\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016073\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521952\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2540,
+        "originalPriceFen": 2540,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "龙焰鸡腿堡三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900016073",
+            "龙焰鸡腿堡三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016073\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521952\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016073\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521952\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2840,
+        "originalPriceFen": 2840,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "龙焰鸡腿堡三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900016073",
+            "龙焰鸡腿堡三件套"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016073\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521952\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900016073\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521952\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2790,
+        "originalPriceFen": 2790,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T17:53:40+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "龙焰鸡腿堡三件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900016073",
+            "龙焰鸡腿堡三件套"
+          ]
+        ]
+      }
+    }
+  },
+  "nextActions": [],
+  "summary": {
+    "status": "feasible",
+    "coverage": {
+      "generatedCount": 111,
+      "quotedCount": 96,
+      "failedCount": 0,
+      "truncated": true
+    },
+    "notes": [
+      "搜索范围不完整（受试算预算限制），以下为已核验候选中的推荐"
+    ],
+    "plans": [
+      {
+        "planId": "P1",
+        "items": [
+          "高达吉士双牛堡",
+          "阳光柠檬红茶中杯"
+        ],
+        "priceYuan": 13.9,
+        "quotedAt": "2026-10-14T17:53:39+08:00"
+      }
+    ]
+  }
+}

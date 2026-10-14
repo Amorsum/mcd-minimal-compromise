@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import copy
 import itertools
-from typing import Optional
+from typing import Any, Optional
 
 from .candidates import (
     DEFAULT_MAX_CANDIDATES,
@@ -59,6 +59,28 @@ def relax_constraint(request: MealRequest, constraint_id: str) -> MealRequest:
         context=RequestContext(request.context.store_id, request.context.dining_mode, request.context.people),
         constraints=[c for c in request.constraints if c.id != constraint_id],
     )
+    return new
+
+
+def apply_accepted_change(request: MealRequest, change: ProposedChange) -> MealRequest:
+    """用户接受一个 ProposedChange 后生成新需求。
+
+    - ``request_version`` +1（接受即进入下一轮协商）；
+    - **只更新被接受条件的值**：数值类（预算/营养阈值）写入 ``modified_value``，
+      换主食写入替代主食品类/编码；
+    - ``modified_value`` 为 None 的「取消类」改变（允许包含/取消要求）→ 移除该约束；
+    - **保留原有 ``negotiability``**：除非调用方在返回后另行显式改成 locked，
+      否则不因接受一次提议就把条件锁死（用户明确要求锁定时才锁）。
+    """
+    new = copy.deepcopy(request)
+    new.request_version = request.request_version + 1
+    target = new.constraint(change.constraint_id)
+    if target is None:
+        return new
+    if change.modified_value is None:
+        new.constraints = [c for c in new.constraints if c.id != change.constraint_id]
+    else:
+        target.value = change.modified_value
     return new
 
 
@@ -183,8 +205,17 @@ def _describe_change(
     candidate_price: Optional[int] = None,
     alt_name: Optional[str] = None,
     actual_value=None,
-) -> tuple[str, Optional[int]]:
-    """生成修改建议的人话描述与改动幅度。
+    alt_category: Optional[str] = None,
+) -> tuple[str, Optional[int], Any]:
+    """生成修改建议的人话描述、改动幅度与结构化新值。
+
+    返回三元组 ``(description, magnitude, modified_value)``：
+
+    - ``magnitude``：同方向比较用的改动幅度（如增额分、蛋白下降克数）；
+    - ``modified_value``：**用户接受后应写入新需求的结构化新值，与文字描述严格一致**——
+      预算=该方案试算价；营养阈值=该方案实测值；换主食=替代主食品类/编码。
+      「取消类」改变（允许包含/取消要求）``modified_value=None``，表示接受时移除该约束。
+      （历史缺陷：C1 文字写「预算→13.90」但 modifiedValue 仍是旧值 1200，已按此统一。）
 
     actual_value：该方案在某项指标上的实测汇总值（营养约束专用，按官方报价名
     回退后汇总）。有时把「取消要求」写成「阈值调到该方案实测值」——这是让
@@ -195,34 +226,37 @@ def _describe_change(
         old = int(c.value)
         new = candidate_price if candidate_price is not None else new_value
         if new is None:
-            return ("调整预算", None)
+            return ("调整预算", None, None)
         desc = f"预算从 {fen_to_yuan(old)} 提高到 {fen_to_yuan(new)}（按试算价）"
-        return (desc, new - old)
+        return (desc, new - old, new)
     if c.kind == ConstraintKind.INCLUDE_STAPLE:
         wanted = str(c.value)
-        label = alt_name or ("其他主食" if not wanted.startswith("staple_") else wanted)
-        return (f"将指定主食（{c.source_text or wanted}）换为：{label}", None)
+        # alt_name 缺省时统一说「其他主食」，不得回退成原始 staple 标签
+        # （曾出现候选只有饮料、却写「换为 staple_beef」的矛盾描述）。
+        label = alt_name or "其他主食"
+        modified = alt_category or alt_name or None
+        return (f"将指定主食（{c.source_text or wanted}）换为：{label}", None, modified)
     if c.kind == ConstraintKind.EXCLUDE_CATEGORY:
-        return (f"允许包含「{c.value}」类餐品", None)
+        return (f"允许包含「{c.value}」类餐品", None, None)
     if c.kind == ConstraintKind.EXCLUDE_ITEM:
-        return (f"允许包含被排除的餐品/特制项（{c.source_text or c.value}）", None)
+        return (f"允许包含被排除的餐品/特制项（{c.source_text or c.value}）", None, None)
     if c.kind == ConstraintKind.REQUIRE_CATEGORY:
-        return (f"取消「必须包含{c.value}」的要求", None)
+        return (f"取消「必须包含{c.value}」的要求", None, None)
     if c.kind == ConstraintKind.MAX_ITEMS:
-        return (f"件数上限从 {c.value} 放宽", None)
+        return (f"件数上限从 {c.value} 放宽", None, None)
     if c.kind == ConstraintKind.PROTEIN_MIN:
         if actual_value is not None:
-            return (f"蛋白质下限从 {c.value} g 降至 {actual_value:g} g（按该方案实测）", int(c.value) - int(actual_value))
-        return (f"取消「蛋白质不低于 {c.value} g」的要求", None)
+            return (f"蛋白质下限从 {c.value} g 降至 {actual_value:g} g（按该方案实测）", int(c.value) - int(actual_value), actual_value)
+        return (f"取消「蛋白质不低于 {c.value} g」的要求", None, None)
     if c.kind == ConstraintKind.ENERGY_MAX:
         if actual_value is not None:
-            return (f"热量上限从 {c.value} kcal 提高到 {actual_value:g} kcal（按该方案实测）", int(actual_value) - int(c.value))
-        return (f"取消「热量不超过 {c.value} kcal」的要求", None)
+            return (f"热量上限从 {c.value} kcal 提高到 {actual_value:g} kcal（按该方案实测）", int(actual_value) - int(c.value), actual_value)
+        return (f"取消「热量不超过 {c.value} kcal」的要求", None, None)
     if c.kind == ConstraintKind.FAT_MAX:
         if actual_value is not None:
-            return (f"脂肪上限从 {c.value} g 提高到 {actual_value:g} g（按该方案实测）", int(actual_value) - int(c.value))
-        return (f"取消「脂肪不超过 {c.value} g」的要求", None)
-    return (f"调整条件 {c.id}", None)
+            return (f"脂肪上限从 {c.value} g 提高到 {actual_value:g} g（按该方案实测）", int(actual_value) - int(c.value), actual_value)
+        return (f"取消「脂肪不超过 {c.value} g」的要求", None, None)
+    return (f"调整条件 {c.id}", None, None)
 
 
 # ---------------------------------------------------------------------------
@@ -488,6 +522,10 @@ def _build_proposals(
             relaxed_request.constraints = [c for c in relaxed_request.constraints if c.id not in ids]
             evs = _evaluate_pool(pool, menu, relaxed_request, quotes, nutrition)
             feas = [ev for ev in evs if _is_verified(ev)]
+            # 放宽指定主食（include_staple）时，候选仍须含至少一种主食：
+            # 否则「换成其他主食」会退化成「只有饮料/无主食」的候选，违背配餐意图。
+            if any(c.kind == ConstraintKind.INCLUDE_STAPLE for c in cset):
+                feas = [ev for ev in feas if any(e["category"].startswith("staple") for e in ev.expanded.entries)]
             if not feas:
                 continue
             # 该方向按可解释顺序取最优候选
@@ -514,9 +552,12 @@ def _build_proposals(
             changes: list[ProposedChange] = []
             for c in cset:
                 alt_name = None
+                alt_category = None
                 if c.kind == ConstraintKind.INCLUDE_STAPLE:
                     staples = [e for e in best.expanded.entries if e["category"].startswith("staple")]
-                    alt_name = staples[0]["name"] if staples else None
+                    if staples:
+                        alt_name = staples[0]["name"]
+                        alt_category = staples[0]["category"]
                 actual = None
                 if c.kind == ConstraintKind.PROTEIN_MIN:
                     actual = nutrition_actual.get("protein")
@@ -524,14 +565,15 @@ def _build_proposals(
                     actual = nutrition_actual.get("energy_kcal")
                 elif c.kind == ConstraintKind.FAT_MAX:
                     actual = nutrition_actual.get("fat")
-                desc, magnitude = _describe_change(
+                desc, magnitude, modified_value = _describe_change(
                     c,
                     candidate_price=best.quote.price_fen if best.quote else None,
                     alt_name=alt_name,
+                    alt_category=alt_category,
                     actual_value=actual,
                 )
                 changes.append(
-                    ProposedChange(constraint_id=c.id, description=desc, modified_value=c.value, magnitude=magnitude)
+                    ProposedChange(constraint_id=c.id, description=desc, modified_value=modified_value, magnitude=magnitude)
                 )
             if best.candidate.key in seen_keys:
                 continue

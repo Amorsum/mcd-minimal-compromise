@@ -16709,12 +16709,12 @@
       {
         "id": "budget",
         "kind": "total_price_max",
-        "value": 1490,
+        "value": 3200,
         "unit": "fen",
         "strength": "hard",
-        "negotiability": "locked",
+        "negotiability": "ask",
         "priority": 50,
-        "sourceText": "接受P3成交价14.90元（锁定）"
+        "sourceText": "预算32元（保持第二轮；接受P3仅选定方案，不锁价）"
       },
       {
         "id": "staple",

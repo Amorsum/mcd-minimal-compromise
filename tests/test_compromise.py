@@ -816,3 +816,148 @@ class TestNutrition:
         # 提案即巨无霸单品（25.50 元在预算内，其余条件保留）
         plan = next(p for p in result.plans if any(c.constraint_id == "fat" for c in p.proposed_changes))
         assert [e["code"] for e in plan.expanded.entries] == ["B001"]
+
+
+class TestProposalConsistencyAndAcceptance:
+    """发布前收尾：结构化新值一致性 / 换主食不退化 / 接受后需求状态。"""
+
+    def test_describe_change_modified_value_contract(self):
+        """Task1：_describe_change 的 modifiedValue 必须与文字描述/幅度一致，覆盖各约束类型。
+
+        历史缺陷：C1 文字写「预算从 12.00 提高到 13.90」但 modifiedValue 仍是旧值 1200。
+        """
+        from mcd_compromise.compromise import _describe_change
+        from mcd_compromise.models import Constraint, ConstraintKind, Negotiability
+
+        # 预算：modifiedValue = 试算价（非旧值），幅度 = 差价
+        c = Constraint(id="budget", kind=ConstraintKind.TOTAL_PRICE_MAX, value=1200,
+                       negotiability=Negotiability.ASK, source_text="预算12元")
+        desc, mag, mv = _describe_change(c, candidate_price=1390)
+        assert mv == 1390 and mag == 190
+        assert "12.00 元" in desc and "13.90 元" in desc
+
+        # 营养阈值：modifiedValue = 该方案实测值
+        c = Constraint(id="protein", kind=ConstraintKind.PROTEIN_MIN, value=30, negotiability=Negotiability.ASK)
+        desc, mag, mv = _describe_change(c, actual_value=27)
+        assert mv == 27 and mag == 3 and "27" in desc
+        c = Constraint(id="energy", kind=ConstraintKind.ENERGY_MAX, value=1000, negotiability=Negotiability.ASK)
+        desc, mag, mv = _describe_change(c, actual_value=1050)
+        assert mv == 1050 and mag == 50
+        c = Constraint(id="fat", kind=ConstraintKind.FAT_MAX, value=20, negotiability=Negotiability.ASK)
+        desc, mag, mv = _describe_change(c, actual_value=26)
+        assert mv == 26 and mag == 6
+
+        # 换主食：modifiedValue = 替代主食品类；描述用具体餐品名，不再回退成原始 staple_beef
+        c = Constraint(id="staple", kind=ConstraintKind.INCLUDE_STAPLE, value="staple_beef",
+                       negotiability=Negotiability.ASK, source_text="要牛肉汉堡")
+        desc, mag, mv = _describe_change(c, alt_name="麦辣鸡腿汉堡", alt_category="staple_chicken")
+        assert mv == "staple_chicken" and "麦辣鸡腿汉堡" in desc and "staple_beef" not in desc
+        # 无 alt_name 时回退「其他主食」，绝不回退成原始 staple_beef
+        desc, mag, mv = _describe_change(c)
+        assert "其他主食" in desc and "staple_beef" not in desc and mv is None
+
+        # 取消类：modifiedValue = None（表示接受时移除约束）
+        c = Constraint(id="nd", kind=ConstraintKind.REQUIRE_CATEGORY, value="drink", negotiability=Negotiability.ASK)
+        _, _, mv = _describe_change(c)
+        assert mv is None
+        c = Constraint(id="nf", kind=ConstraintKind.EXCLUDE_CATEGORY, value="fries", negotiability=Negotiability.ASK)
+        _, _, mv = _describe_change(c)
+        assert mv is None
+
+    def test_budget_proposal_modified_value_is_new_price(self, menu):
+        """Task1（集成）：预算方向的 modifiedValue = 该方案试算价，与描述一致。"""
+        from mcd_compromise.models import fen_to_yuan
+
+        req = make_request(constraints=[_budget(3000), _staple("B001"), _need_drink()])
+        result, _ = run_until_final(menu, req)
+        assert result.status == PlanStatus.COMPROMISE_PROPOSED
+        budget_plans = [p for p in result.plans if any(pc.constraint_id == "budget" for pc in p.proposed_changes)]
+        assert budget_plans
+        for p in budget_plans:
+            for pc in p.proposed_changes:
+                if pc.constraint_id != "budget":
+                    continue
+                assert pc.modified_value == p.quote.price_fen, "modifiedValue 应等于试算价而非旧预算"
+                assert pc.modified_value != 3000
+                assert pc.magnitude == p.quote.price_fen - 3000
+                assert fen_to_yuan(pc.modified_value) in pc.description
+
+    def test_staple_relaxation_keeps_a_staple(self):
+        """Task2：放宽指定主食须换成「其他主食」，不得默默退化为只有饮料的候选。
+
+        合成菜单含一个「饮料券单品」（便宜、无主食），它会在放宽主食后骗取
+        「已满足」；修复后换主食方向必须仍含至少一种主食。
+        """
+        from mcd_compromise.models import Coupon, MenuItem, NormalizedMenu
+
+        menu = NormalizedMenu(
+            store_id="T-STAPLE",
+            items={
+                "BEEF": MenuItem("BEEF", "牛肉汉堡", 2000, 2000, category="staple_beef"),
+                "CHICK": MenuItem("CHICK", "鸡肉汉堡", 900, 900, category="staple_chicken"),
+                "COLA": MenuItem("COLA", "可乐中杯", 600, 600, category="drink"),
+                # 饮料券单品：带「券商品」标签，只经优惠变体生成（便宜，诱导「只有饮料」）
+                "DCOLA": MenuItem("DCOLA", "可乐(券)", 300, 600, category="drink", tags=("券商品",)),
+            },
+            combos={},
+            coupons=[Coupon("CP-DCOLA", "饮料券", ("DCOLA",), coupon_code="CC-DCOLA")],
+        )
+
+        def quote_fn(cand, m):
+            for it in cand.items:
+                if it.coupon_id and it.product_code == "DCOLA":
+                    return {"success": True, "code": 200, "data": {
+                        "price": 300, "originalPrice": 600, "discount": 300,
+                        "productList": [{"productCode": "DCOLA", "productName": "可乐(券)",
+                                         "quantity": 1, "subtotal": 300, "originalSubtotal": 600}]}}
+            return fake_calculate_price(cand, m)
+
+        # 预算 16、指定牛肉堡、要饮料、不要薯条：牛肉+可乐 26 超预算；鸡肉+可乐 15 可行
+        req = make_request(constraints=[_budget(1600), _staple("staple_beef"), _need_drink(), _no_fries()])
+        result, _ = run_until_final(menu, req, quote_fn=quote_fn)
+        assert result.status == PlanStatus.COMPROMISE_PROPOSED
+        staple_plans = [p for p in result.plans if any(pc.constraint_id == "staple" for pc in p.proposed_changes)]
+        assert staple_plans, "应提供换主食方向的建议"
+        for p in staple_plans:
+            cats = {e["category"] for e in p.expanded.entries}
+            names = [e["name"] for e in p.expanded.entries]
+            assert any(c.startswith("staple") for c in cats), "放宽主食不得退化为无主食/只有饮料"
+            assert "drink" in cats, "换主食方向仍应满足饮料要求"
+            assert "牛肉汉堡" not in names, "换主食方向不应仍是指定牛肉堡"
+            for pc in p.proposed_changes:
+                if pc.constraint_id == "staple":
+                    assert pc.modified_value and pc.modified_value.startswith("staple_") and pc.modified_value != "staple_beef"
+
+    def test_apply_accepted_change_budget(self, menu):
+        """Task3：接受预算提议 → 版本+1、只改预算值、保留原 negotiability。"""
+        from mcd_compromise.compromise import apply_accepted_change
+        from mcd_compromise.models import ProposedChange
+
+        req = make_request(version=1, constraints=[_budget(1200), _staple("staple_beef"), _need_drink(), _no_fries()])
+        change = ProposedChange(constraint_id="budget",
+                                description="预算从 12.00 元 提高到 13.90 元（按试算价）",
+                                modified_value=1390, magnitude=190)
+        new = apply_accepted_change(req, change)
+        assert new.request_version == 2
+        assert new.constraint("budget").value == 1390
+        # 未显式要求锁定 → 保留原 negotiability（ask）
+        assert new.constraint("budget").negotiability == Negotiability.ASK
+        # 其余条件原样保留
+        assert new.constraint("staple").value == "staple_beef"
+        assert new.constraint("need_drink") is not None
+        assert new.constraint("no_fries").negotiability == Negotiability.LOCKED
+        # 原需求对象不被修改
+        assert req.request_version == 1 and req.constraint("budget").value == 1200
+
+    def test_apply_accepted_change_removal(self):
+        """Task3：接受「取消类」改变（modified_value=None）→ 移除该约束、版本+1。"""
+        from mcd_compromise.compromise import apply_accepted_change
+        from mcd_compromise.models import ProposedChange
+
+        req = make_request(version=3, constraints=[_budget(1200), _need_drink()])
+        change = ProposedChange(constraint_id="need_drink",
+                                description="取消「必须包含drink」的要求", modified_value=None, magnitude=None)
+        new = apply_accepted_change(req, change)
+        assert new.request_version == 4
+        assert new.constraint("need_drink") is None
+        assert new.constraint("budget").value == 1200
