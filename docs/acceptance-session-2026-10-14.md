@@ -36,6 +36,7 @@
 - Skill 根目录齐全：`SKILL.md`、`references/`、`scripts/`、`src/` 均存在。
 - `SKILL.md` 前置元数据 `name: mcd-minimal-compromise` + `description` 含触发词（麦当劳点餐、套餐推荐、预算内配餐、不要薯条、换主食、用券配餐、麦麦不将就），符合 WorkBuddy 自然语言触发机制。
 - 脚本路径验证：`scripts/live_fast.py --help`、`scripts/plan.py --help` 均可运行；凭证从 `~/.workbuddy/mcp.json` 的 `mcd-mcp.Authorization` 读取（环境变量 `MCD_MCP_TOKEN` 未设置，文件凭证可用）。
+- 后续实测补记（2026-10-14 18:46）：用户在本会话发自然语言请求「麦麦不将就，预算25元，要牛肉汉堡和饮料，不要薯条」——**未观察到自动触发**（无技能注入），由主助手手动加载 Skill 后完整跑通（feasible ¥14.90，见验证报告 7.9）。自动触发项保持「实测未触发」记录，未宣称通过。
 
 ## 第 ③ 步：完整需求快速入口真实联调
 
