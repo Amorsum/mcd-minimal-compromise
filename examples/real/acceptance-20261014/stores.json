@@ -1,0 +1,129 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-14 14:54:58",
+  "traceId": "REDACTED-TRACE",
+  "data": [
+    {
+      "storeCode": "1990350",
+      "storeName": "麦当劳南京羊山湖餐厅",
+      "address": "仙境路18-10号负一层和一层",
+      "distance": 86,
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "23:00",
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-14",
+          "today": true,
+          "reservationOptionText": "下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        },
+        {
+          "date": "2026-10-15",
+          "today": false,
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        }
+      ]
+    },
+    {
+      "storeCode": "1990455",
+      "storeName": "麦当劳南京邮电大学(学校内)餐厅",
+      "address": "文苑路9号南京邮电大学仙林校区三食堂二楼北侧部分",
+      "distance": 309,
+      "businessStatus": true,
+      "businessStartTime": "06:30",
+      "businessEndTime": "23:00",
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-14",
+          "today": true,
+          "reservationOptionText": "下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        },
+        {
+          "date": "2026-10-15",
+          "today": false,
+          "reservationOptionText": "早餐(06:44至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        }
+      ]
+    },
+    {
+      "storeCode": "1990522",
+      "storeName": "麦当劳南京理工大学紫金学院餐厅",
+      "address": "文澜路89号南京理工大学紫金学院体育馆负一楼部分商铺",
+      "distance": 1085,
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "22:00",
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-14",
+          "today": true,
+          "reservationOptionText": "下午茶(14:44至16:45)"
+        },
+        {
+          "date": "2026-10-15",
+          "today": false,
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)"
+        }
+      ]
+    },
+    {
+      "storeCode": "1990299",
+      "storeName": "麦当劳南京南邮广场餐厅",
+      "address": "学海路28-3 号101、102、103 室商铺的一层和二层",
+      "distance": 1152,
+      "businessStatus": true,
+      "businessStartTime": "06:30",
+      "businessEndTime": "23:00",
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-14",
+          "today": true,
+          "reservationOptionText": "下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        },
+        {
+          "date": "2026-10-15",
+          "today": false,
+          "reservationOptionText": "早餐(06:44至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        }
+      ]
+    },
+    {
+      "storeCode": "1990502",
+      "storeName": "麦当劳南京信息职业技术学院校内餐厅",
+      "address": "文澜路99号南京信息职业技术学院第二食堂二楼餐厅",
+      "distance": 1377,
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "21:00",
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-14",
+          "today": true,
+          "reservationOptionText": "下午茶(14:44至16:45)，夜市(17:14至20:46)"
+        },
+        {
+          "date": "2026-10-15",
+          "today": false,
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至20:46)"
+        }
+      ]
+    }
+  ]
+}

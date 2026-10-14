@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 from mcd_compromise.models import Candidate, OrderItem, Quote, QuoteStatus
 from mcd_compromise.quote_state import DEFAULT_FIRST_BATCH, DEFAULT_ROUND_BUDGET, QuoteBudget, QuoteManager
 
@@ -54,6 +56,18 @@ class TestBudget:
 
 
 class TestRegisterResult:
+    @pytest.mark.parametrize("price", [0, -1, True, 1.5, "0", "1.5", "broken", None])
+    def test_invalid_price_with_nonempty_products(self, price):
+        q = QuoteManager().register_mcp_result("k", {
+            "success": True, "data": {"price": price, "productList": [{"productName": "x"}]}
+        })
+        assert q.status == QuoteStatus.INVALID
+        assert not q.ok
+
+    def test_restored_zero_quote_is_not_usable(self):
+        q = Quote.from_dict({"candidateKey": "k", "status": "ok", "priceFen": 0})
+        assert not q.ok
+
     def test_ok(self):
         mgr = QuoteManager()
         q = mgr.register_mcp_result(

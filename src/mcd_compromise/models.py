@@ -393,7 +393,7 @@ class Quote:
 
     @property
     def ok(self) -> bool:
-        return self.status == QuoteStatus.OK and self.price_fen is not None
+        return self.status == QuoteStatus.OK and type(self.price_fen) is int and self.price_fen > 0
 
     def official_name(self, code: str) -> str:
         """官方报价中该编码的商品名；无则空串。"""

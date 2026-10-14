@@ -140,8 +140,8 @@
         {
           "productCode": "9900016371",
           "quantity": 1,
-          "couponId": "REDACTED-COUPON-ID-1",
-          "couponCode": "REDACTED-COUPON-CODE-1"
+          "couponId": "REDACTED-COUPON-ID",
+          "couponCode": "REDACTED-COUPON-CODE"
         }
       ],
       "note": "主食 + 优惠「王牌小食拼」"
@@ -162,8 +162,8 @@
         {
           "productCode": "9900016371",
           "quantity": 1,
-          "couponId": "REDACTED-COUPON-ID-1",
-          "couponCode": "REDACTED-COUPON-CODE-1"
+          "couponId": "REDACTED-COUPON-ID",
+          "couponCode": "REDACTED-COUPON-CODE"
         }
       ],
       "note": "使用优惠「王牌小食拼」"
@@ -178,8 +178,8 @@
         {
           "productCode": "9900016371",
           "quantity": 1,
-          "couponId": "REDACTED-COUPON-ID-1",
-          "couponCode": "REDACTED-COUPON-CODE-1"
+          "couponId": "REDACTED-COUPON-ID",
+          "couponCode": "REDACTED-COUPON-CODE"
         }
       ],
       "note": "主食 + 优惠「王牌小食拼」"
@@ -194,8 +194,8 @@
         {
           "productCode": "9900016371",
           "quantity": 1,
-          "couponId": "REDACTED-COUPON-ID-1",
-          "couponCode": "REDACTED-COUPON-CODE-1"
+          "couponId": "REDACTED-COUPON-ID",
+          "couponCode": "REDACTED-COUPON-CODE"
         }
       ],
       "note": "主食 + 优惠「王牌小食拼」"
@@ -210,8 +210,8 @@
         {
           "productCode": "9900016371",
           "quantity": 1,
-          "couponId": "REDACTED-COUPON-ID-1",
-          "couponCode": "REDACTED-COUPON-CODE-1"
+          "couponId": "REDACTED-COUPON-ID",
+          "couponCode": "REDACTED-COUPON-CODE"
         }
       ],
       "note": "主食 + 优惠「王牌小食拼」"
@@ -542,8 +542,8 @@
             {
               "productCode": "9900016371",
               "quantity": 1,
-              "couponId": "REDACTED-COUPON-ID-1",
-              "couponCode": "REDACTED-COUPON-CODE-1"
+              "couponId": "REDACTED-COUPON-ID",
+              "couponCode": "REDACTED-COUPON-CODE"
             }
           ]
         }
@@ -580,8 +580,8 @@
             {
               "productCode": "9900016371",
               "quantity": 1,
-              "couponId": "REDACTED-COUPON-ID-1",
-              "couponCode": "REDACTED-COUPON-CODE-1"
+              "couponId": "REDACTED-COUPON-ID",
+              "couponCode": "REDACTED-COUPON-CODE"
             }
           ]
         }
@@ -604,8 +604,8 @@
             {
               "productCode": "9900016371",
               "quantity": 1,
-              "couponId": "REDACTED-COUPON-ID-1",
-              "couponCode": "REDACTED-COUPON-CODE-1"
+              "couponId": "REDACTED-COUPON-ID",
+              "couponCode": "REDACTED-COUPON-CODE"
             }
           ]
         }
@@ -628,8 +628,8 @@
             {
               "productCode": "9900016371",
               "quantity": 1,
-              "couponId": "REDACTED-COUPON-ID-1",
-              "couponCode": "REDACTED-COUPON-CODE-1"
+              "couponId": "REDACTED-COUPON-ID",
+              "couponCode": "REDACTED-COUPON-CODE"
             }
           ]
         }
@@ -652,8 +652,8 @@
             {
               "productCode": "9900016371",
               "quantity": 1,
-              "couponId": "REDACTED-COUPON-ID-1",
-              "couponCode": "REDACTED-COUPON-CODE-1"
+              "couponId": "REDACTED-COUPON-ID",
+              "couponCode": "REDACTED-COUPON-CODE"
             }
           ]
         }

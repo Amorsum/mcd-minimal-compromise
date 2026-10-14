@@ -45,7 +45,42 @@
 
 ```bash
 pip install -e ".[dev]"     # 安装引擎（无运行时依赖）
-python -m pytest tests/     # 84 个测试：约束三态、套餐展开、最小妥协、报价预算、无解参考、营养匹配（热量/蛋白质/脂肪）
+python -m pytest tests/     # 112 个测试：约束、妥协、营养、缓存隔离、快速入口及归档脱敏
+```
+
+### 真实联调（需要 Token）
+
+安装到宿主时，将 `SKILL.md`、`references/`、`scripts/`、**`src/`** 放在同一个 Skill 根目录；脚本依赖相邻的 `src/mcd_compromise/`。
+
+宿主可将完整需求（`requestVersion`、`context`、全部 `constraints`）保存为 `meal-request.json`，然后一次执行：
+
+```bash
+python scripts/live_fast.py --request meal-request.json --out-dir .workbuddy/runs/current
+```
+
+该入口每次获取最新数据并报价，保留宿主传入的全部条件与版本。多轮只修改用户明确改变的条件。仅宿主 MCP 连接器可用时，仍可用 `plan.py` 两阶段协议。
+
+`scripts/live_e2e.py` 是一键联调夹具（本地开发工具）：自动完成「菜单 + 优惠券 →
+套餐详情 → plan.py 首轮 → 逐候选官方算价并写回 → 终态」，产物落在
+`examples/real/live-<时间戳>/`。凭证读取顺序：环境变量 `MCD_MCP_TOKEN` >
+`~/.workbuddy/mcp.json` 中 mcd-mcp 的 Authorization（不会写入任何输出文件）。
+
+```bash
+python scripts/live_e2e.py --store 1950640                          # 经典场景：预算25+牛肉堡+饮料+不要薯条
+python scripts/live_e2e.py --store 1950822 --budget 30 --staple chicken --no-drink   # 自定义场景
+python scripts/live_e2e.py --city 北京市 --keyword 中关村            # 先发现营业中门店（打烊店会返回 600057，见 MCP_INTEGRATION.md 4.15）
+```
+
+`scripts/live_fast.py` 是**单回合快速版**：全流程合并到一个进程（抓取/详情/两阶段报价/脱敏），
+菜单券营养与套餐详情、报价均并发（默认 4 线程），引擎进程内调用，默认零节流——
+实测同一场景（64 候选全报价）**约 8–12 秒**，而分步编排的感知耗时约 25 分钟
+（官方接口仅 ~60s，其余消耗在宿主的多个编排回合，见 MCP_INTEGRATION.md 4.17）。
+支持营养约束（`--protein-min/--fat-max/--energy-max`，可 `--lock-*` 锁定）与
+`--mode fast`（更少主食与报价预算，牺牲覆盖度换速度）：
+
+```bash
+python scripts/live_fast.py --store 1990455 --protein-min 30 --fat-max 25 --energy-max 650   # 早餐减脂场景
+python scripts/live_fast.py --store 1990455 --no-drink --protein-min 30                       # 复现 2026-10-14 早餐联调
 ```
 
 ### 演示（模拟数据，无需 Token）
@@ -67,7 +102,7 @@ import json, pathlib
 data = json.loads(pathlib.Path("examples/demo-conflict.json").read_text(encoding="utf-8"))
 pathlib.Path("req.json").write_text(json.dumps(data["input"], ensure_ascii=False), encoding="utf-8")
 PY
-python scripts/plan.py --input req.json --output res.json
+python scripts/plan.py --input req.json --output res.json --replay
 ```
 
 ### 真实数据验证（需要 Token）
@@ -88,6 +123,9 @@ python scripts/plan.py --input req.json --output res.json
 | `e2e-combo-b-request.json` + `e2e-combo-b-result-1/2/3.json` + `e2e-combo-b-quote-responses-1/2.json` | 组合约束场景 B（蛋白质≥30×热量≤1000×预算 33）：17 候选、17 次真实报价 → `compromise_proposed`（C1 巨无霸单点 25.50，蛋白质 30→27 g；C2 三件套 36.50，预算 33→36.50） |
 | `e2e-combo-b-turn2-request.json` + `e2e-combo-b-turn2-result.json` | 组合约束场景 B 第二轮（预算改 37）：零新增报价 → `feasible`（3 个零差价饮料替换方案，均 36.50） |
 | `store-menu-1950640.json` / `store-coupons-1950640.redacted.json` / `meal-detail-9900005466.json` / `quote-samples.json` | 脱敏真实样本 |
+| `live-20261013-221623/` | `scripts/live_e2e.py` 一键联调的完整运行（门店 1950822，营业中）：118 候选 / 24 次真实报价 → `compromise_proposed`（培根蔬萃双层牛堡+雪碧 34.00，仅预算 25→34）；复现：`python scripts/live_e2e.py --store 1950822` |
+| `live-20261014-090346/` | 早餐 × 营养约束联调（门店 1990455 南邮校内，营业中）：场景 A（蛋白 ask）24 报价 → `compromise_proposed`（C1 火腿扒麦满分+脆薯饼+优品豆浆大杯 17.00，蛋白 30→23）；场景 B（蛋白锁 30）扩到 64/64 全报价 → `not_found`（最接近：大脆鸡扒麦满分套餐 18.00，蛋白 25/脂肪 30/热量 709） |
+| `live-20261014-093413/` | `scripts/live_fast.py` 单回合复跑同一场景：**8.1s**、64/64 全报价、0 失败、无截断，C1 与上方完全一致（蛋白 30→23）——分步编排 ~25 分钟的感知耗时中，官方接口仅 ~60s，见 MCP_INTEGRATION.md 4.17 |
 
 联调中的真实发现（券商品陷阱、600012 失败、官方返回名不一致等）记录在
 `MCP_INTEGRATION.md`，完整验证结论见 `docs/validation-report.md`。
@@ -126,6 +164,8 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 ├── pyproject.toml
 ├── references/                  conversation-rules / integration-map / output-contract
 ├── scripts/plan.py              两阶段报价协议入口
+├── scripts/live_e2e.py          真实端到端联调夹具（本地开发工具，需 MCP Token）
+├── scripts/live_fast.py         单回合快速联调（并发抓取/报价 + 引擎进程内调用 + 自动脱敏）
 ├── src/mcd_compromise/          计算引擎（标准库，无运行时依赖）
 │   ├── models.py                数据模型（金额整数分、约束三维度、三态评价）
 │   ├── normalize.py             官方返回标准化 + 品类标注（记录依据与置信度）
@@ -135,7 +175,7 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 │   ├── quote_state.py           试算去重、预算（首批 8 / 单轮 24）、无效报价识别
 │   ├── nutrition.py             第二阶段营养映射（缺失不当零，官方报价名回退）
 │   └── plan_cli.py              文件协议 CLI
-├── tests/                       84 个测试 + 人工小型菜单夹具
+├── tests/                       112 个测试 + 人工小型菜单夹具
 ├── examples/                    三个演示（模拟数据）+ real/ 脱敏真实样本
 ├── docs/                        architecture.md / validation-report.md
 └── 麦麦不将就-具体实现路径.md    设计文档（约束模型、协议、验收标准）
@@ -146,6 +186,9 @@ scripts/plan.py 首轮（返回待报价候选与 calculate-price 调用参数�
 独自用餐的学生、上班族、经常使用优惠券的用户——任何一个会说「我想吃什么但预算/条件有限」的人。
 
 ## 已知限制
+
+- 两阶段报价缓存绑定门店、就餐方式、菜单快照和官方数据指纹，5 分钟后失效；接受方案后使用 `--force-requote`。历史样本需显式 `--replay`，不可当作实时价格；
+- 完整需求快速入口已通过受控测试，更新后的真实 WorkBuddy 宿主操作仍需复验；开发来源与待补完整会话见 `workbuddy.md`，本次修复见 `docs/repair-review-2026-10-14.md`；
 
 - 首版仅支持到店自取单人选餐；营养约束为第二阶段（数据可靠才接入）；
 - 搜索受试算预算限制（首批 8、单轮 24 个候选），输出会标注覆盖度，不宣称全局最优；

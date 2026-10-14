@@ -1,0 +1,721 @@
+{
+  "requestVersion": 1,
+  "context": {
+    "storeId": "1990455",
+    "diningMode": "pickup",
+    "people": 1
+  },
+  "searchScope": {
+    "store": "single",
+    "diningMode": "pickup",
+    "people": 1,
+    "maxStaples": 1,
+    "maxDrinks": 1,
+    "maxSnacks": 1,
+    "comboReplacements": "legal-choices-only",
+    "couponVariants": "store-coupon-products",
+    "excluded": [
+      "duplicate-items",
+      "split-orders",
+      "unknown-replacements",
+      "large-sharing-meals"
+    ],
+    "requestVersion": 1,
+    "storeId": "1990455"
+  },
+  "status": "feasible",
+  "coverage": {
+    "generatedCount": 111,
+    "quotedCount": 8,
+    "failedCount": 0,
+    "truncated": true
+  },
+  "plans": [
+    {
+      "planId": "P1",
+      "items": [
+        {
+          "productCode": "9900013304",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "1120",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "3050",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expanded": [
+        {
+          "code": "1120",
+          "name": "双层吉士汉堡",
+          "category": "staple_beef",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「人气经典随心配」轮次「蓝区」：名称含牛肉堡关键词：命中「吉士汉堡」",
+          "source": "combo:9900013304:1",
+          "modifications": [
+            {
+              "code": "100141",
+              "name": "吉士",
+              "selected": true
+            },
+            {
+              "code": "100202",
+              "name": "酸黄瓜",
+              "selected": true
+            },
+            {
+              "code": "100212",
+              "name": "洋葱粒",
+              "selected": true
+            },
+            {
+              "code": "100214",
+              "name": "番茄酱",
+              "selected": true
+            },
+            {
+              "code": "102230",
+              "name": "芥末酱",
+              "selected": true
+            }
+          ]
+        },
+        {
+          "code": "3050",
+          "name": "可乐中杯",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「人气经典随心配」轮次「粉区」：名称含饮料关键词：命中「可乐」",
+          "source": "combo:9900013304:2",
+          "modifications": [
+            {
+              "code": "200002",
+              "name": "标准",
+              "selected": true
+            },
+            {
+              "code": "200002",
+              "name": "去冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "多冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "少冰",
+              "selected": false
+            }
+          ]
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "budget",
+          "state": "satisfied",
+          "target": 2500,
+          "actual": 1490,
+          "evidence": "试算总价不超过预算"
+        },
+        {
+          "constraintId": "staple",
+          "state": "satisfied",
+          "target": "staple_beef",
+          "actual": "双层吉士汉堡",
+          "evidence": "主食「双层吉士汉堡」品类匹配"
+        },
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "可乐中杯"
+          ],
+          "evidence": "候选包含drink：可乐中杯"
+        },
+        {
+          "constraintId": "exclude_fries",
+          "state": "satisfied",
+          "target": "fries",
+          "actual": null,
+          "evidence": "候选不含该品类"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1990455",
+      "quotedAt": "2026-10-14T14:59:26+08:00"
+    },
+    {
+      "planId": "P2",
+      "items": [
+        {
+          "productCode": "9900013304",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "1120",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "3060",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expanded": [
+        {
+          "code": "1120",
+          "name": "双层吉士汉堡",
+          "category": "staple_beef",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「人气经典随心配」轮次「蓝区」：名称含牛肉堡关键词：命中「吉士汉堡」",
+          "source": "combo:9900013304:1",
+          "modifications": [
+            {
+              "code": "100141",
+              "name": "吉士",
+              "selected": true
+            },
+            {
+              "code": "100202",
+              "name": "酸黄瓜",
+              "selected": true
+            },
+            {
+              "code": "100212",
+              "name": "洋葱粒",
+              "selected": true
+            },
+            {
+              "code": "100214",
+              "name": "番茄酱",
+              "selected": true
+            },
+            {
+              "code": "102230",
+              "name": "芥末酱",
+              "selected": true
+            }
+          ]
+        },
+        {
+          "code": "3060",
+          "name": "雪碧中杯",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「人气经典随心配」轮次「粉区」：名称含饮料关键词：命中「雪碧」",
+          "source": "combo:9900013304:2",
+          "modifications": [
+            {
+              "code": "200002",
+              "name": "标准",
+              "selected": true
+            },
+            {
+              "code": "200002",
+              "name": "去冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "多冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "少冰",
+              "selected": false
+            }
+          ]
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "budget",
+          "state": "satisfied",
+          "target": 2500,
+          "actual": 1490,
+          "evidence": "试算总价不超过预算"
+        },
+        {
+          "constraintId": "staple",
+          "state": "satisfied",
+          "target": "staple_beef",
+          "actual": "双层吉士汉堡",
+          "evidence": "主食「双层吉士汉堡」品类匹配"
+        },
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "雪碧中杯"
+          ],
+          "evidence": "候选包含drink：雪碧中杯"
+        },
+        {
+          "constraintId": "exclude_fries",
+          "state": "satisfied",
+          "target": "fries",
+          "actual": null,
+          "evidence": "候选不含该品类"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1990455",
+      "quotedAt": "2026-10-14T14:59:26+08:00"
+    },
+    {
+      "planId": "P3",
+      "items": [
+        {
+          "productCode": "9900013304",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "1120",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "3071",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expanded": [
+        {
+          "code": "1120",
+          "name": "双层吉士汉堡",
+          "category": "staple_beef",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「人气经典随心配」轮次「蓝区」：名称含牛肉堡关键词：命中「吉士汉堡」",
+          "source": "combo:9900013304:1",
+          "modifications": [
+            {
+              "code": "100141",
+              "name": "吉士",
+              "selected": true
+            },
+            {
+              "code": "100202",
+              "name": "酸黄瓜",
+              "selected": true
+            },
+            {
+              "code": "100212",
+              "name": "洋葱粒",
+              "selected": true
+            },
+            {
+              "code": "100214",
+              "name": "番茄酱",
+              "selected": true
+            },
+            {
+              "code": "102230",
+              "name": "芥末酱",
+              "selected": true
+            }
+          ]
+        },
+        {
+          "code": "3071",
+          "name": "无糖可口可乐中杯",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「人气经典随心配」轮次「粉区」：名称含饮料关键词：命中「可乐」",
+          "source": "combo:9900013304:2",
+          "modifications": [
+            {
+              "code": "200002",
+              "name": "标准",
+              "selected": true
+            },
+            {
+              "code": "200002",
+              "name": "去冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "多冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "少冰",
+              "selected": false
+            }
+          ]
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "budget",
+          "state": "satisfied",
+          "target": 2500,
+          "actual": 1490,
+          "evidence": "试算总价不超过预算"
+        },
+        {
+          "constraintId": "staple",
+          "state": "satisfied",
+          "target": "staple_beef",
+          "actual": "双层吉士汉堡",
+          "evidence": "主食「双层吉士汉堡」品类匹配"
+        },
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "无糖可口可乐中杯"
+          ],
+          "evidence": "候选包含drink：无糖可口可乐中杯"
+        },
+        {
+          "constraintId": "exclude_fries",
+          "state": "satisfied",
+          "target": "fries",
+          "actual": null,
+          "evidence": "候选不含该品类"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [],
+      "unknowns": [],
+      "verified": true,
+      "storeId": "1990455",
+      "quotedAt": "2026-10-14T14:59:26+08:00"
+    }
+  ],
+  "closestOptions": [],
+  "pendingQuotes": [],
+  "notes": [
+    "搜索范围不完整（受试算预算限制），以下为已核验候选中的推荐"
+  ],
+  "replay": false,
+  "quotes": {
+    "context": {
+      "storeId": "1990455",
+      "diningMode": "pickup",
+      "fetchedAt": "2026-10-14T14:59:26+08:00",
+      "menuFingerprint": "8dfcbd52db2d43c4e3a824b84495ab155c9576981d353f01b6b70eae68cd535b"
+    },
+    "budget": {
+      "firstBatch": 8,
+      "roundBudget": 96,
+      "used": 8,
+      "remaining": 88
+    },
+    "quotes": {
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008747\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2150,
+        "originalPriceFen": 2150,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "牛肉堡单品精选",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900008747",
+            "牛肉堡单品精选"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4437\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士汉堡包中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900005449",
+            "吉士汉堡包中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4438\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2750,
+        "originalPriceFen": 2750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士汉堡包中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900005449",
+            "吉士汉堡包中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900005449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1010\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521983\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2700,
+        "originalPriceFen": 2700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士汉堡包中套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900005449",
+            "吉士汉堡包中套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3050\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3060\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"3071\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900013304\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1120\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"521328\", \"modifications\": [], \"round\": \"2\"}]}]",
+        "status": "ok",
+        "priceFen": 1490,
+        "originalPriceFen": 1490,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14T14:59:26+08:00",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "人气经典随心配"
+        ],
+        "productCodeNames": [
+          [
+            "9900013304",
+            "人气经典随心配"
+          ]
+        ]
+      }
+    }
+  },
+  "nextActions": [],
+  "summary": {
+    "status": "feasible",
+    "coverage": {
+      "generatedCount": 111,
+      "quotedCount": 8,
+      "failedCount": 0,
+      "truncated": true
+    },
+    "notes": [
+      "搜索范围不完整（受试算预算限制），以下为已核验候选中的推荐"
+    ],
+    "plans": [
+      {
+        "planId": "P1",
+        "items": [
+          "双层吉士汉堡",
+          "可乐中杯"
+        ],
+        "priceYuan": 14.9,
+        "quotedAt": "2026-10-14T14:59:26+08:00"
+      },
+      {
+        "planId": "P2",
+        "items": [
+          "双层吉士汉堡",
+          "雪碧中杯"
+        ],
+        "priceYuan": 14.9,
+        "quotedAt": "2026-10-14T14:59:26+08:00"
+      },
+      {
+        "planId": "P3",
+        "items": [
+          "双层吉士汉堡",
+          "无糖可口可乐中杯"
+        ],
+        "priceYuan": 14.9,
+        "quotedAt": "2026-10-14T14:59:26+08:00"
+      }
+    ]
+  }
+}

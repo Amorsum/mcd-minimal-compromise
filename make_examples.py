@@ -24,7 +24,7 @@ def protocol(request_dict, note):
     inp = {"storeId": STORE, "fetchedAt": "2026-10-12 16:00:00", "mcp": MCP, "request": request_dict}
     rounds = []
     while True:
-        out = run(inp)
+        out = run(inp, replay=True)
         rounds.append({"status": out["status"], "pendingQuoteCount": len(out.get("nextActions", []))})
         if out["status"] != "quotes_pending":
             break

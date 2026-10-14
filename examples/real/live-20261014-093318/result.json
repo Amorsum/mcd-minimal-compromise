@@ -1,0 +1,1689 @@
+{
+  "requestVersion": 1,
+  "context": {
+    "storeId": "1990455",
+    "diningMode": "pickup",
+    "people": 1
+  },
+  "searchScope": {
+    "store": "single",
+    "diningMode": "pickup",
+    "people": 1,
+    "maxStaples": 1,
+    "maxDrinks": 1,
+    "maxSnacks": 1,
+    "comboReplacements": "legal-choices-only",
+    "couponVariants": "store-coupon-products",
+    "excluded": [
+      "duplicate-items",
+      "split-orders",
+      "unknown-replacements",
+      "large-sharing-meals"
+    ],
+    "requestVersion": 1,
+    "storeId": "1990455"
+  },
+  "status": "compromise_proposed",
+  "coverage": {
+    "generatedCount": 72,
+    "quotedCount": 72,
+    "failedCount": 0,
+    "truncated": false
+  },
+  "plans": [
+    {
+      "planId": "C1",
+      "items": [
+        {
+          "productCode": "9900003449",
+          "quantity": 1,
+          "roundList": [
+            {
+              "round": "1",
+              "comboItemList": [
+                {
+                  "code": "1254",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "2",
+              "comboItemList": [
+                {
+                  "code": "4825",
+                  "quantity": 1
+                }
+              ]
+            },
+            {
+              "round": "3",
+              "comboItemList": [
+                {
+                  "code": "3100",
+                  "quantity": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expanded": [
+        {
+          "code": "1254",
+          "name": "火腿扒麦满分",
+          "category": "unknown",
+          "quantity": 1,
+          "confidence": "unknown",
+          "basis": "套餐「火腿扒麦满分套餐」轮次「火腿扒麦满分」：无规则命中",
+          "source": "combo:9900003449:1",
+          "modifications": [
+            {
+              "code": "100168",
+              "name": "生菜",
+              "selected": true
+            }
+          ]
+        },
+        {
+          "code": "4825",
+          "name": "脆薯饼",
+          "category": "fries_like",
+          "quantity": 1,
+          "confidence": "medium",
+          "basis": "套餐「火腿扒麦满分套餐」轮次「选择早餐小食」：名称含薯类近似词，未含「薯条」，按近似品类处理：命中「薯饼」",
+          "source": "combo:9900003449:2",
+          "modifications": []
+        },
+        {
+          "code": "3100",
+          "name": "可乐大杯",
+          "category": "drink",
+          "quantity": 1,
+          "confidence": "high",
+          "basis": "套餐「火腿扒麦满分套餐」轮次「选择早餐套餐饮料」：名称含饮料关键词：命中「可乐」",
+          "source": "combo:9900003449:3",
+          "modifications": [
+            {
+              "code": "200002",
+              "name": "标准",
+              "selected": true
+            },
+            {
+              "code": "200002",
+              "name": "去冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "多冰",
+              "selected": false
+            },
+            {
+              "code": "200002",
+              "name": "少冰",
+              "selected": false
+            }
+          ]
+        }
+      ],
+      "officialQuote": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:21",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003449",
+            "火腿扒麦满分套餐"
+          ]
+        ]
+      },
+      "satisfiedConstraints": [
+        {
+          "constraintId": "need_drink",
+          "state": "satisfied",
+          "target": "drink",
+          "actual": [
+            "可乐大杯"
+          ],
+          "evidence": "候选包含drink：可乐大杯"
+        },
+        {
+          "constraintId": "fat_max",
+          "state": "satisfied",
+          "target": 25,
+          "actual": 21.0,
+          "evidence": "组合脂肪 21 g 不超过上限 25 g"
+        },
+        {
+          "constraintId": "energy_max",
+          "state": "satisfied",
+          "target": 650,
+          "actual": 631.0,
+          "evidence": "组合热量 631 kcal 不超过上限 650 kcal"
+        }
+      ],
+      "violatedConstraints": [],
+      "proposedChanges": [
+        {
+          "constraintId": "protein_min",
+          "description": "蛋白质下限从 30.0 g 降至 15 g（按该方案实测）",
+          "modifiedValue": 30.0,
+          "magnitude": 15
+        }
+      ],
+      "unknowns": [],
+      "verified": false,
+      "storeId": "1990455",
+      "quotedAt": "2026-10-14 09:33:21"
+    }
+  ],
+  "closestOptions": [],
+  "pendingQuotes": [],
+  "notes": [
+    "以下方案均未满足原需求全部条件；用户接受后新条件才生效，并将重新试算"
+  ],
+  "quotes": {
+    "budget": {
+      "firstBatch": 8,
+      "roundBudget": 96,
+      "used": 72,
+      "remaining": 24
+    },
+    "quotes": {
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2950,
+        "originalPriceFen": 2950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷组合",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900003428",
+            "火腿扒早安营养卷组合"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2900,
+        "originalPriceFen": 2900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷组合",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900003429",
+            "图林根香肠早安营养卷组合"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3010\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2850,
+        "originalPriceFen": 2850,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分组合",
+          "雪碧小杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900003493",
+            "原味板烧鸡腿麦满分组合"
+          ],
+          [
+            "3010",
+            "雪碧小杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003424\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003424\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2900,
+        "originalPriceFen": 2900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿炒双蛋堡组合",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900003424",
+            "原味板烧鸡腿炒双蛋堡组合"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2750,
+        "originalPriceFen": 2750,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷组合",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900003428",
+            "火腿扒早安营养卷组合"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2700,
+        "originalPriceFen": 2700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷组合",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900003429",
+            "图林根香肠早安营养卷组合"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3100,
+        "originalPriceFen": 3100,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2650,
+        "originalPriceFen": 2650,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分组合",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900003493",
+            "原味板烧鸡腿麦满分组合"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003504\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"3757\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003504\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 3000,
+        "originalPriceFen": 3000,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层板烧鸡腿麦满分组合",
+          "纯悦"
+        ],
+        "productCodeNames": [
+          [
+            "9900003504",
+            "双层板烧鸡腿麦满分组合"
+          ],
+          [
+            "3757",
+            "纯悦"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4250,
+        "originalPriceFen": 4250,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷组合",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900003429",
+            "图林根香肠早安营养卷组合"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"510479\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 4200,
+        "originalPriceFen": 4200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分组合",
+          "冰燕麦奶铁中杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900003493",
+            "原味板烧鸡腿麦满分组合"
+          ],
+          [
+            "510479",
+            "冰燕麦奶铁中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515281\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"515281\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2900,
+        "originalPriceFen": 2900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分组合",
+          "阳光柠檬红茶中杯"
+        ],
+        "productCodeNames": [
+          [
+            "9900003493",
+            "原味板烧鸡腿麦满分组合"
+          ],
+          [
+            "515281",
+            "阳光柠檬红茶中杯"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2940,
+        "originalPriceFen": 4250,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷组合",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "9900003429",
+            "图林根香肠早安营养卷组合"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"521871\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2890,
+        "originalPriceFen": 4200,
+        "discountFen": 1310,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分组合",
+          "美禄可可雪冰"
+        ],
+        "productCodeNames": [
+          [
+            "9900003493",
+            "原味板烧鸡腿麦满分组合"
+          ],
+          [
+            "521871",
+            "美禄可可雪冰"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003424\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003424\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2150,
+        "originalPriceFen": 2150,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿炒双蛋堡组合"
+        ],
+        "productCodeNames": [
+          [
+            "9900003424",
+            "原味板烧鸡腿炒双蛋堡组合"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2950,
+        "originalPriceFen": 2950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷组合",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003428",
+            "火腿扒早安营养卷组合"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003428\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2000,
+        "originalPriceFen": 2000,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷组合"
+        ],
+        "productCodeNames": [
+          [
+            "9900003428",
+            "火腿扒早安营养卷组合"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2900,
+        "originalPriceFen": 2900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷组合",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003429",
+            "图林根香肠早安营养卷组合"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003429\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 1950,
+        "originalPriceFen": 1950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷组合"
+        ],
+        "productCodeNames": [
+          [
+            "9900003429",
+            "图林根香肠早安营养卷组合"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003449",
+            "火腿扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:21",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003449",
+            "火腿扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:21",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003449",
+            "火腿扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:21",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003449",
+            "火腿扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:21",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003449",
+            "火腿扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003449\", \"quantity\": 1, \"rounds\": [{\"choice\": \"1254\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1800,
+        "originalPriceFen": 1800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003449",
+            "火腿扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1800,
+        "originalPriceFen": 1800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "大脆鸡扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003451",
+            "大脆鸡扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1800,
+        "originalPriceFen": 1800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "大脆鸡扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003451",
+            "大脆鸡扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1800,
+        "originalPriceFen": 1800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "大脆鸡扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003451",
+            "大脆鸡扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1800,
+        "originalPriceFen": 1800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "大脆鸡扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003451",
+            "大脆鸡扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1800,
+        "originalPriceFen": 1800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "大脆鸡扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003451",
+            "大脆鸡扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003451\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5889\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1900,
+        "originalPriceFen": 1900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "大脆鸡扒麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003451",
+            "大脆鸡扒麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:21",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士蛋麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003453",
+            "吉士蛋麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:21",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士蛋麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003453",
+            "吉士蛋麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:22",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士蛋麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003453",
+            "吉士蛋麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士蛋麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003453",
+            "吉士蛋麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1700,
+        "originalPriceFen": 1700,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士蛋麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003453",
+            "吉士蛋麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003453\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5888\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1800,
+        "originalPriceFen": 1800,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "吉士蛋麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003453",
+            "吉士蛋麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2200,
+        "originalPriceFen": 2200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "猪柳麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003454",
+            "猪柳麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2200,
+        "originalPriceFen": 2200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "猪柳麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003454",
+            "猪柳麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2200,
+        "originalPriceFen": 2200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "猪柳麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003454",
+            "猪柳麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2200,
+        "originalPriceFen": 2200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "猪柳麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003454",
+            "猪柳麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2200,
+        "originalPriceFen": 2200,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "猪柳麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003454",
+            "猪柳麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003454\", \"quantity\": 1, \"rounds\": [{\"choice\": \"5024\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2300,
+        "originalPriceFen": 2300,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "猪柳麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003454",
+            "猪柳麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:28",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2350,
+        "originalPriceFen": 2350,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003457\", \"quantity\": 1, \"rounds\": [{\"choice\": \"6800\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003457",
+            "原味板烧鸡腿麦满分套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003468",
+            "火腿扒早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003468",
+            "火腿扒早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003468",
+            "火腿扒早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003468",
+            "火腿扒早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2450,
+        "originalPriceFen": 2450,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003468",
+            "火腿扒早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003468\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513112\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2550,
+        "originalPriceFen": 2550,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "火腿扒早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003468",
+            "火腿扒早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003469",
+            "图林根香肠早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003469",
+            "图林根香肠早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003469",
+            "图林根香肠早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003469",
+            "图林根香肠早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2400,
+        "originalPriceFen": 2400,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003469",
+            "图林根香肠早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003469\", \"quantity\": 1, \"rounds\": [{\"choice\": \"513113\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2500,
+        "originalPriceFen": 2500,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "图林根香肠早安营养卷套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003469",
+            "图林根香肠早安营养卷套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}, {\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900008751\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2850,
+        "originalPriceFen": 2850,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:26",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分组合",
+          "可乐"
+        ],
+        "productCodeNames": [
+          [
+            "9900003493",
+            "原味板烧鸡腿麦满分组合"
+          ],
+          [
+            "9900008751",
+            "可乐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003493\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 1900,
+        "originalPriceFen": 1900,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "原味板烧鸡腿麦满分组合"
+        ],
+        "productCodeNames": [
+          [
+            "9900003493",
+            "原味板烧鸡腿麦满分组合"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003504\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900003504\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 2250,
+        "originalPriceFen": 2250,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:27",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "双层板烧鸡腿麦满分组合"
+        ],
+        "productCodeNames": [
+          [
+            "9900003504",
+            "双层板烧鸡腿麦满分组合"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"2631\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1950,
+        "originalPriceFen": 1950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:23",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝芝火腿扒堡套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011873",
+            "芝芝火腿扒堡套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"1089\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1950,
+        "originalPriceFen": 1950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝芝火腿扒堡套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011873",
+            "芝芝火腿扒堡套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3100\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1950,
+        "originalPriceFen": 1950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝芝火腿扒堡套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011873",
+            "芝芝火腿扒堡套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"3110\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1950,
+        "originalPriceFen": 1950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝芝火腿扒堡套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011873",
+            "芝芝火腿扒堡套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"4825\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 1950,
+        "originalPriceFen": 1950,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝芝火腿扒堡套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011873",
+            "芝芝火腿扒堡套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]": {
+        "candidateKey": "[{\"couponCode\": \"\", \"couponId\": \"\", \"productCode\": \"9900011873\", \"quantity\": 1, \"rounds\": [{\"choice\": \"521315\", \"modifications\": [], \"round\": \"1\"}, {\"choice\": \"505235\", \"modifications\": [], \"round\": \"2\"}, {\"choice\": \"521327\", \"modifications\": [], \"round\": \"3\"}]}]",
+        "status": "ok",
+        "priceFen": 2050,
+        "originalPriceFen": 2050,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:24",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "芝芝火腿扒堡套餐"
+        ],
+        "productCodeNames": [
+          [
+            "9900011873",
+            "芝芝火腿扒堡套餐"
+          ]
+        ]
+      },
+      "[{\"couponCode\": \"REDACTED-COUPON-CODE\", \"couponId\": \"REDACTED-COUPON-ID\", \"productCode\": \"9900016336\", \"quantity\": 1, \"rounds\": []}]": {
+        "candidateKey": "[{\"couponCode\": \"REDACTED-COUPON-CODE\", \"couponId\": \"REDACTED-COUPON-ID\", \"productCode\": \"9900016336\", \"quantity\": 1, \"rounds\": []}]",
+        "status": "ok",
+        "priceFen": 990,
+        "originalPriceFen": 990,
+        "discountFen": 0,
+        "quotedAt": "2026-10-14 09:33:25",
+        "errorCode": "",
+        "errorMessage": "",
+        "productNames": [
+          "高达芝士蛋堡早餐两件套"
+        ],
+        "productCodeNames": [
+          [
+            "9900016336",
+            "高达芝士蛋堡早餐两件套"
+          ]
+        ]
+      }
+    }
+  },
+  "nextActions": [],
+  "summary": {
+    "status": "compromise_proposed",
+    "coverage": {
+      "generatedCount": 72,
+      "quotedCount": 72,
+      "failedCount": 0,
+      "truncated": false
+    },
+    "notes": [
+      "以下方案均未满足原需求全部条件；用户接受后新条件才生效，并将重新试算"
+    ],
+    "plans": [
+      {
+        "planId": "C1",
+        "items": [
+          "火腿扒麦满分",
+          "脆薯饼",
+          "可乐大杯"
+        ],
+        "priceYuan": 17.0,
+        "proposedChanges": [
+          "蛋白质下限从 30.0 g 降至 15 g（按该方案实测）"
+        ],
+        "kept": [
+          "need_drink",
+          "fat_max",
+          "energy_max"
+        ]
+      }
+    ]
+  }
+}

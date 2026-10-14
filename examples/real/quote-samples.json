@@ -32,13 +32,13 @@
     },
     {
       "id": "coupon-fries-bogo",
-      "request": {"items": [{"productCode": "9900012387", "quantity": 1, "couponId": "REDACTED-COUPON-ID-2", "couponCode": "REDACTED-COUPON-CODE-2"}]},
+      "request": {"items": [{"productCode": "9900012387", "quantity": 1, "couponId": "REDACTED-COUPON-ID", "couponCode": "REDACTED-COUPON-CODE"}]},
       "response": {"success": true, "code": 200, "data": {"productOriginalPrice": 2700, "productPrice": 1350, "originalPrice": 2700, "discount": 1350, "price": 1350, "productList": [{"productCode": "9900012387", "productName": "中薯条买一送一", "quantity": 1, "originalSubtotal": 2700, "subtotal": 1350}]}},
       "note": "券用在其指定商品上：2700→1350（买一送一）。"
     },
     {
       "id": "coupon-snack-platter",
-      "request": {"items": [{"productCode": "9900016371", "quantity": 1, "couponId": "REDACTED-COUPON-ID-1", "couponCode": "REDACTED-COUPON-CODE-1"}]},
+      "request": {"items": [{"productCode": "9900016371", "quantity": 1, "couponId": "REDACTED-COUPON-ID", "couponCode": "REDACTED-COUPON-CODE"}]},
       "response": {"success": true, "code": 200, "data": {"productOriginalPrice": 2200, "productPrice": 1590, "originalPrice": 2200, "discount": 610, "price": 1590, "productList": [{"productCode": "9900016371", "productName": "王牌小食拼", "quantity": 1, "originalSubtotal": 2200, "subtotal": 1590}]}},
       "note": "券商品不在常规菜单中，必须携带 couponId+couponCode 才能点。"
     },
@@ -50,7 +50,7 @@
     },
     {
       "id": "coupon-on-unsupported-product",
-      "request": {"items": [{"productCode": "9900005466", "quantity": 1, "couponId": "REDACTED-COUPON-ID-2", "couponCode": "REDACTED-COUPON-CODE-2"}]},
+      "request": {"items": [{"productCode": "9900005466", "quantity": 1, "couponId": "REDACTED-COUPON-ID", "couponCode": "REDACTED-COUPON-CODE"}]},
       "response": {"success": false, "code": 600012, "message": "促销规则不支持该商品"},
       "note": "券用在不支持的商品上返回 success=false, code=600012，错误信息明确，可按错误码分类处理。"
     },

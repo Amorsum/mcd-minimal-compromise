@@ -50,6 +50,7 @@ class QuoteManager:
     def __init__(self, budget: Optional[QuoteBudget] = None):
         self.budget = budget or QuoteBudget()
         self._quotes: dict[str, Quote] = {}
+        self.context: dict = {}
 
     # -- 登记 ----------------------------------------------------------------
 
@@ -78,14 +79,17 @@ class QuoteManager:
         else:
             product_list = data.get("productList") or []
             price = data.get("price")
-            if not product_list or price is None:
+            price_fen = (
+                int(price) if type(price) is int or (isinstance(price, str) and price.isdigit()) else None
+            )
+            if not product_list or price_fen is None or price_fen <= 0:
                 quote = Quote(
                     candidate_key=candidate_key,
                     status=QuoteStatus.INVALID,
                     price_fen=None,
                     quoted_at=quoted_at,
-                    error_code="EMPTY_PRODUCT_LIST",
-                    error_message="官方返回成功但商品清单为空或价格缺失，按无效报价处理（疑似券商品未带券）",
+                    error_code="EMPTY_PRODUCT_LIST" if not product_list else "INVALID_PRICE",
+                    error_message="商品清单为空或价格不是正整数分，按无效报价处理",
                 )
             else:
                 code_names = tuple(
@@ -96,7 +100,7 @@ class QuoteManager:
                 quote = Quote(
                     candidate_key=candidate_key,
                     status=QuoteStatus.OK,
-                    price_fen=int(price),
+                    price_fen=price_fen,
                     original_price_fen=data.get("originalPrice"),
                     discount_fen=data.get("discount"),
                     quoted_at=quoted_at,
@@ -110,6 +114,11 @@ class QuoteManager:
 
     def get(self, candidate_key: str) -> Optional[Quote]:
         return self._quotes.get(candidate_key)
+
+    def reset(self) -> None:
+        """开始新的报价轮次，保留上下文与本轮配置。"""
+        self._quotes.clear()
+        self.budget.used = 0
 
     def quoted_keys(self) -> set[str]:
         return set(self._quotes.keys())
@@ -150,6 +159,7 @@ class QuoteManager:
 
     def to_dict(self) -> dict:
         return {
+            "context": self.context.copy(),
             "budget": self.budget.to_dict(),
             "quotes": {k: q.to_dict() for k, q in sorted(self._quotes.items())},
         }
@@ -162,6 +172,7 @@ class QuoteManager:
             used=int(d.get("budget", {}).get("used", 0)),
         )
         mgr = cls(budget)
+        mgr.context = dict(d.get("context") or {})
         # 直接恢复报价登记，不重复消耗预算（used 已在 budget 中恢复）
         for k, q in (d.get("quotes") or {}).items():
             quote = Quote.from_dict(q)

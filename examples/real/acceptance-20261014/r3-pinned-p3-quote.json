@@ -1,0 +1,68 @@
+{
+  "storeId": "1990455",
+  "boundPlan": "P3 (round-2)",
+  "engineCandidate": [
+    {
+      "couponCode": "REDACTED-COUPON-CODE",
+      "couponId": "REDACTED-COUPON-ID",
+      "productCode": "9900013304",
+      "quantity": 1,
+      "rounds": [
+        {
+          "choice": "1120",
+          "modifications": [],
+          "round": "1"
+        },
+        {
+          "choice": "3071",
+          "modifications": [],
+          "round": "2"
+        }
+      ]
+    }
+  ],
+  "engineOriginalPriceFen": 1490,
+  "keptConditions": {
+    "budget_yuan": 32,
+    "staple": "beef",
+    "require_drink": true,
+    "exclude_fries": "locked"
+  },
+  "note": "接受方案仅表示选择该组合；未改预算、未锁定价格。此处对引擎实际报价对象(套餐990+无糖可乐3071轮次)重新调用官方 calculate-price 核验。",
+  "recalculatedPriceFen": 1490,
+  "officialResponseRedacted": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-14 16:16:45",
+    "traceId": "REDACTED-TRACE",
+    "data": {
+      "productOriginalPrice": 1490,
+      "productPrice": 1490,
+      "originalPrice": 1490,
+      "discount": 0,
+      "price": 1490,
+      "productList": [
+        {
+          "productCode": "9900013304",
+          "productName": "人气经典随心配",
+          "quantity": 1,
+          "originalSubtotal": 1490,
+          "subtotal": 1490
+        }
+      ],
+      "takeWayList": [
+        {
+          "code": "eat-in",
+          "title": "堂食",
+          "subtitle": "店内用餐"
+        },
+        {
+          "code": "take-in-store",
+          "title": "外带",
+          "subtitle": "店内自提"
+        }
+      ]
+    }
+  }
+}

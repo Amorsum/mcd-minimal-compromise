@@ -1,0 +1,47 @@
+{
+  "requestVersion": 1,
+  "context": {
+    "storeId": "1990455",
+    "diningMode": "pickup",
+    "people": 1
+  },
+  "constraints": [
+    {
+      "id": "budget",
+      "kind": "total_price_max",
+      "value": 2500,
+      "unit": "fen",
+      "strength": "hard",
+      "negotiability": "ask",
+      "priority": 50,
+      "sourceText": "预算25元"
+    },
+    {
+      "id": "staple",
+      "kind": "include_staple",
+      "value": "staple_beef",
+      "strength": "hard",
+      "negotiability": "ask",
+      "priority": 80,
+      "sourceText": "要牛肉汉堡"
+    },
+    {
+      "id": "need_drink",
+      "kind": "require_category",
+      "value": "drink",
+      "strength": "hard",
+      "negotiability": "ask",
+      "priority": 30,
+      "sourceText": "要一杯饮料"
+    },
+    {
+      "id": "exclude_fries",
+      "kind": "exclude_category",
+      "value": "fries",
+      "strength": "hard",
+      "negotiability": "locked",
+      "priority": 10,
+      "sourceText": "不要薯条"
+    }
+  ]
+}

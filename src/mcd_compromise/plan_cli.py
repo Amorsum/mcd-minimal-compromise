@@ -14,6 +14,7 @@ from .models import MealRequest, PlanStatus
 from .normalize import build_normalized_menu
 from .nutrition import NutritionMap
 from .quote_state import QuoteBudget, QuoteManager
+from .quote_context import prepare_quotes, quote_context
 
 
 def build_menu(payload: dict):
@@ -86,10 +87,16 @@ def _summary(out: dict) -> dict:
     return s
 
 
-def run(payload: dict) -> dict:
+def run(payload: dict, *, replay: bool = False, force_requote: bool = False, now=None) -> dict:
     """执行一轮规划，返回可序列化的结果字典。"""
     menu, nutrition = build_menu(payload)
     request = MealRequest.from_dict(payload["request"])
+    if menu.store_id != request.context.store_id:
+        raise ValueError("输入 storeId 与 request.context.storeId 不一致")
+    if request.context.dining_mode != "pickup" or request.context.people != 1:
+        raise ValueError("首版仅支持到店自取、单人选餐")
+    if not replay and not payload.get("fetchedAt"):
+        raise ValueError("实时规划必须提供菜单快照 fetchedAt；历史样本请显式使用 --replay")
 
     quotes = QuoteManager.from_dict(payload["quotes"]) if payload.get("quotes") else QuoteManager()
     budget = None
@@ -100,17 +107,23 @@ def run(payload: dict) -> dict:
             used=int(payload["budget"].get("used", 0)),
         )
     max_plans = int(payload.get("maxPlans", 3))
+    if budget is not None:
+        quotes.budget = budget
+    cache_notes = prepare_quotes(quotes, quote_context(payload, request), replay=replay,
+                                 force_requote=force_requote, now=now)
 
     result = plan_next(
         menu=menu,
         request=request,
         quotes=quotes,
-        budget=budget,
+        budget=quotes.budget,
         max_plans=max_plans,
         nutrition=nutrition,
     )
 
     out = result.to_dict()
+    out["notes"] = cache_notes + out.get("notes", [])
+    out["replay"] = replay
     out["quotes"] = quotes.to_dict()
     if result.status == PlanStatus.QUOTES_PENDING:
         out["nextActions"] = [
@@ -133,10 +146,13 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="麦麦不将就规划引擎（两阶段报价协议）")
     parser.add_argument("--input", required=True, help="输入 JSON 路径")
     parser.add_argument("--output", required=True, help="输出 JSON 路径")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--replay", action="store_true", help="离线回放历史/模拟数据，不代表实时价格")
+    mode.add_argument("--force-requote", action="store_true", help="接受方案后清空缓存并重新报价")
     args = parser.parse_args(argv)
 
     payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    out = run(payload)
+    out = run(payload, replay=args.replay, force_requote=args.force_requote)
     Path(args.output).write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(out["summary"], ensure_ascii=False, indent=2))
     return 0

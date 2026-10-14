@@ -8,16 +8,16 @@
     "data": [
       {
         "title": "王牌小食拼",
-        "couponId": "REDACTED-COUPON-ID-1",
-        "couponCode": "REDACTED-COUPON-CODE-1",
+        "couponId": "REDACTED-COUPON-ID",
+        "couponCode": "REDACTED-COUPON-CODE",
         "tradeDateTime": "2026-10-12 10:30:00-2026-10-16 23:59:59",
         "products": [{"productCode": "9900016371", "productName": "王牌小食拼"}],
         "promotionId": "112458029"
       },
       {
         "title": "中薯条买一送一",
-        "couponId": "REDACTED-COUPON-ID-2",
-        "couponCode": "REDACTED-COUPON-CODE-2",
+        "couponId": "REDACTED-COUPON-ID",
+        "couponCode": "REDACTED-COUPON-CODE",
         "tradeDateTime": "2026-10-12 10:30:00-2026-10-16 23:59:59",
         "products": [{"productCode": "9900012387", "productName": "中薯条买一送一"}],
         "promotionId": "112458028"

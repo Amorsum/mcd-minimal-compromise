@@ -69,6 +69,25 @@ description: 麦当劳点餐「最小妥协」协商。当用户用一句话表�
 
 ## 5. 脚本协议（两阶段）
 
+### 5.1 快速入口（宿主可执行本地脚本且本地凭证可用时优先）
+
+将当前完整需求写成 `meal-request.json`（内容为文件协议的 `request` 对象，包含
+`requestVersion`、`context`、全部 `constraints`），然后执行一次：
+
+```bash
+python <skill>/scripts/live_fast.py --request meal-request.json --out-dir <local-run-dir>
+```
+
+- 先让用户选定门店；多轮只修改用户明确改变的条件，递增版本。
+- 完整需求模式不混用 `--budget` 等简写参数，保留锁定条件、优先级及用户原话。
+- 每次重新抓取菜单、优惠与所需营养表，并并发完成详情和报价；跨轮保留需求，价格重新验证。
+- 读取 `result.json` 并按第 6 节展示；控制台仅为摘要，`closestOptions` 等以 JSON 为准。
+- 需要本地 `MCD_MCP_TOKEN` 或原有 WorkBuddy 本地连接配置；不要在聊天中索要 Token。
+- 完整需求适配经受控测试验证；真实 WorkBuddy 宿主回归尚待执行。
+- 若只有宿主 MCP 连接器可用，使用下面的两阶段协议。
+
+### 5.2 两阶段入口（宿主调用 MCP）
+
 ```bash
 python <skill>/scripts/plan.py --input request.json --output result.json
 ```
@@ -76,6 +95,7 @@ python <skill>/scripts/plan.py --input request.json --output result.json
 - **输入**只含需求与脱敏业务数据（官方返回原样放入 `mcp` 字段），**不接收 Token**；
 - **首次运行**：返回 `status=quotes_pending` 与 `nextActions`（每个待报价候选附带完整 `calculate-price` 调用参数）；
 - **宿主动作**：按 `nextActions` 调用官方工具，把每个返回按 `candidateKey` 写回输入的 `quotes.quotes` 后再次运行；
+- 同时保留返回的完整 `quotes`（含 `context` 和 `budget`）；每批调用后更新预算 `used`，若另传顶层 `budget`，两处须一致；
 - **终态**：`feasible` / `compromise_proposed` / `not_found` / `data_incomplete`，含 `plans`、`coverage`、`searchScope`、`notes`；
 - **`not_found` 时**：输出 `closestOptions`（最近失配的已核验参考，含各方案 `violatedConstraints`），必须说明这些选项未满足锁定条件。
 
@@ -97,7 +117,9 @@ python <skill>/scripts/plan.py --input request.json --output result.json
 - 用户修改一个条件时，只更新该条件，其余原样保留；
 - 用户说「选 A」后，新条件才进入生效条件，并**重新试算**；
 - 用户强调「绝不 / 必须保留」时，该条件设为 locked，之后不得再提修改建议；
-- 同一轮内候选报价复用；菜单快照未变（`fetchedAt` 一致）时可跨轮复用已核验报价，相同 `candidateKey` 不重复调用官方接口；菜单变化后重新报价。
+- 两阶段入口仅在门店、就餐方式、`fetchedAt`、官方数据指纹相同且报价未满 5 分钟时复用；这是项目缓存策略，不是官方价格保证。上下文缺失、时间异常或过期会清空旧报价并开启新的报价轮次。
+- 接受方案后，更新需求并执行 `plan.py --force-requote`（仅首次推进使用），或调用快速入口重新抓取与报价；后续报价回写轮次不再带该参数。
+- 历史或模拟样本只用 `plan.py --replay` 离线复现，必须提示“历史/模拟报价，不代表实时价格”，不能用回放结果回答实时点餐请求。
 
 ## 8. 失败处理
 

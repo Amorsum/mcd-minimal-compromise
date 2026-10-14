@@ -1,6 +1,6 @@
 # workbuddy.md — WorkBuddy 专项奖励说明
 
-> 本文件用于麦当劳程序员创意开发大赛 **WorkBuddy 专项奖励** 的联动活动，说明「麦麦不将更」（mcd-minimal-compromise）与腾讯 WorkBuddy 智能体的关系、在 WorkBuddy 中的使用方式，以及本次开发的对话上下文。
+> 本文件用于麦当劳程序员创意开发大赛 **WorkBuddy 专项奖励** 的联动活动，说明「麦麦不将就」（mcd-minimal-compromise）的 WorkBuddy 使用情况、开发上下文与后续修复来源。本文件是摘要，不是完整会话导出。
 
 ---
 
@@ -8,11 +8,11 @@
 
 | 维度 | 说明 |
 |---|---|
-| 开发环境 | 全程在 **腾讯 WorkBuddy 智能体**（Agent 模式）中完成：引擎编码、测试编写、真实 MCP 联调、缺陷修复与文档撰写均在本对话工作区内进行 |
+| 开发环境 | 据使用者说明及既有记录，初版引擎、测试与真实联调使用 **腾讯 WorkBuddy 智能体**（Agent 模式）完成；2026-10-14 后续评审、修复与回归验证由 Codex 协助完成，见 `docs/repair-review-2026-10-14.md` |
 | 运行环境 | 设计为在 WorkBuddy 中作为 **Skill** 运行：由 WorkBuddy 读取 `SKILL.md` 理解触发场景与工具顺序，通过 **MCP 连接器**调用麦当劳官方 MCP（`mcd-mcp`），并执行 `scripts/plan.py` 两阶段报价协议 |
-| 设计文档 | 由使用者在 WorkBuddy 工作空间中撰写（`麦麦不将就-具体实现路径.md`），作为本次开发的实现路径依据 |
+| 设计文档 | 使用者将此前由 AI 协助提供的 `麦麦不将就-具体实现路径.md` 交给 WorkBuddy，作为初版实现依据 |
 
-**真实使用证据**：本对话即开发过程本身——从读取比赛规则、按设计文档逐节实现，到连接麦当劳 MCP 完成真实门店（1950640）端到端联调，全部在 WorkBuddy 中完成。
+**现有证据与待补材料**：真实样本和联调说明可以复现技术结果，但不能代替完整 WorkBuddy 开发对话。使用者仍需从原 WorkBuddy 会话导出 Markdown，脱敏后提交并在本文件链接；尚未导出的记录不得称为已归档。
 
 ---
 
@@ -36,7 +36,11 @@
 
 ### 2.2 安装 Skill
 
-将本仓库的 `SKILL.md`、`references/`、`scripts/` 放入 WorkBuddy 的 Skill 目录（用户级 `~/.workbuddy/skills/mcd-minimal-compromise/` 或项目级 `.workbuddy/skills/`）。
+将 `SKILL.md`、`references/`、`scripts/`、**`src/`** 一起放入 WorkBuddy 可识别的同一个 Skill 根目录。脚本依赖相邻的 `src/mcd_compromise/`，不能只复制脚本。
+
+原开发记录使用用户级 `~/.workbuddy/skills/mcd-minimal-compromise/` 或项目级 `.workbuddy/skills/` 的路径约定，加载位置以本机配置为准。本次仅验证独立目录中的 Python 入口，未重新验证 WorkBuddy 界面的 Skill 识别。
+
+宿主可使用本地凭证时，优先按 `SKILL.md` 5.1 执行 `scripts/live_fast.py --request meal-request.json`；仅宿主连接器可用时走下方两阶段流程。
 
 ### 2.3 使用示例
 
@@ -62,9 +66,9 @@ WorkBuddy 的执行路径：
 
 ## 3. 开发对话上下文（联动活动用）
 
-本次开发在 WorkBuddy 单对话中完成，关键节点如下：
+以下为既有 WorkBuddy 开发记录的阶段摘要，后续修复内容见修复报告：
 
-1. **任务起点**：使用者提供比赛仓库（M-China/mcd-developer-innovation-challenge）与自行撰写的实现路径设计文档，要求逐步实现 Skill；麦当劳 `mcd-mcp` 已在 WorkBuddy 中连接，可真实调用验证。
+1. **任务起点**：使用者提供比赛仓库（M-China/mcd-developer-innovation-challenge）与此前 AI 协助提供的实现路径设计文档，要求逐步实现 Skill；麦当劳 `mcd-mcp` 已在 WorkBuddy 中连接，可真实调用验证。
 2. **引擎实现**：按设计文档实现 9 个模块——数据模型（金额整数分、约束三维度、三态评价）、官方返回标准化（品类标注）、候选生成（套餐变体/券变体/特制去除）、三态约束评价、最小妥协算法、报价预算管理（首批 8 / 单轮 24）、营养映射、两阶段 CLI。
 3. **测试体系**：84 个测试 + 人工小型菜单夹具，模拟算价器复刻官方行为（含券价、600012 失败、空清单陷阱、券双字段校验）。
 4. **真实联调**（2026-10-12 至 10-13，门店 1950640）：门店查询 → 菜单（含「麦乐鸡套餐」官方标签修正）→ 门店优惠（凭证脱敏）→ 套餐详情（发现默认搭配含隐藏中薯条）→ 多轮共 63 次真实 `calculate-price`（冲突/可行/多轮/营养/组合约束 A/B 六组场景）→ `list-nutrition-foods` 全量 160 条营养表 → 第二门店查询。
@@ -74,11 +78,30 @@ WorkBuddy 的执行路径：
 
 ---
 
+## 3.1 会话材料导出与链接
+
+| 材料 | 状态 | 说明 |
+|---|---|---|
+| 本次验收会话（2026-10-14） | **已导出** | [`docs/acceptance-session-2026-10-14.md`](docs/acceptance-session-2026-10-14.md)：按时间顺序记录用户下发任务、3 个决策点（门店 1990455 / 第2轮预算32 / 第3轮接受P3）与助手核验结论；已脱敏，不含 Token/券码/手机号。脱敏联调样本（R1/R2/R3 请求与结果、门店发现）见 [`examples/real/acceptance-20261014/`](examples/real/acceptance-20261014/README.md) |
+| 原开发聊天（2026-10-12 至 10-13） | **待人工导出** | 助手无法直接从本会话导出原开发对话（`conversation_search` 返回 400，且仅返回片段不足以复原完整对话）；**不生成虚构会话代替** |
+
+**原开发聊天人工导出步骤（请在 WorkBuddy 界面完成）**：
+
+1. 在 WorkBuddy 左侧/历史列表中打开对应的「麦麦不将就」开发会话（初版引擎、测试与真实联调所在会话）；
+2. 使用会话菜单中的「导出 / 复制为 Markdown」功能，将完整对话保存为 `.md`；
+3. 脱敏处理：删除或替换所有 `Authorization`/`Bearer` Token、券 `couponId`/`couponCode`、手机号、精确经纬度与家庭/学校门牌等个人信息（门店编码属公开营业信息，可保留）；
+4. 将文件放入仓库 `docs/` 并命名为如 `dev-session-2026-10-12.md`；
+5. 回到本文件，把上方表格第二行状态改为「已导出」并补上链接。
+
+> 注意：本文件和修复报告均为摘要或忠实记录，**均不冒充原始开发会话**。在 `docs/dev-session-*.md` 就绪前，原开发聊天不得声称为已归档。
+
+---
+
 ## 4. WorkBuddy 能力使用清单
 
 | WorkBuddy 能力 | 在本项目中的使用 |
 |---|---|
-| Agent 模式 | 全程自主执行：读写代码、运行测试、调用 MCP、生成文档 |
+| Agent 模式 | 初版开发中的读写代码、运行测试、调用 MCP、生成文档 |
 | MCP 连接器（mcd-mcp） | 真实调用官方 7 类工具完成联调验证 |
 | 文件系统与终端 | 引擎开发、pytest 运行、git 仓库初始化与推送 |
 | 多轮任务追踪 | 开发任务拆解与进度管理（引擎→测试→联调→文档→仓库） |
@@ -86,6 +109,9 @@ WorkBuddy 的执行路径：
 ---
 
 ## 5. 声明
+
+- 最新公开规则要求专项奖励作品真实使用 WorkBuddy 并提交上下文，未规定开发工具独占；本项目如实披露来源，资格以主办方核验为准：[官方规则](https://github.com/M-China/mcd-developer-innovation-challenge/blob/main/activityGuidelines.md)。
+- 会话材料：本次验收会话已导出并链接（见 3.1 节 [`docs/acceptance-session-2026-10-14.md`](docs/acceptance-session-2026-10-14.md)）；**原开发聊天仍待人工导出**（助手无法直接导出，不虚构代替，步骤见 3.1 节）。本文件和修复报告均不冒充原始开发会话。
 
 - 本项目为参赛独立开发作品，非麦当劳官方产品，亦非腾讯官方产品；
 - 所有价格数据来自麦当劳官方 `calculate-price` 接口实时返回；

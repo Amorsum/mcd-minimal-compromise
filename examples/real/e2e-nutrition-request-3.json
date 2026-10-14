@@ -341,7 +341,7 @@
    "code": 200,
    "message": "请求成功",
    "datetime": "2026-10-13 14:24:36",
-   "traceId": "46e57458507325bdd1274564e5b3d23b",
+   "traceId": "REDACTED-TRACE",
    "data": "[12]{productName,nutritionDescription,energyKj,energyKcal,protein,fat,carbohydrate,sodium,calcium}:\n中薯条,null,1210,289,4,12,38,165,18\n小杯玉米杯,null,223,53,2,1,7,1,6\n巨无霸,null,2146,513,27,26,42,961,171\n可乐中杯,null,616,147,0,0,36,0,10\n雪碧中杯,null,440,105,0,0,26,29,0\n雪碧小杯,null,319,76,0,0,19,21,0\n无糖可口可乐中杯,null,0,0,0,0,1,35,0\n锡兰红茶,null,8,2,0,0,0,0,5\n纯牛奶（盒装）,null,541,129,7,7,10,73,231\n阳光柠檬红茶小杯,null,354,85,0,0,21,12,0\n纯悦,能量约清水1杯,0,0,0,0,0,0,0\n中杯怡泉+C,null,461,110,0,0,27,0,0"
   }
  },

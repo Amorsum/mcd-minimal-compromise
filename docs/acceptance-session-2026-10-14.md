@@ -1,0 +1,81 @@
+# 验收会话导出（麦麦不将就 mcd-minimal-compromise）
+
+- 日期：2026-10-14（北京时间）
+- 性质：**验收记录 / 摘要**（按步骤整理的关键交互与结论，非原始完整对话全文；原开发聊天见 `workbuddy.md` 第 3 节的人工导出说明）
+- 范围：用户下发的验收任务、关键交互决策点、助手执行动作与核验结论
+- 脱敏：本记录不含任何 Token、券码、手机号或精确位置；门店编码（1990455 等）属公开营业信息，按惯例保留
+- 关联文件：`workbuddy.md`、`docs/repair-review-2026-10-14.md`、`docs/validation-report.md`
+
+> 说明：用户下发的验收任务在会话中以同一指令连续出现三次（Agent 模式切换导致），内容一致，下文仅完整记录一次。
+
+---
+
+## 用户（2026-10-14 11:38 起）
+
+> 请继续验收「麦麦不将就」项目。项目路径 `D:\learning\GitHub\Mcdonald_skill`。
+> 先阅读：`docs/repair-review-2026-10-14.md`、`SKILL.md`、`workbuddy.md`。
+> 当前代码已完成报价缓存隔离、过期处理、零价校验、完整需求快速入口和归档脱敏修复，112 项本地测试通过。请基于现有代码继续，不要覆盖或重复实现。
+> 依次完成 6 项：① 检查改动并运行 `python -m pytest tests/`；② 验证 WorkBuddy 安装与触发；③ 完整需求快速入口真实联调（先查营业中门店让用户选，保存 `meal-request.json`，执行 `live_fast.py`）；④ 验证三轮协商；⑤ 补齐开发会话材料；⑥ 整理验收结果。
+> 要求：不展示 Token、不创建订单、不自动推送/提交/下单；先汇报。
+
+## 助手
+
+阅读了 `docs/repair-review-2026-10-14.md`、`SKILL.md`、`workbuddy.md` 三份文件，建立任务清单（6 项），并开始执行。
+
+---
+
+## 第 ① 步：检查改动并运行测试（2026-10-14）
+
+- 使用项目内 `.venv`（Python 3.12.6 / pytest 9.1.1）运行 `python -m pytest tests/`。
+- 结果：**112 passed**（与修复报告一致）。
+- `git diff --check` 通过（仅 LF/CRLF 行尾规范化提示，非错误）。
+- 工作区状态：1 个本地提交领先 `origin/main` + 11 个已修改文件 + 4 个未跟踪文件（即本次修复残留，均未提交、未推送）。
+
+## 第 ② 步：验证 WorkBuddy 安装与触发
+
+- Skill 根目录齐全：`SKILL.md`、`references/`、`scripts/`、`src/` 均存在。
+- `SKILL.md` 前置元数据 `name: mcd-minimal-compromise` + `description` 含触发词（麦当劳点餐、套餐推荐、预算内配餐、不要薯条、换主食、用券配餐、麦麦不将就），符合 WorkBuddy 自然语言触发机制。
+- 脚本路径验证：`scripts/live_fast.py --help`、`scripts/plan.py --help` 均可运行；凭证从 `~/.workbuddy/mcp.json` 的 `mcd-mcp.Authorization` 读取（环境变量 `MCD_MCP_TOKEN` 未设置，文件凭证可用）。
+
+## 第 ③ 步：完整需求快速入口真实联调
+
+- 先查询附近营业中门店：**未指定旧门店**，用 `--city 南京市 --keyword 南京邮电大学仙林校区` 取得 5 家营业中门店列表，交由用户选择。
+- 用户选择：**1990455 麦当劳南京邮电大学(校内)餐厅**。
+- 构造完整需求 `meal-request.json`（requestVersion=1，门店 1990455，到店自取，1 人；约束：预算25元/牛肉汉堡/一杯饮料/不要薯条[locked]）。
+- 执行 `python scripts/live_fast.py --request meal-request.json --out-dir .workbuddy/runs/acceptance`。
+- 终态：**feasible**；3 个已核验方案（双层吉士汉堡+饮料，¥14.90），4 条件全部保留。
+- 核验：门店 1990455、版本 1、`exclude_fries`=locked（保留并满足）、官方报价 priceFen=1490 status=ok、查询时间 2026-10-14T14:59:26+08:00、覆盖度 生成111/已报价8/失败0/截断=True。
+- 产物已脱敏（券引用 REDACTED-LIVE-*）；未展示 Token，未创建订单。
+
+## 第 ④ 步：三轮协商（与用户实际交互）
+
+- **第 1 轮**：即第 ③ 步需求，feasible ¥14.90。
+- **第 2 轮**：用户选择「预算提到 32 元」（仅改预算，其余含锁定薯条原样保留）。构造 `meal-request-r2.json`（requestVersion=2）。重跑 → feasible ¥14.90；核验版本=2、预算=3200(ask)、锁定薯条保留、3 方案均保留 4 条件。
+- **第 3 轮**：用户选择「接受 P3（双层吉士汉堡+无糖可口可乐 ¥14.90）」。**纠正说明**：「接受 P3」仅表示用户从可行方案中选定了该组合，**不修改预算、也不锁定价格**；第二轮预算 32 元、牛肉主食、需饮料、不要薯条（locked）全部原样保留。对 P3 绑定餐品（套餐 `9900013304`：round1=`1120` 双层吉士汉堡、round2=`3071` 无糖可口可乐中杯）重新调用官方 `calculate-price` 核验，返回 `priceFen=1490`（¥14.90），与引擎 R2 原报价一致。产物：`.workbuddy/runs/acceptance/r3/pinned-p3-quote.json`。
+- 全程未替用户接受妥协或修改锁定条件。
+
+## 第 ⑤ 步：补齐开发会话材料
+
+- 本次验收会话：本文件即忠实导出（时间顺序、用户/助手发言、已脱敏）。
+- 原开发聊天：**无法直接由助手导出**（`conversation_search` 返回 400；且该工具仅返回片段，不足以复原完整对话）。按任务要求**不生成虚构会话**。人工导出步骤见 `workbuddy.md` 第 3 节备注。
+- 本文件在 `workbuddy.md` 中链接。
+
+## 第 ⑥ 步：整理验收结果（待汇报）
+
+- 更新验证报告（通过/失败/未完成）；检查待提交文件脱敏；核对 Git 本地与远端差异与报名状态；**先汇报，不自动推送/提交/下单**。
+
+---
+
+## 决策点（用户实际选择，忠实记录）
+
+| 轮次 | 提问 | 用户选择 |
+|---|---|---|
+| 门店 | 5 家营业中门店选一（不默认旧门店 1950640） | 1990455 南邮校内 |
+| 第2轮 | 修改哪个条件（其余保留） | 预算提到 32 元 |
+| 第3轮 | 接受哪个方案 | 接受 P3（无糖可口可乐）；**仅选定方案，不锁预算/价格** |
+
+## 产物清单（位于 `.workbuddy/runs/acceptance/`，已被 `.gitignore` 忽略，不会入库）
+
+- `stores/nearby-stores.json` — 门店发现结果
+- `meal-request.json` + `request.json` + `result.json` + `menu.json`/`coupons.json`/`combo-details.json`（第1轮，已脱敏）
+- `r2/`、`r3/` — 第2、3 轮请求与结果（已脱敏）

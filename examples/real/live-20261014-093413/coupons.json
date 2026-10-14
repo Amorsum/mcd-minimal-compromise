@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-14 09:34:15",
+  "traceId": "REDACTED-TRACE",
+  "data": [
+    {
+      "title": "高达芝士蛋堡早餐两件套",
+      "couponId": "REDACTED-COUPON-ID",
+      "couponCode": "REDACTED-COUPON-CODE",
+      "tradeDateTime": "2026-10-14 05:00:00-2026-10-14 10:29:59",
+      "products": [
+        {
+          "productCode": "9900016336",
+          "productName": "高达芝士蛋堡早餐两件套"
+        }
+      ],
+      "promotionId": "112457024"
+    }
+  ]
+}
